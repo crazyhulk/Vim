@@ -37,12 +37,6 @@
 [submodule "pack/vendor/start/ale"]
 	path = pack/vendor/start/ale
 	url = https://github.com/w0rp/ale.git
-[submodule "pack/vendor/start/phpcd"]
-	path = pack/vendor/start/phpcd
-	url = https://github.com/lvht/phpcd.vim.git
-[submodule "pack/vendor/start/phpfold"]
-	path = pack/vendor/start/phpfold
-	url = https://github.com/lvht/phpfold.vim.git
 [submodule "pack/vendor/start/go"]
 	path = pack/vendor/start/go
 	url = https://github.com/fatih/vim-go.git
@@ -55,15 +49,6 @@
 [submodule "pack/vendor/start/nerdtree"]
 	path = pack/vendor/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "pack/vendor/start/prettier"]
-	path = pack/vendor/start/prettier
-	url = https://github.com/prettier/vim-prettier.git
-[submodule "pack/vendor/start/javascript"]
-	path = pack/vendor/start/javascript
-	url = https://github.com/pangloss/vim-javascript
-[submodule "pack/vendor/start/jsx"]
-	path = pack/vendor/start/jsx
-	url = https://github.com/mxw/vim-jsx
 [submodule "pack/vendor/start/stim"]
 	path = pack/vendor/start/stim
 	url = https://github.com/ironhouzi/vim-stim.git
