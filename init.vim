@@ -15,19 +15,19 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 color tender
 highlight Visual guibg=#323232
 highlight Normal guibg=#000001
+highlight StatusLine guibg=#444444 guifg=#b3deef
+highlight StatusLineTerm guibg=#444444 guifg=#b3deef
+highlight StatusLineTermNC guibg=#444444 guifg=#999999
 
 nnoremap <silent> <c-u> :Mru<cr>
 nnoremap <silent> <c-p> :call fzf#Open()<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>e :NERDTreeToggle<cr>
 nnoremap <silent> <leader>f :NERDTreeFind<cr>
-nnoremap <c-w><c-t> :call lv#Term()<cr>
-tnoremap <c-w><c-t> <c-\><c-n>:call lv#Term()<cr>
 
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
 			\ execute "normal! g`\"" |
 			\ endif
-autocmd BufWritePre *.js,*.jsx,*.css,*.less,*.scss,*.json PrettierAsync
 autocmd BufReadPost *.js,*.jsx,*.css,*.less,*.scss,*.json call lv#ExpandTab(2)
 autocmd InsertLeave,CompleteDone *.go if pumvisible() == 0 | pclose | endif
 
