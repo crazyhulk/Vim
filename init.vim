@@ -9,6 +9,7 @@ set fileformat=unix
 set fileencodings=ucs-bom,utf-8,cp936,gb18030
 set linebreak
 set colorcolumn=80
+set laststatus=2
 set termguicolors
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
@@ -41,10 +42,3 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 let g:prettier#autoformat = 0
 let g:go_fmt_command = "goimports"
-
-if has('nvim')
-	let g:deoplete#enable_at_startup = 1
-	let g:deoplete#file#enable_buffer_path = 1
-	packadd deoplete
-	packadd deoplete-go
-endif
