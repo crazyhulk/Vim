@@ -11,9 +11,15 @@ set linebreak
 set colorcolumn=80
 set laststatus=2
 set termguicolors
+set number
+set foldmethod=indent
+set foldlevelstart=99
+set mmp=5000  "pattern uses more memory than 'maxmempattern' 
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-color tender
+color molokai
+
+"hi Normal guibg=NONE ctermbg=NONE
 highlight Visual guibg=#323232
 highlight Normal guibg=#000001
 highlight StatusLine guibg=#444444 guifg=#b3deef
@@ -42,3 +48,5 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 let g:prettier#autoformat = 0
 let g:go_fmt_command = "goimports"
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
