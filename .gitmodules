@@ -61,3 +61,6 @@
 [submodule "pack/vendor/start/nerd-git-plugin"]
 	path = pack/vendor/start/nerd-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+[submodule "pack/vendor/start/rainbow"]
+	path = pack/vendor/start/rainbow
+	url = https://github.com/luochen1990/rainbow.git

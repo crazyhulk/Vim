@@ -60,6 +60,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+" 彩虹括号
+let g:rainbow_active = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeChDirMode = 2
 let g:ackprg = 'ag --vimgrep'
