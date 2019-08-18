@@ -64,3 +64,6 @@
 [submodule "pack/vendor/start/rainbow"]
 	path = pack/vendor/start/rainbow
 	url = https://github.com/luochen1990/rainbow.git
+[submodule "pack/vendor/start/cocnvim"]
+	path = pack/vendor/start/cocnvim
+	url = git@github.com:neoclide/coc.nvim.git
