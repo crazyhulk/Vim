@@ -46,9 +46,6 @@
 [submodule "pack/vendor/start/tabular"]
 	path = pack/vendor/start/tabular
 	url = https://github.com/godlygeek/tabular
-[submodule "pack/vendor/start/gocode"]
-	path = pack/vendor/start/gocode
-	url = https://github.com/nsf/gocode.git
 [submodule "pack/vendor/start/nerd-git-plugin"]
 	path = pack/vendor/start/nerd-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
@@ -58,3 +55,4 @@
 [submodule "pack/vendor/start/cocnvim"]
 	path = pack/vendor/start/cocnvim
 	url = git@github.com:neoclide/coc.nvim.git
+	branch = release
