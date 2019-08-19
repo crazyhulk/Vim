@@ -46,15 +46,6 @@
 [submodule "pack/vendor/start/tabular"]
 	path = pack/vendor/start/tabular
 	url = https://github.com/godlygeek/tabular
-[submodule "pack/vendor/start/deoplete"]
-	path = pack/vendor/start/deoplete
-	url = https://github.com/Shougo/deoplete.nvim
-[submodule "pack/vendor/start/vimhugneovimrpc"]
-	path = pack/vendor/start/vimhugneovimrpc
-	url = https://github.com/roxma/vim-hug-neovim-rpc.git
-[submodule "pack/vendor/start/nvimyarp"]
-	path = pack/vendor/start/nvimyarp
-	url = https://github.com/roxma/nvim-yarp.git
 [submodule "pack/vendor/start/gocode"]
 	path = pack/vendor/start/gocode
 	url = https://github.com/nsf/gocode.git
