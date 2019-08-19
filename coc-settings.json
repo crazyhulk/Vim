@@ -5,6 +5,10 @@
   "suggest.floatEnable": true,
   "suggest.snippetIndicator": "⭐︎",
   "snippets.autoTrigger": true,
+  "snippets.ultisnips.directories": [
+    "UltiSnips",
+    "gosnippets/UltiSnips"
+  ],
   "languageserver": {
     "golang": {
       "command": "gopls",

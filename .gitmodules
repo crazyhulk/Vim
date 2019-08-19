@@ -56,3 +56,6 @@
 	path = pack/vendor/start/cocnvim
 	url = git@github.com:neoclide/coc.nvim.git
 	branch = release
+[submodule "pack/vendor/start/vimsnippets"]
+	path = pack/vendor/start/vimsnippets
+	url = git@github.com:honza/vim-snippets.git
