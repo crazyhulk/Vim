@@ -1,4 +1,4 @@
-# lv's vimrc
+# vim config
 
 Support both vim8 and neovim.
 
