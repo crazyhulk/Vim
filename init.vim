@@ -21,6 +21,7 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set fillchars=vert:\|
 set background=light
 colorscheme PaperColor
+"colorscheme one 
 "color tender 
 "hi Normal guibg=NONE ctermbg=NONE
 "highlight Visual guibg=#323232
