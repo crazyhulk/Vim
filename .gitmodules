@@ -68,3 +68,6 @@
 [submodule "pack/vendor/start/vim-airline"]
 	path = pack/vendor/start/vim-airline
 	url = git@github.com:vim-airline/vim-airline.git
+[submodule "pack/vendor/start/auto-pair"]
+	path = pack/vendor/start/auto-pair
+	url = git@github.com:jiangmiao/auto-pairs.git

@@ -8,7 +8,7 @@ set smartindent
 set fileformat=unix
 set fileencodings=ucs-bom,utf-8,cp936,gb18030
 set linebreak
-set colorcolumn=80
+"set colorcolumn=80
 set laststatus=2
 set termguicolors
 set number
@@ -19,7 +19,10 @@ set mmp=5000  "pattern uses more memory than 'maxmempattern'
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set fillchars=vert:\|
-set background=light
+"set background=light
+set background=dark
+set nu
+set rnu
 colorscheme PaperColor
 "colorscheme one 
 "color tender 
@@ -29,7 +32,6 @@ colorscheme PaperColor
 "highlight StatusLine guibg=#444444 guifg=#b3deef
 "highlight StatusLineTerm guibg=#444444 guifg=#b3deef
 "highlight StatusLineTermNC guibg=#444444 guifg=#999999
-
 nnoremap <silent> <c-u> :Mru<cr>
 nnoremap <silent> <c-p> :call fzf#Open()<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
