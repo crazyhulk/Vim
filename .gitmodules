@@ -54,20 +54,20 @@
 	url = https://github.com/luochen1990/rainbow.git
 [submodule "pack/vendor/start/cocnvim"]
 	path = pack/vendor/start/cocnvim
-	url = git@github.com:neoclide/coc.nvim.git
+	url = https://github.com/neoclide/coc.nvim.git 
 	branch = release
 [submodule "pack/vendor/start/vimsnippets"]
 	path = pack/vendor/start/vimsnippets
 	url = git@github.com:honza/vim-snippets.git
 [submodule "pack/vendor/start/vim-one"]
 	path = pack/vendor/start/vim-one
-	url = git@github.com:rakr/vim-one.git
+	url = https://github.com/rakr/vim-one.git 
 [submodule "pack/vendor/start/vim-startify"]
 	path = pack/vendor/start/vim-startify
-	url = git@github.com:mhinz/vim-startify.git
+	url = https://github.com/mhinz/vim-startify.git 
 [submodule "pack/vendor/start/vim-airline"]
 	path = pack/vendor/start/vim-airline
-	url = git@github.com:vim-airline/vim-airline.git
+	url = https://github.com/vim-airline/vim-airline.git 
 [submodule "pack/vendor/start/auto-pair"]
 	path = pack/vendor/start/auto-pair
-	url = git@github.com:jiangmiao/auto-pairs.git
+	url = https://github.com/honza/vim-snippets.git 
