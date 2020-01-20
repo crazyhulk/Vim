@@ -95,12 +95,21 @@ autocmd BufReadPost *.js,*.jsx,*.css,*.less,*.scss,*.json call lv#ExpandTab(2)
 autocmd InsertLeave,CompleteDone *.go if pumvisible() == 0 | pclose | endif
 autocmd FileType json syntax match Comment +\/\/.\+$+
 autocmd VimEnter,VimLeave * silent !tmux set status
+
 command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
+  \ call fzf#vim#ag(<q-args>, '0;36',
   \                 <bang>0 ? fzf#vim#with_preview('up:60%')
   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
   \                 <bang>0)
-nnoremap <silent> <C-f> :Ag<CR>
+nnoremap <silent> <leader>s :Ag<CR>
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+nnoremap <silent> <leader>r :Rg<CR>
 
 "autocmd BufReadPost * execute "call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })"
 
@@ -137,8 +146,23 @@ let g:vim_markdown_frontmatter = 1
 let g:prettier#autoformat = 0
 let g:go_fmt_command = "goimports"
 let g:go_def_mode = 'gopls'
-" Use deoplete.
-"et g:deoplete#enable_at_startup = 1
-"et g:deoplete#sources#go#gocode_binary = $GOPATH.'pack/vendor/start/gocode'
-"let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-"call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
