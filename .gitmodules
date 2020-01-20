@@ -1,9 +1,6 @@
 [submodule "pack/vendor/start/mru"]
 	path = pack/vendor/start/mru
 	url = https://github.com/lvht/mru.git
-[submodule "pack/vendor/start/fzf"]
-	path = pack/vendor/start/fzf
-	url = https://github.com/lvht/fzf.git
 [submodule "pack/vendor/start/tagbar"]
 	path = pack/vendor/start/tagbar
 	url = https://github.com/majutsushi/tagbar.git
@@ -71,3 +68,6 @@
 [submodule "pack/vendor/start/auto-pair"]
 	path = pack/vendor/start/auto-pair
 	url = https://github.com/honza/vim-snippets.git 
+[submodule "pack/vendor/start/fzf"]
+	path = pack/vendor/start/fzf
+	url = https://github.com/junegunn/fzf.vim.git

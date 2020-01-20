@@ -23,6 +23,7 @@ set fillchars=vert:\|
 set background=dark
 set nu
 set rnu
+set rtp+=/usr/local/opt/fzf
 colorscheme PaperColor
 "colorscheme one 
 "color tender 
@@ -33,7 +34,8 @@ colorscheme PaperColor
 "highlight StatusLineTerm guibg=#444444 guifg=#b3deef
 "highlight StatusLineTermNC guibg=#444444 guifg=#999999
 nnoremap <silent> <c-u> :Mru<cr>
-nnoremap <silent> <c-p> :call fzf#Open()<cr>
+"nnoremap <silent> <c-p> :call fzflv#Open()<cr>
+nnoremap <silent> <c-p> :GFiles<cr>
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <silent> <leader>e :NERDTreeToggle<cr>
 nnoremap <silent> <leader>f :NERDTreeFind<cr>
@@ -92,6 +94,13 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
 autocmd BufReadPost *.js,*.jsx,*.css,*.less,*.scss,*.json call lv#ExpandTab(2)
 autocmd InsertLeave,CompleteDone *.go if pumvisible() == 0 | pclose | endif
 autocmd FileType json syntax match Comment +\/\/.\+$+
+autocmd VimEnter,VimLeave * silent !tmux set status
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+nnoremap <silent> <C-f> :Ag<CR>
 
 "autocmd BufReadPost * execute "call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })"
 
