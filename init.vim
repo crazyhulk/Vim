@@ -24,7 +24,7 @@ set background=dark
 set nu
 set rnu
 set rtp+=/usr/local/opt/fzf
-colorscheme PaperColor
+colorscheme PaperColor 
 "colorscheme one 
 "color tender 
 "hi Normal guibg=NONE ctermbg=NONE
@@ -53,6 +53,8 @@ inoremap <silent><expr> <TAB>
 
 " Use K to show documentation in preview window
 nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
