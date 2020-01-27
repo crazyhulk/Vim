@@ -55,7 +55,7 @@
 	branch = release
 [submodule "pack/vendor/start/vimsnippets"]
 	path = pack/vendor/start/vimsnippets
-	url = git@github.com:honza/vim-snippets.git
+	url = https://github.com/honza/vim-snippets.git
 [submodule "pack/vendor/start/vim-one"]
 	path = pack/vendor/start/vim-one
 	url = https://github.com/rakr/vim-one.git 
