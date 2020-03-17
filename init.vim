@@ -24,6 +24,11 @@ set background=dark
 set nu
 set rnu
 set rtp+=/usr/local/opt/fzf
+
+set re=1
+set ttyfast
+set lazyredraw
+
 colorscheme PaperColor 
 "colorscheme one 
 "color tender 
@@ -56,10 +61,10 @@ nnoremap <silent> <leader>h :call <SID>show_documentation()<CR>
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_function_parameters = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_highlight_variable_assignments = 1
+"let g:go_highlight_types = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_variable_declarations = 1
+"let g:go_highlight_variable_assignments = 1
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -95,6 +100,8 @@ let g:coc_snippet_prev = '<c-k>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 " coc-snippets completion
 
+nmap     <silent><leader>gr <Plug>(coc-references)
+
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
 			\ execute "normal! g`\"" |
 			\ endif
@@ -103,23 +110,27 @@ autocmd InsertLeave,CompleteDone *.go if pumvisible() == 0 | pclose | endif
 autocmd FileType json syntax match Comment +\/\/.\+$+
 autocmd VimEnter,VimLeave * silent !tmux set status
 
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \                 <bang>0)
-nnoremap <silent> <leader>s :Ag<CR>
+"command! -bang -nargs=* Ag
+"  \ call fzf#vim#ag(<q-args>,
+"  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+"  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+"  \                 <bang>0)
+"nnoremap <silent> <leader>s :Ag<CR>
 
+" darkcolor
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
+
+" light color
 "command! -bang -nargs=* Rg
 "  \ call fzf#vim#grep(
 "  \   'rg --column --line-number --no-heading --color=always --colors "path:fg:190,220,255" --colors "line:fg:128,128,128" --smart-case '.shellescape(<q-args>), 1,
 "  \   { 'options': '--color hl:123,hl+:222' }, 0)
+
 nnoremap <silent> <leader>r :Rg<CR>
 
 "autocmd BufReadPost * execute "call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })"
@@ -177,3 +188,5 @@ let g:fzf_colors =
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
+
+autocmd Filetype proto setlocal ts=4 sw=4 sts=0 expandtab
