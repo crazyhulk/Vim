@@ -77,9 +77,9 @@ let g:prettier#autoformat = 0
 let g:go_fmt_command = "goimports"
 let g:go_def_mode = 'gopls'
 
-function! s:find_git_root()
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
+"function! s:find_git_root()
+"  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+"endfunction
 
 " proto buf 锁进调整
 autocmd Filetype proto setlocal ts=4 sw=4 sts=0 expandtab

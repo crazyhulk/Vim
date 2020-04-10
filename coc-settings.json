@@ -13,7 +13,20 @@
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod"],
-      "filetypes": ["go"]
+      "filetypes": ["go"],
+      "trace.server": "verbose",
+//      "css.execArgv": ["--nolazy", "--inspect-brk=6045"],
+      "initializationOptions": {
+        "cacheDirectory": "/tmp/ccls"
+      }
+    },
+    "ccls": {
+    "command": "ccls",
+    "filetypes": ["c", "cpp", "objc", "objcpp"],
+    "trace.server": "verbose",
+    "initializationOptions": {
+      "cacheDirectory": "/tmp/ccls"
     }
+  }
   }
 }
