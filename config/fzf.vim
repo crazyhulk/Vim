@@ -37,5 +37,5 @@ command! -bang -nargs=* Rg
 "  \   'rg --column --line-number --no-heading --color=always --colors "path:fg:190,220,255" --colors "line:fg:128,128,128" --smart-case '.shellescape(<q-args>), 1,
 "  \   { 'options': '--color hl:123,hl+:222' }, 0)
 
-nnoremap <silent> <leader>r :Rg<CR>
+nnoremap <silent> <leader>ps :Rg<CR>
 
