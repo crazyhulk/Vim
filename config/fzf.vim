@@ -38,4 +38,3 @@ command! -bang -nargs=* Rg
 "  \   { 'options': '--color hl:123,hl+:222' }, 0)
 
 nnoremap <silent> <leader>ps :Rg<CR>
-

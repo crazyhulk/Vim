@@ -4,6 +4,7 @@
   "suggest.minTriggerInputLength": 2,
   "suggest.floatEnable": true,
   "suggest.snippetIndicator": "⭐︎",
+
   "snippets.autoTrigger": true,
   "snippets.ultisnips.directories": [
     "UltiSnips",
@@ -15,7 +16,9 @@
       "rootPatterns": ["go.mod"],
       "filetypes": ["go"],
       "trace.server": "verbose",
-//      "css.execArgv": ["--nolazy", "--inspect-brk=6045"],
+      "css.execArgv": ["--nolazy", "--inspect-brk=6045"],
+//      "disableSnippetCompletion": true,
+//      "disableCompletion": true,
       "initializationOptions": {
         "cacheDirectory": "/tmp/ccls"
       }
