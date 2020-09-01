@@ -67,7 +67,7 @@
 	url = https://github.com/vim-airline/vim-airline.git 
 [submodule "pack/vendor/start/auto-pair"]
 	path = pack/vendor/start/auto-pair
-	url = https://github.com/honza/vim-snippets.git 
+	url = https://github.com/jiangmiao/auto-pairs.git
 [submodule "pack/vendor/start/fzf"]
 	path = pack/vendor/start/fzf
 	url = https://github.com/junegunn/fzf.vim.git
