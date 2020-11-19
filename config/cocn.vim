@@ -56,6 +56,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " coc-snippets completion
 
 nmap <silent><leader>gr <Plug>(coc-references)
+nmap <silent> gi <Plug>(coc-implementation)
 " Symbol renaming.
 " nmap <leader>rn <Plug>(coc-rename)
 

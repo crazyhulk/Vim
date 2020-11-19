@@ -19,8 +19,8 @@ set mmp=5000  "pattern uses more memory than 'maxmempattern'
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set fillchars=vert:\|
-"set background=light
-set background=dark
+set background=light
+" set background=dark
 "set nu
 "set rnu
 
@@ -52,7 +52,8 @@ autocmd InsertLeave,CompleteDone *.go if pumvisible() == 0 | pclose | endif
 autocmd FileType json syntax match Comment +\/\/.\+$+
 autocmd VimEnter,VimLeave * silent !tmux set status
 
-let g:NERDTreeIndicatorMapCustom = {
+" let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
