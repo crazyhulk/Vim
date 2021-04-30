@@ -4,6 +4,11 @@
   "suggest.minTriggerInputLength": 2,
   "suggest.floatEnable": true,
   "suggest.snippetIndicator": "⭐︎",
+  "suggest.removeDuplicateItems": true,
+  "suggest.detailField":"preview",
+  "suggest.echodocSupport": true,
+  "suggest.acceptSuggestionOnCommitCharacter": true,
+  //"suggest.noselect": false,
 
   "snippets.autoTrigger": true,
   "snippets.ultisnips.directories": [
@@ -11,23 +16,24 @@
     "gosnippets/UltiSnips"
   ],
   "languageserver": {
-    "golang": {
+    "go": {
       "command": "gopls",
       "rootPatterns": ["go.mod"],
       "filetypes": ["go"],
-      "trace.server": "verbose",
-      "css.execArgv": ["--nolazy", "--inspect-brk=6045"],
+      "trace.server": "verbose"
+//      "css.execArgv": ["--nolazy", "--inspect-brk=6045"],
 //      "disableSnippetCompletion": true,
 //      "disableCompletion": true,
-      "initializationOptions": {
-        "cacheDirectory": "/tmp/ccls"
-      }
+//      "initializationOptions": {
+//        "cacheDirectory": "/tmp/ccls"
+//      }
     },
     "ccls": {
     "command": "ccls",
     "filetypes": ["c", "cpp", "objc", "objcpp"],
     "trace.server": "verbose",
     "initializationOptions": {
+      "usePlaceholders": true,
       "cacheDirectory": "/tmp/ccls"
     }
   }

@@ -71,3 +71,6 @@
 [submodule "pack/vendor/start/fzf"]
 	path = pack/vendor/start/fzf
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "pack/vendor/start/vim-easymotion"]
+	path = pack/vendor/start/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion

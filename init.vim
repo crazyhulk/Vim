@@ -50,7 +50,7 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
 autocmd BufReadPost *.js,*.jsx,*.css,*.less,*.scss,*.json call lv#ExpandTab(2)
 autocmd InsertLeave,CompleteDone *.go if pumvisible() == 0 | pclose | endif
 autocmd FileType json syntax match Comment +\/\/.\+$+
-autocmd VimEnter,VimLeave * silent !tmux set status
+" autocmd VimEnter,VimLeave * silent !tmux set status
 
 " let g:NERDTreeIndicatorMapCustom = {
 let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -91,3 +91,14 @@ for f in glob('~/.vim/config/*.vim', 0, 1)
     execute 'source' f
 endfor
 
+autocmd BufReadPost quickfix nnoremap <buffer> <c-n> j<CR><c-w><c-p>
+autocmd BufReadPost quickfix nnoremap <buffer> <c-p> k<CR><c-w><c-p>
+
+map <Leader>g <Plug>(easymotion-prefix)
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)

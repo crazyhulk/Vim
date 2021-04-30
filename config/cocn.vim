@@ -10,6 +10,13 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_function_parameters = 1
@@ -33,12 +40,6 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 "autocmd CursorMoved * silent call  show_documentation()
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
