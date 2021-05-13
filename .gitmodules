@@ -31,9 +31,6 @@
 [submodule "pack/vendor/start/ale"]
 	path = pack/vendor/start/ale
 	url = https://github.com/w0rp/ale.git
-[submodule "pack/vendor/start/go"]
-	path = pack/vendor/start/go
-	url = https://github.com/fatih/vim-go.git
 [submodule "pack/vendor/start/nerdtree"]
 	path = pack/vendor/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
@@ -74,3 +71,6 @@
 [submodule "pack/vendor/start/vim-easymotion"]
 	path = pack/vendor/start/vim-easymotion
 	url = https://github.com/easymotion/vim-easymotion
+[submodule "pack/vendor/start/vim-go"]
+	path = pack/vendor/start/vim-go
+	url = https://github.com/fatih/vim-go
