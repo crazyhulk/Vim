@@ -68,3 +68,4 @@ endfunc
 command! Rename call Rename()
 
 let g:go_fillstruct_mode = 'gopls' 
+let g:go_fillstruct_mode = 'fillstruct'
