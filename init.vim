@@ -102,3 +102,8 @@ map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
+
+" map <Leader>s <Plug>(Startify)
+" nmap <silent><leader>s <Plug>(Startify)
+nnoremap <silent> <leader>s :Startify<CR>
+let g:startify_change_to_vcs_root = 1
