@@ -40,7 +40,8 @@ colorscheme PaperColor
 nnoremap <silent> <c-u> :Mru<cr>
 "nnoremap <silent> <c-p> :call fzflv#Open()<cr>
 nnoremap <silent> <c-p> :GFiles<cr>
-nnoremap <silent> <leader>t :TagbarToggle<cr>
+" nnoremap <silent> <leader>t :TagbarToggle<cr>
+nnoremap <silent> <leader>t :GoDecls<cr>
 nnoremap <silent> <leader>e :NERDTreeToggle<cr>
 nnoremap <silent> <leader>f :NERDTreeFind<cr>
 
@@ -76,8 +77,6 @@ let g:tagbar_iconchars = ['▸', '▾']
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 let g:prettier#autoformat = 0
-let g:go_fmt_command = "goimports"
-let g:go_def_mode = 'gopls'
 
 "function! s:find_git_root()
 "  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
@@ -98,10 +97,10 @@ map <Leader>g <Plug>(easymotion-prefix)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
+" map <Leader>l <Plug>(easymotion-lineforward)
+" map <Leader>j <Plug>(easymotion-j)
+" map <Leader>k <Plug>(easymotion-k)
+" map <Leader>h <Plug>(easymotion-linebackward)
 
 " map <Leader>s <Plug>(Startify)
 " nmap <silent><leader>s <Plug>(Startify)

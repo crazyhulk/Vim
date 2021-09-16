@@ -24,6 +24,18 @@ let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
+let g:go_fmt_command = "goimports"
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
+let g:go_doc_popup_window = 1
+let g:go_term_enabled = 1
+let g:go_decls_mode = 'fzf'
+
+" coc.vim settings
+" set cmdheight=2 	" Better display for messages
+set updatetime=300 	" Smaller updatetime for CursorHold & CursorHoldI
+set shortmess+=c 	" don't give |ins-completion-menu| messages.
+set signcolumn=yes 	" always show signcolumns
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -68,4 +80,4 @@ endfunc
 command! Rename call Rename()
 
 let g:go_fillstruct_mode = 'gopls' 
-let g:go_fillstruct_mode = 'fillstruct'
+" let g:go_fillstruct_mode = 'fillstruct'
