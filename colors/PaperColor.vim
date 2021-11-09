@@ -1565,7 +1565,6 @@ fun! s:apply_syntax_highlightings()
   exec 'hi pythonStrFormatting' . s:fg_olive . s:ft_bold
 
   exec 'hi pythonBoolean' . s:fg_green . s:ft_bold
-  exec 'hi pythonExClass' . s:fg_red
   exec 'hi pythonBytesEscape' . s:fg_olive . s:ft_bold
   exec 'hi pythonDottedName' . s:fg_purple
   exec 'hi pythonStrFormat' . s:fg_foreground
@@ -1610,7 +1609,16 @@ fun! s:apply_syntax_highlightings()
   exec 'hi javaScriptMessage' . s:fg_foreground
   exec 'hi javaScriptMember' . s:fg_foreground
 
+  " TypeScript Highlighting
+  exec 'hi typescriptDecorators' . s:fg_orange
+  exec 'hi typescriptLabel' . s:fg_purple . s:ft_bold
+
   " @target https://github.com/pangloss/vim-javascript
+  exec 'hi jsImport' . s:fg_pink . s:ft_bold
+  exec 'hi jsExport' . s:fg_pink . s:ft_bold
+  exec 'hi jsModuleAs' . s:fg_pink . s:ft_bold
+  exec 'hi jsFrom' . s:fg_pink . s:ft_bold
+  exec 'hi jsExportDefault' . s:fg_pink . s:ft_bold
   exec 'hi jsFuncParens' . s:fg_blue
   exec 'hi jsFuncBraces' . s:fg_blue
   exec 'hi jsParens' . s:fg_blue
@@ -2170,6 +2178,14 @@ fun! s:apply_syntax_highlightings()
   exec 'hi StartifyBracket' . s:fg_aqua
   exec 'hi StartifySpecial' . s:fg_aqua
 
+  " Plugin: Signify
+  exec 'hi SignifyLineChange' . s:fg_diffchange_fg
+  exec 'hi SignifySignChange' . s:fg_diffchange_fg
+  exec 'hi SignifyLineAdd' . s:fg_diffadd_fg
+  exec 'hi SignifySignAdd' . s:fg_diffadd_fg
+  exec 'hi SignifyLineDelete' . s:fg_diffdelete_fg
+  exec 'hi SignifySignDelete' . s:fg_diffdelete_fg
+
   " Git commit message
   exec 'hi gitcommitSummary' . s:fg_blue
   exec 'hi gitcommitHeader' . s:fg_green . s:ft_bold
@@ -2188,6 +2204,23 @@ fun! s:apply_syntax_highlightings()
   exec 'hi diffLine' . s:fg_orange
   exec 'hi diffBDiffer' . s:fg_orange
   exec 'hi diffNewFile' . s:fg_comment
+
+  " Pluging: CoC
+  exec 'hi CocFloating' . s:fg_popupmenu_fg . s:bg_popupmenu_bg . s:ft_none
+  exec 'hi CocErrorFloat' . s:fg_popupmenu_fg . s:bg_popupmenu_bg . s:ft_none
+  exec 'hi CocWarningFloat' . s:fg_popupmenu_fg . s:bg_popupmenu_bg . s:ft_none
+  exec 'hi CocInfoFloat' . s:fg_popupmenu_fg . s:bg_popupmenu_bg . s:ft_none
+  exec 'hi CocHintFloat' . s:fg_popupmenu_fg . s:bg_popupmenu_bg . s:ft_none
+
+  exec 'hi CocErrorHighlight' . s:fg_foreground . s:bg_spellbad
+  exec 'hi CocWarningHighlight' . s:fg_foreground . s:bg_spellcap
+  exec 'hi CocInfoHighlight' . s:fg_foreground . s:bg_spellcap
+  exec 'hi CocHintHighlight' . s:fg_foreground . s:bg_spellcap
+
+  exec 'hi CocErrorSign' . s:fg_error_fg . s:bg_error_bg
+  exec 'hi CocWarningSign' . s:fg_todo_fg . s:bg_todo_bg . s:ft_bold
+  exec 'hi CocInfoSign' . s:fg_todo_fg . s:bg_todo_bg . s:ft_bold
+  exec 'hi CocHintSign' . s:fg_todo_fg . s:bg_todo_bg . s:ft_bold
 
 endfun
 " }}}
