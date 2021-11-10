@@ -46,10 +46,6 @@
 [submodule "pack/vendor/start/rainbow"]
 	path = pack/vendor/start/rainbow
 	url = https://github.com/luochen1990/rainbow.git
-[submodule "pack/vendor/start/cocnvim"]
-	path = pack/vendor/start/cocnvim
-	url = https://github.com/neoclide/coc.nvim.git 
-	branch = release
 [submodule "pack/vendor/start/vimsnippets"]
 	path = pack/vendor/start/vimsnippets
 	url = https://github.com/honza/vim-snippets.git
@@ -71,9 +67,6 @@
 [submodule "pack/vendor/start/vim-easymotion"]
 	path = pack/vendor/start/vim-easymotion
 	url = https://github.com/easymotion/vim-easymotion
-[submodule "pack/vendor/start/vim-go"]
-	path = pack/vendor/start/vim-go
-	url = https://github.com/fatih/vim-go
 [submodule "pack/vendor/start/vim-toml"]
 	path = pack/vendor/start/vim-toml
 	url = https://github.com/cespare/vim-toml.git
