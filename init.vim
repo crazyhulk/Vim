@@ -24,6 +24,7 @@ set fillchars=vert:\|
 "set rnu
 
 lua << EOF
+require('modules')
 vim.o.background = "light"
 
 local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
@@ -32,7 +33,7 @@ local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 
 local install_path = fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
-print(install_path)
+-- print(install_path)
 
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({'git', 'clone', '--depth=1', 'https://github.com/savq/paq-nvim.git', install_path})
@@ -134,3 +135,5 @@ nnoremap <silent> <leader>s :Startify<CR>
 let g:startify_change_to_vcs_root = 1
 
 xnoremap <silent> <cr> "*y:silent! let searchTerm = '\V'.substitute(escape(@*, '\/'), "\n", '\\n', "g") <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
+
+
