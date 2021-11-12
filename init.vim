@@ -23,34 +23,6 @@ set fillchars=vert:\|
 "set nu
 "set rnu
 
-lua << EOF
-require('modules')
-vim.o.background = "light"
-
-local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
-local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
-local g = vim.g      -- a table to access global variables
-local opt = vim.opt  -- to set options
-
-local install_path = fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
--- print(install_path)
-
-if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', '--depth=1', 'https://github.com/savq/paq-nvim.git', install_path})
-end
-
-cmd 'packadd paq-nvim'               -- load the package manager
-local paq = require('paq-nvim').paq  -- a convenient alias
-paq {'savq/paq-nvim', opt = true}    -- paq-nvim manages itself
--- " paq {'shougo/deoplete-lsp'}
--- paq {'shougo/deoplete.nvim', run = fn['remote#host#UpdateRemotePlugins']}
-paq {'nvim-treesitter/nvim-treesitter'}
-paq {'neovim/nvim-lspconfig'}
-paq {'junegunn/fzf', run = fn['fzf#install']}
-paq {'junegunn/fzf.vim'}
-paq {'ojroques/nvim-lspfuzzy'}
-EOF
-
 set re=1
 set ttyfast
 set lazyredraw
@@ -136,4 +108,4 @@ let g:startify_change_to_vcs_root = 1
 
 xnoremap <silent> <cr> "*y:silent! let searchTerm = '\V'.substitute(escape(@*, '\/'), "\n", '\\n', "g") <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
 
-
+runtime vim.lua

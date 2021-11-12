@@ -70,3 +70,15 @@
 [submodule "pack/vendor/start/vim-toml"]
 	path = pack/vendor/start/vim-toml
 	url = https://github.com/cespare/vim-toml.git
+[submodule "pack/vendor/start/nivm-treesitter"]
+	path = pack/vendor/start/nivm-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule "pack/vendor/start/nvim-cmp"]
+	path = pack/vendor/start/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp
+[submodule "pack/vendor/start/cmp-nvim-lsp"]
+	path = pack/vendor/start/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp
+[submodule "pack/vendor/start/nvim-lspconfig"]
+	path = pack/vendor/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
