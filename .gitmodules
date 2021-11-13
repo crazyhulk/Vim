@@ -61,9 +61,6 @@
 [submodule "pack/vendor/start/auto-pair"]
 	path = pack/vendor/start/auto-pair
 	url = https://github.com/jiangmiao/auto-pairs.git
-[submodule "pack/vendor/start/fzf"]
-	path = pack/vendor/start/fzf
-	url = https://github.com/junegunn/fzf.vim.git
 [submodule "pack/vendor/start/vim-easymotion"]
 	path = pack/vendor/start/vim-easymotion
 	url = https://github.com/easymotion/vim-easymotion
@@ -91,3 +88,6 @@
 [submodule "pack/vendor/start/plenary"]
 	path = pack/vendor/start/plenary
 	url = https://github.com/nvim-lua/plenary.nvim
+[submodule "pack/vendor/start/fzf"]
+	path = pack/vendor/start/fzf
+	url = https://github.com/junegunn/fzf.vim
