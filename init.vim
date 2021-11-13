@@ -110,9 +110,8 @@ xnoremap <silent> <cr> "*y:silent! let searchTerm = '\V'.substitute(escape(@*, '
 
 runtime vim.lua
 
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \                 <bang>0)
-
+augroup GO_LSP
+	autocmd!
+	autocmd BufWritePre *.go :silent! lua vim.lsp.buf.formatting()
+	autocmd BufWritePre *.go :silent! lua M.goimports(3000)
+augroup END
