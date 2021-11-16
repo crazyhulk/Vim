@@ -110,8 +110,19 @@ xnoremap <silent> <cr> "*y:silent! let searchTerm = '\V'.substitute(escape(@*, '
 
 runtime vim.lua
 
-augroup GO_LSP
-	autocmd!
-	autocmd BufWritePre *.go :silent! lua vim.lsp.buf.formatting()
-	autocmd BufWritePre *.go :silent! lua M.goimports(3000)
+" 在 normal 模式下更新文本后自动导包
+" 比如 删除某一行，或者填充 struct 等
+" autocmd TextChanged *.go :lua require('modules').org_imports()
+" 代码补全结束后自动导包
+autocmd CompleteDone *.go :lua require('modules').org_imports()
+autocmd BufWritePre *.go :lua vim.lsp.buf.formatting()
+autocmd BufWritePre *.go :lua require('modules').org_imports()
+
+augroup NvimGoInternal
+  autocmd!
+  autocmd User NvimGoPopupPre ""
 augroup END
+
+command! -nargs=* -range GoAddTags lua require('go.struct_tag').add_tags({<line1>, <line2>, <count>, <f-args>})
+command! -nargs=* -range GoRemoveTags lua require('go.struct_tag').remove_tags({<line1>, <line2>, <count>, <f-args>})
+command! -nargs=* -range GoClearTags lua require('go.struct_tag').clear_tags({<line1>, <line2>, <count>, <f-args>})

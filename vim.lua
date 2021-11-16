@@ -71,10 +71,10 @@ cmp.setup {
         expand = function(args) vim.fn['vsnip#anonymous'](args.body) end,
     },
     sources = cmp.config.sources {
-        { name = 'buffer', opts = { get_bufnrs = vim.api.nvim_list_bufs } },
         { name = 'nvim_lsp' },
-        { name = 'path' },
         { name = 'vsnip' },
+        { name = 'path' },
+        { name = 'buffer', opts = { get_bufnrs = vim.api.nvim_list_bufs } },
     },
     mapping = {
 	['<CR>'] = cmp.mapping.confirm({ select = true }),
