@@ -118,11 +118,17 @@ autocmd CompleteDone *.go :lua require('modules').org_imports()
 autocmd BufWritePre *.go :lua vim.lsp.buf.formatting()
 autocmd BufWritePre *.go :lua require('modules').org_imports()
 
-augroup NvimGoInternal
-  autocmd!
-  autocmd User NvimGoPopupPre ""
-augroup END
+" augroup NvimGoInternal
+"   autocmd!
+"   autocmd User NvimGoPopupPre ""
+" augroup END
 
+command! GoTest lua require('go.test').test()
+command! GoTestAll lua require('go.test').test_all()
+command! GoTestFunc lua require('go.test').test_func()
+command! GoTestFile lua require('go.test').test_file()
+command! -nargs=? -complete=command GoToTest lua require('go.test').test_open(<f-args>)
+" struct tag
 command! -nargs=* -range GoAddTags lua require('go.struct_tag').add_tags({<line1>, <line2>, <count>, <f-args>})
 command! -nargs=* -range GoRemoveTags lua require('go.struct_tag').remove_tags({<line1>, <line2>, <count>, <f-args>})
 command! -nargs=* -range GoClearTags lua require('go.struct_tag').clear_tags({<line1>, <line2>, <count>, <f-args>})
