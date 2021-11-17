@@ -103,3 +103,9 @@
 [submodule "pack/vendor/start/popup"]
 	path = pack/vendor/start/popup
 	url = https://github.com/nvim-lua/popup.nvim
+[submodule "pack/vendor/start/nvim-colorizer"]
+	path = pack/vendor/start/nvim-colorizer
+	url = https://github.com/norcalli/nvim-colorizer.lua
+[submodule "pack/vendor/start/material"]
+	path = pack/vendor/start/material
+	url = https://github.com/marko-cerovac/material.nvim

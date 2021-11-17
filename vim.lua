@@ -91,3 +91,6 @@ require'lspconfig'.gopls.setup {
         debounce_text_changes = 150,
     },
 }
+
+-- Attaches to every FileType mode
+require 'colorizer'.setup()

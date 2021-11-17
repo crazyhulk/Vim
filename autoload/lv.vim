@@ -26,3 +26,18 @@ function! lv#Term()
 		terminal ++curwin
 	endif
 endfunction
+
+" gomodifytags
+function lv#gomodifytags(s,e,c,cmd,tag,...)
+        let path = expand('%p')
+        let v = winsaveview()
+        if a:c < 0
+                execute 'normal va{^['
+                let range = line("'<").",".line("'>")
+        else
+                let range = a:s.",".a:e
+        end
+        call system('gomodifytags '.a:cmd.' '.a:tag.' -file '.path.' -line '.range.' -w '.join(a:000, ' '))
+        e
+        call winrestview(v)
+endfunction

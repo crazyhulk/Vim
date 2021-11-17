@@ -15,6 +15,7 @@ set number
 set foldmethod=indent
 set foldlevelstart=99
 set completeopt=longest,menuone
+set t_Co=256
 set mmp=5000  "pattern uses more memory than 'maxmempattern' 
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
@@ -27,7 +28,9 @@ set re=1
 set ttyfast
 set lazyredraw
 
-colorscheme PaperColor 
+colorscheme PaperColor
+colorscheme material
+let g:material_style = 'darker'
 "colorscheme one 
 "color tender 
 "hi Normal guibg=NONE ctermbg=NONE
