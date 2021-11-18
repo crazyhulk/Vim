@@ -16,7 +16,7 @@ set foldmethod=indent
 set foldlevelstart=99
 set completeopt=longest,menuone
 set t_Co=256
-set mmp=5000  "pattern uses more memory than 'maxmempattern' 
+set mmp=5000  "pattern uses more memory than 'maxmempattern'
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set fillchars=vert:\|
@@ -28,17 +28,13 @@ set re=1
 set ttyfast
 set lazyredraw
 
-colorscheme PaperColor
+" let g:material_style = 'lighter'
+let g:material_style = 'oceanic'
+" colorscheme PaperColor
 colorscheme material
-let g:material_style = 'darker'
-"colorscheme one 
-"color tender 
-"hi Normal guibg=NONE ctermbg=NONE
-"highlight Visual guibg=#323232
-"highlight Normal guibg=#000001
-"highlight StatusLine guibg=#444444 guifg=#b3deef
-"highlight StatusLineTerm guibg=#444444 guifg=#b3deef
-"highlight StatusLineTermNC guibg=#444444 guifg=#999999
+" colorscheme OceanicNext
+"colorscheme one
+
 nnoremap <silent> <c-u> :Mru<cr>
 "nnoremap <silent> <c-p> :call fzflv#Open()<cr>
 nnoremap <silent> <c-p> :GFiles<cr>
@@ -48,14 +44,14 @@ nnoremap <silent> <leader>e :NERDTreeToggle<cr>
 nnoremap <silent> <leader>f :NERDTreeFind<cr>
 
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
-			\ execute "normal! g`\"" |
-			\ endif
+ \ execute "normal! g`\"" |
+ \ endif
+
 autocmd BufReadPost *.js,*.jsx,*.css,*.less,*.scss,*.json call lv#ExpandTab(2)
 autocmd InsertLeave,CompleteDone *.go if pumvisible() == 0 | pclose | endif
 autocmd FileType json syntax match Comment +\/\/.\+$+
 " autocmd VimEnter,VimLeave * silent !tmux set status
 
-" let g:NERDTreeIndicatorMapCustom = {
 let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",

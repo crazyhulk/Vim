@@ -109,3 +109,6 @@
 [submodule "pack/vendor/start/material"]
 	path = pack/vendor/start/material
 	url = https://github.com/marko-cerovac/material.nvim
+[submodule "pack/vendor/start/oceanic-next"]
+	path = pack/vendor/start/oceanic-next
+	url = https://github.com/mhartington/oceanic-next

@@ -94,3 +94,4 @@ require'lspconfig'.gopls.setup {
 
 -- Attaches to every FileType mode
 require 'colorizer'.setup()
+require('material').setup()
