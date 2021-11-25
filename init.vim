@@ -30,8 +30,8 @@ set lazyredraw
 
 " let g:material_style = 'lighter'
 let g:material_style = 'oceanic'
-" colorscheme PaperColor
-colorscheme material
+colorscheme PaperColor
+" colorscheme material
 " colorscheme OceanicNext
 "colorscheme one
 
@@ -75,6 +75,8 @@ let g:tagbar_iconchars = ['▸', '▾']
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 let g:prettier#autoformat = 0
+" vsnip
+let g:vsnip_snippet_dir = '~/.vim/vsnip/'
 
 "function! s:find_git_root()
 "  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
