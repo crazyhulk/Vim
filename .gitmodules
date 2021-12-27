@@ -112,3 +112,6 @@
 [submodule "pack/vendor/start/oceanic-next"]
 	path = pack/vendor/start/oceanic-next
 	url = https://github.com/mhartington/oceanic-next
+[submodule "pack/vendor/start/nvim-blamer"]
+	path = pack/vendor/start/nvim-blamer
+	url = https://github.com/ttys3/nvim-blamer.lua

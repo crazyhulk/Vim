@@ -95,3 +95,10 @@ require'lspconfig'.gopls.setup {
 -- Attaches to every FileType mode
 require 'colorizer'.setup()
 require('material').setup()
+
+require'nvim-blamer'.setup({
+    enable = true,
+    format = '%committer │ %committer-time-human │ %summary',
+    hide_delay = 100
+})
+

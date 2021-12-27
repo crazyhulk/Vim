@@ -41,3 +41,19 @@ function lv#gomodifytags(s,e,c,cmd,tag,...)
         e
         call winrestview(v)
 endfunction
+
+function lv#add_tags(tag,args)
+        let path = expand('%p')
+        execute 'normal va{^['
+        let range = line("'<").",".line("'>")
+        call system('gomodifytags -add-tags '.a:tag.' -file '.path.' -line '.range.' -w '.a:args)
+        e
+endfunction
+
+function lv#remove_tags(tag,args)
+        let path = expand('%p')
+        execute 'normal va{^['
+        let range = line("'<").",".line("'>")
+        call system('gomodifytags -remove-tags '.a:tag.' -file '.path.' -line '.range.' -w '.a:args)
+        e
+endfunction

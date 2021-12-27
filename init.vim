@@ -134,3 +134,9 @@ command! -nargs=* -range GoAddTags lua require('go.struct_tag').add_tags({<line1
 command! -nargs=* -range GoRemoveTags lua require('go.struct_tag').remove_tags({<line1>, <line2>, <count>, <f-args>})
 command! -nargs=* -range GoClearTags lua require('go.struct_tag').clear_tags({<line1>, <line2>, <count>, <f-args>})
 
+" command! -nargs=* -range GoAddTags call lv#gomodifytags(<line1>, <line2>, <count>, '-add-tags', <f-args>)
+" command! -nargs=* -range GoAddJsonTags call lv#gomodifytags(<line1>, <line2>, <count>, '-add-tags', 'json', <f-args>)
+" command! -nargs=* -range GoAddOptionTags call lv#gomodifytags(<line1>, <line2>, <count>, '-add-tags', 'json', '-add-options json=omitempty', <f-args>)
+" command! -nargs=* -range GoClearTags call lv#gomodifytags(<line1>, <line2>, <count>, '-clear-tags', <f-args>)
+" command! -nargs=* -range GoRemoveTags call lv#gomodifytags(<line1>, <line2>, <count>, '-remove-tags', <f-args>)
+" command! -nargs=* -range GoRemoveJsonTags call lv#gomodifytags(<line1>, <line2>, <count>, '-remove-tags', 'json', <f-args>)
