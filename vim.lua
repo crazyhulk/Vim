@@ -74,7 +74,7 @@ cmp.setup {
         { name = 'nvim_lsp' },
         { name = 'vsnip' },
         { name = 'path' },
-        { name = 'buffer', opts = { get_bufnrs = vim.api.nvim_list_bufs } },
+        { name = 'buffer', options = { get_bufnrs = vim.api.nvim_list_bufs } },
     },
     mapping = {
 	['<CR>'] = cmp.mapping.confirm({ select = true }),
