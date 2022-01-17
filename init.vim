@@ -86,7 +86,7 @@ let g:vsnip_snippet_dir = '~/.vim/vsnip/'
 autocmd Filetype proto setlocal ts=4 sw=4 sts=0 expandtab
 
 " 加载拆分的配置
-for f in glob('~/.vim/config/*.vim', 0, 1)
+for f in glob('~/.config/nvim/config/*.vim', 0, 1)
     execute 'source' f
 endfor
 

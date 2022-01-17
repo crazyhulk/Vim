@@ -14,7 +14,8 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-set rtp+=/usr/local/opt/fzf
+" set rtp+=/usr/local/opt/fzf
+set rtp+=/opt/homebrew/opt/fzf
 
 command! -bang -nargs=* Ag
  \ call fzf#vim#ag(<q-args>,
