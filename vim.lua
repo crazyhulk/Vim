@@ -92,6 +92,14 @@ require'lspconfig'.gopls.setup {
     },
 }
 
+-- 获取 git path
+gitRootPath = vim.api.nvim_eval("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]")
+local config = require('go.config')
+config.options.test_env = {
+	CONF_PATH = gitRootPath,
+	MYSQL_ROOT_PASSWORD = 'root'
+}
+
 -- Attaches to every FileType mode
 require 'colorizer'.setup()
 require('material').setup()
@@ -102,3 +110,6 @@ require'nvim-blamer'.setup({
     hide_delay = 100
 })
 
+
+-- print("=========111", cmd("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]"))
+-- print("=========111", vim.api.nvim_eval("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]"))

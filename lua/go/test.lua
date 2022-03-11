@@ -99,6 +99,7 @@ local function do_test(prefix, cmd)
         stdout_buffered = true,
         stderr_buffered = true,
     }
+    print("========2", vim.inspect(env))
     if env ~= nil and next(env) ~= nil then
         opts['env'] = env
     end
