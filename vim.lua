@@ -77,6 +77,8 @@ cmp.setup {
         { name = 'buffer', options = { get_bufnrs = vim.api.nvim_list_bufs } },
     },
     mapping = {
+	['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
+	['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
 	['<CR>'] = cmp.mapping.confirm({ select = true }),
     }
 }
