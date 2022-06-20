@@ -15,7 +15,8 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 " set rtp+=/usr/local/opt/fzf
-set rtp+=/opt/homebrew/opt/fzf
+" set rtp+=/opt/homebrew/opt/fzf
+set rtp+=/usr/local/opt/fzf
 
 command! -bang -nargs=* Ag
  \ call fzf#vim#ag(<q-args>,

@@ -113,8 +113,9 @@ function M.popup_job_result(results, opts)
         border = { 1, 1, 1, 1 },
         cursorline = true,
         maxheight = pos.height,
-        minwidth = 80,
+        minwidth = vim.api.nvim_win_get_width(0)-4, -- 保持屏幕宽度
         width = pos.width,
+	padding = {0, 0, 0, 0},
         highlight = 'GoTestResult',
     })
     vim.api.nvim_win_set_option(popup_win, 'wrap', false)

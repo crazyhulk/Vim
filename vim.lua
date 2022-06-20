@@ -83,6 +83,9 @@ cmp.setup {
     }
 }
 
+-- print(nvim_win_get_width(0))
+print(vim.api.nvim_win_get_width(0))
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities)
 
