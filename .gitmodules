@@ -112,3 +112,6 @@
 [submodule "pack/vendor/start/nvim-blamer"]
 	path = pack/vendor/start/nvim-blamer
 	url = https://github.com/ttys3/nvim-blamer.lua
+[submodule "pack/vendor/start/copilot.vim"]
+	path = pack/vendor/start/copilot.vim
+	url = https://github.com/github/copilot.vim
