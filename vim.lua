@@ -6,28 +6,6 @@ local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 
--- local install_path = fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
--- print(install_path)
---
--- if fn.empty(fn.glob(install_path)) > 0 then
---   fn.system({'git', 'clone', '--depth=1', 'https://github.com/savq/paq-nvim.git', install_path})
--- end
-
--- cmd 'packadd paq-nvim'               -- load the package manager
--- local paq = require('paq-nvim').paq  -- a convenient alias
--- paq {'savq/paq-nvim', opt = true}    -- paq-nvim manages itself
--- -- -- " paq {'shougo/deoplete-lsp'}
--- -- -- paq {'shougo/deoplete.nvim', run = fn['remote#host#UpdateRemotePlugins']}
--- paq {'nvim-treesitter/nvim-treesitter'}
--- paq {'neovim/nvim-lspconfig'}
--- -- paq {'junegunn/fzf', run = fn['fzf#install']}
--- -- paq {'junegunn/fzf.vim'}
--- paq {'ojroques/nvim-lspfuzzy'}
--- --
--- ------- lv ---
--- paq {'norcalli/nvim-colorizer'}
--- paq {'lewis6991/gitsigns'}
-
 -- require'colorizer'.setup()
 require'gitsigns'.setup()
 
@@ -106,14 +84,8 @@ config.options.test_env = {
 }
 
 -- Attaches to every FileType mode
-require 'colorizer'.setup()
-require('material').setup()
-
-require'nvim-blamer'.setup({
-    enable = true,
-    format = '%committer │ %committer-time-human │ %summary',
-    hide_delay = 100
-})
+-- require 'colorizer'.setup()
+-- require('material').setup()
 
 
 -- print("=========111", cmd("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]"))

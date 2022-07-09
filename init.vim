@@ -109,6 +109,7 @@ let g:startify_change_to_vcs_root = 1
 
 xnoremap <silent> <cr> "*y:silent! let searchTerm = '\V'.substitute(escape(@*, '\/'), "\n", '\\n', "g") <bar> let @/ = searchTerm <bar> echo '/'.@/ <bar> call histadd("search", searchTerm) <bar> set hls<cr>
 
+lua require('plugins')
 runtime vim.lua
 
 " 在 normal 模式下更新文本后自动导包
