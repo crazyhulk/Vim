@@ -90,3 +90,22 @@ config.options.test_env = {
 
 -- print("=========111", cmd("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]"))
 -- print("=========111", vim.api.nvim_eval("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]"))
+
+-- Find files using Telescope command-line sugar.
+-- vim.api.nvim_set_keymap('n', "<leader>ff", ":Telescope find_files<cr>", {})
+-- vim.api.nvim_set_keymap('n', "<leader>fg", ":Telescope live_grep<cr>", {})
+vim.api.nvim_set_keymap('n', "<leader>fb", ":Telescope buffers<CR>", {})
+vim.api.nvim_set_keymap('n', "<leader>fh", ":Telescope help_tags<cr>", {})
+-- vim.api.nvim_set_keymap('n', "<leader>ff", ":Telescope find_files", {})
+-- nnoremap <leader>ff <cmd>Telescope find_files<cr>
+-- nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+-- nnoremap <leader>fb <cmd>Telescope buffers<cr>
+-- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+-- Using Lua functions
+vim.api.nvim_set_keymap('n', '<Leader>ff',  ":lua require('telescope.builtin').find_files({hidden=true, no_ignore=true})<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>fg',  [[<Cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
+-- nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+-- nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+-- nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+-- nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>	

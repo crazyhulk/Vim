@@ -86,11 +86,16 @@ return require('packer').startup(function()
   use { 'Xuyuanp/nerdtree-git-plugin' }
   -- use { 'mileszs/ack.vim' }
   use {	'jiangmiao/auto-pairs' }
-  use {	'junegunn/fzf.vim' }
+  -- use {	'junegunn/fzf.vim' }
+  use {
+	'nvim-telescope/telescope.nvim', tag = '0.1.0',
+	requires = { {'nvim-lua/plenary.nvim'} },
+  }
+
   use {	'airblade/vim-gitgutter' }
   use {	'plasticboy/vim-markdown' }
   use {	'marko-cerovac/material.nvim' }
-  use {	'lvht/mru' }
+  -- use {	'lvht/mru' }
   use {	'mhartington/oceanic-next' }
   use {	'nvim-lua/plenary.nvim' }
   use {	'nvim-lua/popup.nvim' }
