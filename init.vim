@@ -39,9 +39,9 @@ nnoremap <silent> <c-u> :Mru<cr>
 "nnoremap <silent> <c-p> :call fzflv#Open()<cr>
 " nnoremap <silent> <c-p> :GFiles<cr>
 " nnoremap <silent> <leader>t :TagbarToggle<cr>
-nnoremap <silent> <leader>t :GoDecls<cr>
-nnoremap <silent> <leader>e :NERDTreeToggle<cr>
-" nnoremap <silent> <leader>f :NERDTreeFind<cr>
+nnoremap <silent> <leader>tt :GoDecls<cr>
+nnoremap <silent> <leader>te :NERDTreeToggle<cr>
+nnoremap <silent> <leader>tf :NERDTreeFind<cr>
 
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
  \ execute "normal! g`\"" |

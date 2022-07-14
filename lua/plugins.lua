@@ -53,21 +53,21 @@ return require('packer').startup(function()
   use { 'neovim/nvim-lspconfig' }
 
   use { 
-	'nvim-treesitter/nvim-treesitter', 
-  	run = ':TSUpdate', 
-	commit = '8ada8faf2fd5a74cc73090ec856fa88f34cd364b',
-	-- 这个有缺点 需要 PackerSync
-	-- setup = function()
-	-- 	require'nvim-treesitter.configs'.setup {
-	-- 	    highlight = {
-	-- 	        enable = true,
-	-- 	        additional_vim_regex_highlighting = false,
-	-- 	    },
-	-- 	    indent = {
-	-- 	        -- enable = true,
-	-- 	    },
-	-- 	}
-	-- end
+	  'nvim-treesitter/nvim-treesitter', 
+	  run = ':TSUpdate', 
+	  commit = '8ada8faf2fd5a74cc73090ec856fa88f34cd364b',
+	  -- 这个有缺点 需要 PackerSync
+	  -- setup = function()
+	  -- 	require'nvim-treesitter.configs'.setup {
+	  -- 	    highlight = {
+	  -- 	        enable = true,
+	  -- 	        additional_vim_regex_highlighting = false,
+	  -- 	    },
+	  -- 	    indent = {
+	  -- 	        -- enable = true,
+	  -- 	    },
+	  -- 	}
+	  -- end
   }
 
   use { 'hrsh7th/cmp-nvim-lsp' }
@@ -126,49 +126,49 @@ return require('packer').startup(function()
 
   -- Use dependency and run lua function after load
   use {
-    'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
-    config = function() require('gitsigns').setup{
-	-- signs = {
-  	--   add          = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-  	--   change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-  	--   delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-  	--   topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-  	--   changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-  	-- },
-  	signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-  	numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-  	linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-  	word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-  	watch_gitdir = {
-  	  interval = 1000,
-  	  follow_files = true
-  	},
-  	attach_to_untracked = true,
-  	current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-  	current_line_blame_opts = {
-  	  virt_text = true,
-  	  virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-  	  delay = 1000,
-  	  ignore_whitespace = false,
-  	},
-  	current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
-  	sign_priority = 6,
-  	update_debounce = 100,
-  	status_formatter = nil, -- Use default
-  	max_file_length = 40000,
-  	preview_config = {
-  	  -- Options passed to nvim_open_win
-  	  border = 'single',
-  	  style = 'minimal',
-  	  relative = 'cursor',
-  	  row = 0,
-  	  col = 1
-  	},
-  	yadm = {
-  	  enable = false
-  	},
-    } 
-    end
+	  'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
+	  config = function() require('gitsigns').setup{
+		  -- signs = {
+		  --   add          = {hl = 'GitSignsAdd'   , text = '+', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+		  --   change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+		  --   delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+		  --   topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+		  --   changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+		  -- },
+		  signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+		  numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
+		  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+		  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+		  watch_gitdir = {
+			  interval = 1000,
+			  follow_files = true
+		  },
+		  attach_to_untracked = true,
+		  current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+		  current_line_blame_opts = {
+			  virt_text = true,
+			  virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+			  delay = 1000,
+			  ignore_whitespace = false,
+		  },
+		  current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+		  sign_priority = 6,
+		  update_debounce = 100,
+		  status_formatter = nil, -- Use default
+		  max_file_length = 40000,
+		  preview_config = {
+			  -- Options passed to nvim_open_win
+			  border = 'single',
+			  style = 'minimal',
+			  relative = 'cursor',
+			  row = 0,
+			  col = 1
+		  },
+		  yadm = {
+			  enable = false
+		  },
+	  } 
+  end
   }
 
   -- You can specify multiple plugins in a single call
