@@ -81,7 +81,8 @@ return require('packer').startup(function()
 
   -- use { 'norcalli/nvim-colorizer.lua' }
   use { 'tpope/vim-fugitive' }
-  use { 'luochen1990/rainbow' }
+  use {	'jreybert/vimagit' }
+  use { 'luochen1990/rainbow' } -- 括号颜色配对
   use { 'scrooloose/nerdtree' }
   use { 'Xuyuanp/nerdtree-git-plugin' }
   -- use { 'mileszs/ack.vim' }
@@ -108,12 +109,74 @@ return require('packer').startup(function()
   use {	'vim-airline/vim-airline' }
   use {	'easymotion/vim-easymotion' }
   use {	'rakr/vim-one' }
-  use {	'mhinz/vim-startify' }
+  use {	'mhinz/vim-startify' } -- 启动页
   use {	'cespare/vim-toml' }
   use {	'hrsh7th/vim-vsnip' }
-  use {	'jreybert/vimagit' }
   use {	'honza/vim-snippets' }
+  -- use {	'EdenEast/nightfox.nvim' } -- 主题，带状态栏
+  use {
+	  'nvim-telescope/telescope-fzf-native.nvim',
+	  run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' 
+  } -- 让 telescope 支持 fzf 模糊匹配（空格分词等
 
+  use {	
+	  'simrat39/symbols-outline.nvim',
+	  config = function()
+		  -- init.lua
+		  vim.g.symbols_outline = {
+			  highlight_hovered_item = true,
+			  show_guides = true,
+			  auto_preview = true,
+			  position = 'right',
+			  relative_width = true,
+			  width = 25,
+			  auto_close = false,
+			  show_numbers = false,
+			  show_relative_numbers = false,
+			  show_symbol_details = true,
+			  preview_bg_highlight = 'Pmenu',
+			  keymaps = { -- These keymaps can be a string or a table for multiple keys
+			  close = {"<Esc>", "q"},
+			  goto_location = "<Cr>",
+			  focus_location = "o",
+			  hover_symbol = "<C-space>",
+			  toggle_preview = "K",
+			  rename_symbol = "r",
+			  code_actions = "a",
+		  },
+		  lsp_blacklist = {},
+		  symbol_blacklist = {},
+		  symbols = {
+			  File = {icon = "", hl = "TSURI"},
+			  Module = {icon = "", hl = "TSNamespace"},
+			  Namespace = {icon = "", hl = "TSNamespace"},
+			  Package = {icon = "", hl = "TSNamespace"},
+			  Class = {icon = "𝓒", hl = "TSType"},
+			  Method = {icon = "ƒ", hl = "TSMethod"},
+			  Property = {icon = "", hl = "TSMethod"},
+			  Field = {icon = "", hl = "TSField"},
+			  Constructor = {icon = "", hl = "TSConstructor"},
+			  Enum = {icon = "ℰ", hl = "TSType"},
+			  Interface = {icon = "ﰮ", hl = "TSType"},
+			  Function = {icon = "", hl = "TSFunction"},
+			  Variable = {icon = "", hl = "TSConstant"},
+			  Constant = {icon = "", hl = "TSConstant"},
+			  String = {icon = "𝓐", hl = "TSString"},
+			  Number = {icon = "#", hl = "TSNumber"},
+			  Boolean = {icon = "⊨", hl = "TSBoolean"},
+			  Array = {icon = "", hl = "TSConstant"},
+			  Object = {icon = "⦿", hl = "TSType"},
+			  Key = {icon = "🔐", hl = "TSType"},
+			  Null = {icon = "NULL", hl = "TSType"},
+			  EnumMember = {icon = "", hl = "TSField"},
+			  Struct = {icon = "𝓢", hl = "TSType"},
+			  Event = {icon = "🗲", hl = "TSType"},
+			  Operator = {icon = "+", hl = "TSOperator"},
+			  TypeParameter = {icon = "𝙏", hl = "TSParameter"}
+		  }
+	  } 
+	  end
+  }
 
   -- Post-install/update hook with call of vimscript function with argument
   -- use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
