@@ -136,6 +136,7 @@ require'lspconfig'.gopls.setup {
 gitRootPath = vim.api.nvim_eval("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]")
 local config = require('go.config')
 config.options.test_env = {
+	GOARCH = 'amd64',
 	CONF_PATH = gitRootPath,
 	MYSQL_ROOT_PASSWORD = 'root'
 }

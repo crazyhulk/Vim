@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/zhuxi/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/zhuxi/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/zhuxi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/zhuxi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/zhuxi/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/bilibili/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/bilibili/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/bilibili/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/bilibili/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/bilibili/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -75,149 +75,149 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = true,
     only_cond = false,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/opt/ale",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/opt/ale",
     url = "https://github.com/w0rp/ale"
   },
   ["auto-pairs"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/auto-pairs",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
   },
   ["cmp-buffer"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
   ["cmp-cmdline"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
     url = "https://github.com/hrsh7th/cmp-cmdline"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-path"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/cmp-path",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
   ["cmp-vsnip"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
   ["copilot.vim"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
   ["gitsigns.nvim"] = {
-    config = { "\27LJ\2\n�\4\0\0\4\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\2B\0\2\1K\0\1\0\tyadm\1\0\1\venable\1\19preview_config\1\0\5\bcol\3\1\brow\3\0\rrelative\vcursor\nstyle\fminimal\vborder\vsingle\28current_line_blame_opts\1\0\4\18virt_text_pos\beol\14virt_text\2\22ignore_whitespace\1\ndelay\3�\a\17watch_gitdir\1\0\2\rinterval\3�\a\17follow_files\2\1\0\n\14word_diff\1\vlinehl\1\nnumhl\1\15signcolumn\2\18sign_priority\3\6!current_line_blame_formatter1<author>, <author_time:%Y-%m-%d> - <summary>\20update_debounce\3d\20max_file_length\3��\2\23current_line_blame\2\24attach_to_untracked\2\nsetup\rgitsigns\frequire\0" },
+    config = { "\27LJ\2\n�\4\0\0\4\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\2B\0\2\1K\0\1\0\tyadm\1\0\1\venable\1\19preview_config\1\0\5\bcol\3\1\nstyle\fminimal\vborder\vsingle\rrelative\vcursor\brow\3\0\28current_line_blame_opts\1\0\4\18virt_text_pos\beol\ndelay\3�\a\22ignore_whitespace\1\14virt_text\2\17watch_gitdir\1\0\2\rinterval\3�\a\17follow_files\2\1\0\n\20max_file_length\3��\2!current_line_blame_formatter1<author>, <author_time:%Y-%m-%d> - <summary>\15signcolumn\2\23current_line_blame\2\24attach_to_untracked\2\14word_diff\1\vlinehl\1\nnumhl\1\20update_debounce\3d\18sign_priority\3\6\nsetup\rgitsigns\frequire\0" },
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["material.nvim"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/material.nvim",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/material.nvim",
     url = "https://github.com/marko-cerovac/material.nvim"
   },
   nerdtree = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/nerdtree",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/nerdtree",
     url = "https://github.com/scrooloose/nerdtree"
   },
   ["nerdtree-git-plugin"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/nerdtree-git-plugin",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/nerdtree-git-plugin",
     url = "https://github.com/Xuyuanp/nerdtree-git-plugin"
   },
   ["nvim-cmp"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["oceanic-next"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/oceanic-next",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/oceanic-next",
     url = "https://github.com/mhartington/oceanic-next"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
   rainbow = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/rainbow",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/rainbow",
     url = "https://github.com/luochen1990/rainbow"
   },
   ["symbols-outline.nvim"] = {
-    config = { "\27LJ\2\n�\v\0\0\4\0@\0C6\0\0\0009\0\1\0005\1\3\0005\2\5\0005\3\4\0=\3\6\2=\2\a\0014\2\0\0=\2\b\0014\2\0\0=\2\t\0015\2\v\0005\3\n\0=\3\f\0025\3\r\0=\3\14\0025\3\15\0=\3\16\0025\3\17\0=\3\18\0025\3\19\0=\3\20\0025\3\21\0=\3\22\0025\3\23\0=\3\24\0025\3\25\0=\3\26\0025\3\27\0=\3\28\0025\3\29\0=\3\30\0025\3\31\0=\3 \0025\3!\0=\3\"\0025\3#\0=\3$\0025\3%\0=\3&\0025\3'\0=\3(\0025\3)\0=\3*\0025\3+\0=\3,\0025\3-\0=\3.\0025\3/\0=\0030\0025\0031\0=\0032\0025\0033\0=\0034\0025\0035\0=\0036\0025\0037\0=\0038\0025\0039\0=\3:\0025\3;\0=\3<\0025\3=\0=\3>\2=\2?\1=\1\2\0K\0\1\0\fsymbols\18TypeParameter\1\0\2\ticon\t𝙏\ahl\16TSParameter\rOperator\1\0\2\ticon\6+\ahl\15TSOperator\nEvent\1\0\2\ticon\t🗲\ahl\vTSType\vStruct\1\0\2\ticon\t𝓢\ahl\vTSType\15EnumMember\1\0\2\ticon\b\ahl\fTSField\tNull\1\0\2\ticon\tNULL\ahl\vTSType\bKey\1\0\2\ticon\t🔐\ahl\vTSType\vObject\1\0\2\ticon\b⦿\ahl\vTSType\nArray\1\0\2\ticon\b\ahl\15TSConstant\fBoolean\1\0\2\ticon\b⊨\ahl\14TSBoolean\vNumber\1\0\2\ticon\6#\ahl\rTSNumber\vString\1\0\2\ticon\t𝓐\ahl\rTSString\rConstant\1\0\2\ticon\b\ahl\15TSConstant\rVariable\1\0\2\ticon\b\ahl\15TSConstant\rFunction\1\0\2\ticon\b\ahl\15TSFunction\14Interface\1\0\2\ticon\bﰮ\ahl\vTSType\tEnum\1\0\2\ticon\bℰ\ahl\vTSType\16Constructor\1\0\2\ticon\b\ahl\18TSConstructor\nField\1\0\2\ticon\b\ahl\fTSField\rProperty\1\0\2\ticon\b\ahl\rTSMethod\vMethod\1\0\2\ticon\aƒ\ahl\rTSMethod\nClass\1\0\2\ticon\t𝓒\ahl\vTSType\fPackage\1\0\2\ticon\b\ahl\16TSNamespace\14Namespace\1\0\2\ticon\b\ahl\16TSNamespace\vModule\1\0\2\ticon\b\ahl\16TSNamespace\tFile\1\0\0\1\0\2\ticon\b\ahl\nTSURI\21symbol_blacklist\18lsp_blacklist\fkeymaps\nclose\1\0\6\17code_actions\6a\18goto_location\t<Cr>\18rename_symbol\6r\19toggle_preview\6K\17hover_symbol\14<C-space>\19focus_location\6o\1\3\0\0\n<Esc>\6q\1\0\v\16show_guides\2\27highlight_hovered_item\2\25preview_bg_highlight\nPmenu\24show_symbol_details\2\26show_relative_numbers\1\17show_numbers\1\15auto_close\1\nwidth\3\25\19relative_width\2\rposition\nright\17auto_preview\2\20symbols_outline\6g\bvim\0" },
+    config = { "\27LJ\2\n�\v\0\0\4\0@\0C6\0\0\0009\0\1\0005\1\3\0005\2\5\0005\3\4\0=\3\6\2=\2\a\0014\2\0\0=\2\b\0014\2\0\0=\2\t\0015\2\v\0005\3\n\0=\3\f\0025\3\r\0=\3\14\0025\3\15\0=\3\16\0025\3\17\0=\3\18\0025\3\19\0=\3\20\0025\3\21\0=\3\22\0025\3\23\0=\3\24\0025\3\25\0=\3\26\0025\3\27\0=\3\28\0025\3\29\0=\3\30\0025\3\31\0=\3 \0025\3!\0=\3\"\0025\3#\0=\3$\0025\3%\0=\3&\0025\3'\0=\3(\0025\3)\0=\3*\0025\3+\0=\3,\0025\3-\0=\3.\0025\3/\0=\0030\0025\0031\0=\0032\0025\0033\0=\0034\0025\0035\0=\0036\0025\0037\0=\0038\0025\0039\0=\3:\0025\3;\0=\3<\0025\3=\0=\3>\2=\2?\1=\1\2\0K\0\1\0\fsymbols\18TypeParameter\1\0\2\ahl\16TSParameter\ticon\t𝙏\rOperator\1\0\2\ahl\15TSOperator\ticon\6+\nEvent\1\0\2\ahl\vTSType\ticon\t🗲\vStruct\1\0\2\ahl\vTSType\ticon\t𝓢\15EnumMember\1\0\2\ahl\fTSField\ticon\b\tNull\1\0\2\ahl\vTSType\ticon\tNULL\bKey\1\0\2\ahl\vTSType\ticon\t🔐\vObject\1\0\2\ahl\vTSType\ticon\b⦿\nArray\1\0\2\ahl\15TSConstant\ticon\b\fBoolean\1\0\2\ahl\14TSBoolean\ticon\b⊨\vNumber\1\0\2\ahl\rTSNumber\ticon\6#\vString\1\0\2\ahl\rTSString\ticon\t𝓐\rConstant\1\0\2\ahl\15TSConstant\ticon\b\rVariable\1\0\2\ahl\15TSConstant\ticon\b\rFunction\1\0\2\ahl\15TSFunction\ticon\b\14Interface\1\0\2\ahl\vTSType\ticon\bﰮ\tEnum\1\0\2\ahl\vTSType\ticon\bℰ\16Constructor\1\0\2\ahl\18TSConstructor\ticon\b\nField\1\0\2\ahl\fTSField\ticon\b\rProperty\1\0\2\ahl\rTSMethod\ticon\b\vMethod\1\0\2\ahl\rTSMethod\ticon\aƒ\nClass\1\0\2\ahl\vTSType\ticon\t𝓒\fPackage\1\0\2\ahl\16TSNamespace\ticon\b\14Namespace\1\0\2\ahl\16TSNamespace\ticon\b\vModule\1\0\2\ahl\16TSNamespace\ticon\b\tFile\1\0\0\1\0\2\ahl\nTSURI\ticon\b\21symbol_blacklist\18lsp_blacklist\fkeymaps\nclose\1\0\6\18goto_location\t<Cr>\17hover_symbol\14<C-space>\19focus_location\6o\17code_actions\6a\18rename_symbol\6r\19toggle_preview\6K\1\3\0\0\n<Esc>\6q\1\0\v\25preview_bg_highlight\nPmenu\24show_symbol_details\2\26show_relative_numbers\1\17show_numbers\1\15auto_close\1\nwidth\3\25\19relative_width\2\rposition\nright\17auto_preview\2\16show_guides\2\27highlight_hovered_item\2\20symbols_outline\6g\bvim\0" },
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
     url = "https://github.com/simrat39/symbols-outline.nvim"
   },
   tabular = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/tabular",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/tabular",
     url = "https://github.com/godlygeek/tabular"
   },
   tagbar = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/tagbar",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/tagbar",
     url = "https://github.com/majutsushi/tagbar"
   },
   ["tagbar-markdown"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/tagbar-markdown",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/tagbar-markdown",
     url = "https://github.com/lvht/tagbar-markdown"
   },
   tcomment_vim = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/tcomment_vim",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/tcomment_vim",
     url = "https://github.com/tomtom/tcomment_vim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["tender.vim"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/tender.vim",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/tender.vim",
     url = "https://github.com/jacoborus/tender.vim"
   },
   ["vim-airline"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/vim-airline",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/vim-airline",
     url = "https://github.com/vim-airline/vim-airline"
   },
   ["vim-dispatch"] = {
@@ -225,83 +225,83 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/opt/vim-dispatch",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/opt/vim-dispatch",
     url = "https://github.com/tpope/vim-dispatch"
   },
   ["vim-easymotion"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/vim-easymotion",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/vim-easymotion",
     url = "https://github.com/easymotion/vim-easymotion"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-gitgutter"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
   },
   ["vim-markdown"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/vim-markdown",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/vim-markdown",
     url = "https://github.com/plasticboy/vim-markdown"
   },
   ["vim-matchup"] = {
-    after_files = { "/Users/zhuxi/.local/share/nvim/site/pack/packer/opt/vim-matchup/after/plugin/matchit.vim" },
+    after_files = { "/Users/bilibili/.local/share/nvim/site/pack/packer/opt/vim-matchup/after/plugin/matchit.vim" },
     loaded = false,
     needs_bufread = true,
     only_cond = false,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/opt/vim-matchup",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/opt/vim-matchup",
     url = "https://github.com/andymass/vim-matchup"
   },
   ["vim-one"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/vim-one",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/vim-one",
     url = "https://github.com/rakr/vim-one"
   },
   ["vim-snippets"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/vim-snippets",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/vim-snippets",
     url = "https://github.com/honza/vim-snippets"
   },
   ["vim-startify"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/vim-startify",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/vim-startify",
     url = "https://github.com/mhinz/vim-startify"
   },
   ["vim-stim"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/vim-stim",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/vim-stim",
     url = "https://github.com/ironhouzi/vim-stim"
   },
   ["vim-toml"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/vim-toml",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/vim-toml",
     url = "https://github.com/cespare/vim-toml"
   },
   ["vim-vsnip"] = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/vim-vsnip",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/vim-vsnip",
     url = "https://github.com/hrsh7th/vim-vsnip"
   },
   vimagit = {
     loaded = true,
-    path = "/Users/zhuxi/.local/share/nvim/site/pack/packer/start/vimagit",
+    path = "/Users/bilibili/.local/share/nvim/site/pack/packer/start/vimagit",
     url = "https://github.com/jreybert/vimagit"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\n�\4\0\0\4\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\2B\0\2\1K\0\1\0\tyadm\1\0\1\venable\1\19preview_config\1\0\5\bcol\3\1\brow\3\0\rrelative\vcursor\nstyle\fminimal\vborder\vsingle\28current_line_blame_opts\1\0\4\18virt_text_pos\beol\14virt_text\2\22ignore_whitespace\1\ndelay\3�\a\17watch_gitdir\1\0\2\rinterval\3�\a\17follow_files\2\1\0\n\14word_diff\1\vlinehl\1\nnumhl\1\15signcolumn\2\18sign_priority\3\6!current_line_blame_formatter1<author>, <author_time:%Y-%m-%d> - <summary>\20update_debounce\3d\20max_file_length\3��\2\23current_line_blame\2\24attach_to_untracked\2\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
 -- Config for: symbols-outline.nvim
 time([[Config for symbols-outline.nvim]], true)
-try_loadstring("\27LJ\2\n�\v\0\0\4\0@\0C6\0\0\0009\0\1\0005\1\3\0005\2\5\0005\3\4\0=\3\6\2=\2\a\0014\2\0\0=\2\b\0014\2\0\0=\2\t\0015\2\v\0005\3\n\0=\3\f\0025\3\r\0=\3\14\0025\3\15\0=\3\16\0025\3\17\0=\3\18\0025\3\19\0=\3\20\0025\3\21\0=\3\22\0025\3\23\0=\3\24\0025\3\25\0=\3\26\0025\3\27\0=\3\28\0025\3\29\0=\3\30\0025\3\31\0=\3 \0025\3!\0=\3\"\0025\3#\0=\3$\0025\3%\0=\3&\0025\3'\0=\3(\0025\3)\0=\3*\0025\3+\0=\3,\0025\3-\0=\3.\0025\3/\0=\0030\0025\0031\0=\0032\0025\0033\0=\0034\0025\0035\0=\0036\0025\0037\0=\0038\0025\0039\0=\3:\0025\3;\0=\3<\0025\3=\0=\3>\2=\2?\1=\1\2\0K\0\1\0\fsymbols\18TypeParameter\1\0\2\ticon\t𝙏\ahl\16TSParameter\rOperator\1\0\2\ticon\6+\ahl\15TSOperator\nEvent\1\0\2\ticon\t🗲\ahl\vTSType\vStruct\1\0\2\ticon\t𝓢\ahl\vTSType\15EnumMember\1\0\2\ticon\b\ahl\fTSField\tNull\1\0\2\ticon\tNULL\ahl\vTSType\bKey\1\0\2\ticon\t🔐\ahl\vTSType\vObject\1\0\2\ticon\b⦿\ahl\vTSType\nArray\1\0\2\ticon\b\ahl\15TSConstant\fBoolean\1\0\2\ticon\b⊨\ahl\14TSBoolean\vNumber\1\0\2\ticon\6#\ahl\rTSNumber\vString\1\0\2\ticon\t𝓐\ahl\rTSString\rConstant\1\0\2\ticon\b\ahl\15TSConstant\rVariable\1\0\2\ticon\b\ahl\15TSConstant\rFunction\1\0\2\ticon\b\ahl\15TSFunction\14Interface\1\0\2\ticon\bﰮ\ahl\vTSType\tEnum\1\0\2\ticon\bℰ\ahl\vTSType\16Constructor\1\0\2\ticon\b\ahl\18TSConstructor\nField\1\0\2\ticon\b\ahl\fTSField\rProperty\1\0\2\ticon\b\ahl\rTSMethod\vMethod\1\0\2\ticon\aƒ\ahl\rTSMethod\nClass\1\0\2\ticon\t𝓒\ahl\vTSType\fPackage\1\0\2\ticon\b\ahl\16TSNamespace\14Namespace\1\0\2\ticon\b\ahl\16TSNamespace\vModule\1\0\2\ticon\b\ahl\16TSNamespace\tFile\1\0\0\1\0\2\ticon\b\ahl\nTSURI\21symbol_blacklist\18lsp_blacklist\fkeymaps\nclose\1\0\6\17code_actions\6a\18goto_location\t<Cr>\18rename_symbol\6r\19toggle_preview\6K\17hover_symbol\14<C-space>\19focus_location\6o\1\3\0\0\n<Esc>\6q\1\0\v\16show_guides\2\27highlight_hovered_item\2\25preview_bg_highlight\nPmenu\24show_symbol_details\2\26show_relative_numbers\1\17show_numbers\1\15auto_close\1\nwidth\3\25\19relative_width\2\rposition\nright\17auto_preview\2\20symbols_outline\6g\bvim\0", "config", "symbols-outline.nvim")
+try_loadstring("\27LJ\2\n�\v\0\0\4\0@\0C6\0\0\0009\0\1\0005\1\3\0005\2\5\0005\3\4\0=\3\6\2=\2\a\0014\2\0\0=\2\b\0014\2\0\0=\2\t\0015\2\v\0005\3\n\0=\3\f\0025\3\r\0=\3\14\0025\3\15\0=\3\16\0025\3\17\0=\3\18\0025\3\19\0=\3\20\0025\3\21\0=\3\22\0025\3\23\0=\3\24\0025\3\25\0=\3\26\0025\3\27\0=\3\28\0025\3\29\0=\3\30\0025\3\31\0=\3 \0025\3!\0=\3\"\0025\3#\0=\3$\0025\3%\0=\3&\0025\3'\0=\3(\0025\3)\0=\3*\0025\3+\0=\3,\0025\3-\0=\3.\0025\3/\0=\0030\0025\0031\0=\0032\0025\0033\0=\0034\0025\0035\0=\0036\0025\0037\0=\0038\0025\0039\0=\3:\0025\3;\0=\3<\0025\3=\0=\3>\2=\2?\1=\1\2\0K\0\1\0\fsymbols\18TypeParameter\1\0\2\ahl\16TSParameter\ticon\t𝙏\rOperator\1\0\2\ahl\15TSOperator\ticon\6+\nEvent\1\0\2\ahl\vTSType\ticon\t🗲\vStruct\1\0\2\ahl\vTSType\ticon\t𝓢\15EnumMember\1\0\2\ahl\fTSField\ticon\b\tNull\1\0\2\ahl\vTSType\ticon\tNULL\bKey\1\0\2\ahl\vTSType\ticon\t🔐\vObject\1\0\2\ahl\vTSType\ticon\b⦿\nArray\1\0\2\ahl\15TSConstant\ticon\b\fBoolean\1\0\2\ahl\14TSBoolean\ticon\b⊨\vNumber\1\0\2\ahl\rTSNumber\ticon\6#\vString\1\0\2\ahl\rTSString\ticon\t𝓐\rConstant\1\0\2\ahl\15TSConstant\ticon\b\rVariable\1\0\2\ahl\15TSConstant\ticon\b\rFunction\1\0\2\ahl\15TSFunction\ticon\b\14Interface\1\0\2\ahl\vTSType\ticon\bﰮ\tEnum\1\0\2\ahl\vTSType\ticon\bℰ\16Constructor\1\0\2\ahl\18TSConstructor\ticon\b\nField\1\0\2\ahl\fTSField\ticon\b\rProperty\1\0\2\ahl\rTSMethod\ticon\b\vMethod\1\0\2\ahl\rTSMethod\ticon\aƒ\nClass\1\0\2\ahl\vTSType\ticon\t𝓒\fPackage\1\0\2\ahl\16TSNamespace\ticon\b\14Namespace\1\0\2\ahl\16TSNamespace\ticon\b\vModule\1\0\2\ahl\16TSNamespace\ticon\b\tFile\1\0\0\1\0\2\ahl\nTSURI\ticon\b\21symbol_blacklist\18lsp_blacklist\fkeymaps\nclose\1\0\6\18goto_location\t<Cr>\17hover_symbol\14<C-space>\19focus_location\6o\17code_actions\6a\18rename_symbol\6r\19toggle_preview\6K\1\3\0\0\n<Esc>\6q\1\0\v\25preview_bg_highlight\nPmenu\24show_symbol_details\2\26show_relative_numbers\1\17show_numbers\1\15auto_close\1\nwidth\3\25\19relative_width\2\rposition\nright\17auto_preview\2\16show_guides\2\27highlight_hovered_item\2\20symbols_outline\6g\bvim\0", "config", "symbols-outline.nvim")
 time([[Config for symbols-outline.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\n�\4\0\0\4\0\f\0\0156\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\0025\3\n\0=\3\v\2B\0\2\1K\0\1\0\tyadm\1\0\1\venable\1\19preview_config\1\0\5\bcol\3\1\nstyle\fminimal\vborder\vsingle\rrelative\vcursor\brow\3\0\28current_line_blame_opts\1\0\4\18virt_text_pos\beol\ndelay\3�\a\22ignore_whitespace\1\14virt_text\2\17watch_gitdir\1\0\2\rinterval\3�\a\17follow_files\2\1\0\n\20max_file_length\3��\2!current_line_blame_formatter1<author>, <author_time:%Y-%m-%d> - <summary>\15signcolumn\2\23current_line_blame\2\24attach_to_untracked\2\14word_diff\1\vlinehl\1\nnumhl\1\20update_debounce\3d\18sign_priority\3\6\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
@@ -316,17 +316,17 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType racket ++once lua require("packer.load")({'ale'}, { ft = "racket" }, _G.packer_plugins)]]
 vim.cmd [[au FileType sh ++once lua require("packer.load")({'ale'}, { ft = "sh" }, _G.packer_plugins)]]
+vim.cmd [[au FileType tex ++once lua require("packer.load")({'ale'}, { ft = "tex" }, _G.packer_plugins)]]
 vim.cmd [[au FileType vim ++once lua require("packer.load")({'ale'}, { ft = "vim" }, _G.packer_plugins)]]
-vim.cmd [[au FileType markdown ++once lua require("packer.load")({'ale'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType c ++once lua require("packer.load")({'ale'}, { ft = "c" }, _G.packer_plugins)]]
 vim.cmd [[au FileType zsh ++once lua require("packer.load")({'ale'}, { ft = "zsh" }, _G.packer_plugins)]]
 vim.cmd [[au FileType bash ++once lua require("packer.load")({'ale'}, { ft = "bash" }, _G.packer_plugins)]]
 vim.cmd [[au FileType cpp ++once lua require("packer.load")({'ale'}, { ft = "cpp" }, _G.packer_plugins)]]
 vim.cmd [[au FileType cmake ++once lua require("packer.load")({'ale'}, { ft = "cmake" }, _G.packer_plugins)]]
 vim.cmd [[au FileType html ++once lua require("packer.load")({'ale'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType c ++once lua require("packer.load")({'ale'}, { ft = "c" }, _G.packer_plugins)]]
-vim.cmd [[au FileType racket ++once lua require("packer.load")({'ale'}, { ft = "racket" }, _G.packer_plugins)]]
-vim.cmd [[au FileType tex ++once lua require("packer.load")({'ale'}, { ft = "tex" }, _G.packer_plugins)]]
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'ale'}, { ft = "markdown" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)

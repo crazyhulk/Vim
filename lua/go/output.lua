@@ -118,7 +118,7 @@ function M.popup_job_result(results, opts)
 	padding = {0, 0, 0, 0},
         highlight = 'GoTestResult',
     })
-    vim.api.nvim_win_set_option(popup_win, 'wrap', false)
+    vim.api.nvim_win_set_option(popup_win, 'wrap', true)
     local popup_bufnr = buf_nr
     local border_bufnr = popup_opts.border and popup_opts.border.bufnr
     local border_win = popup_opts.border and popup_opts.border.win_id
