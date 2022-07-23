@@ -105,7 +105,7 @@ return require('packer').startup(function()
   use {	'majutsushi/tagbar' }
   use {	'lvht/tagbar-markdown' }
   use {	'tomtom/tcomment_vim' }
-  use {	'jacoborus/tender.vim' }
+  -- use {	'jacoborus/tender.vim' }
   use {	'vim-airline/vim-airline' }
   use {	'easymotion/vim-easymotion' }
   use {	'rakr/vim-one' }
@@ -116,6 +116,8 @@ return require('packer').startup(function()
   -- use {	'EdenEast/nightfox.nvim' } -- 主题，带状态栏
   use {
 	  'nvim-telescope/telescope-fzf-native.nvim',
+	  -- 如果找不到 fzf.so 可能需要手动编译一下
+	  -- cd ~/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim && make clean && make
 	  run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' 
   } -- 让 telescope 支持 fzf 模糊匹配（空格分词等
 
