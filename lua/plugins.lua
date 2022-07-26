@@ -106,7 +106,11 @@ return require('packer').startup(function()
   use {	'lvht/tagbar-markdown' }
   use {	'tomtom/tcomment_vim' }
   -- use {	'jacoborus/tender.vim' }
-  use {	'vim-airline/vim-airline' }
+  -- use {	'vim-airline/vim-airline' }
+  use {
+	  'nvim-lualine/lualine.nvim',
+	  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
   use {	'easymotion/vim-easymotion' }
   use {	'rakr/vim-one' }
   use {	'mhinz/vim-startify' } -- 启动页

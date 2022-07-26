@@ -118,9 +118,6 @@ cmp.setup {
     }
 }
 
--- print(nvim_win_get_width(0))
-print(vim.api.nvim_win_get_width(0))
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities)
 
@@ -131,6 +128,8 @@ require'lspconfig'.gopls.setup {
         debounce_text_changes = 150,
     },
 }
+
+require('config.lualine')
 
 -- 获取 git path
 gitRootPath = vim.api.nvim_eval("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]")
