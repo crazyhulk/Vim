@@ -129,6 +129,12 @@ require'lspconfig'.gopls.setup {
     },
 }
 
+require'lspconfig'.sourcekit.setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+	-- root_dir = root_pattern("Package.swift", ".git")	
+}
+
 require('config.lualine')
 
 -- 获取 git path
