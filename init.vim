@@ -112,13 +112,14 @@ xnoremap <silent> <cr> "*y:silent! let searchTerm = '\V'.substitute(escape(@*, '
 lua require('plugins')
 runtime vim.lua
 
+" 自动导包交给了 null-ls
 " 在 normal 模式下更新文本后自动导包
 " 比如 删除某一行，或者填充 struct 等
 " autocmd TextChanged *.go :lua require('modules').org_imports()
 " 代码补全结束后自动导包
-autocmd CompleteDone *.go :lua require('modules').org_imports()
-autocmd BufWritePre *.go :lua vim.lsp.buf.formatting()
-autocmd BufWritePre *.go :lua require('modules').org_imports()
+" autocmd CompleteDone *.go :lua require('modules').org_imports()
+" autocmd BufWritePre *.go :lua vim.lsp.buf.formatting()
+" autocmd BufWritePre *.go :lua require('modules').org_imports()
 
 " augroup NvimGoInternal
 "   autocmd!

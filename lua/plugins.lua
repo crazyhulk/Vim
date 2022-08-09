@@ -19,12 +19,14 @@ return require('packer').startup(function()
 
   -- Load on a combination of conditions: specific filetypes or commands
   -- Also run code after load (see the "config" key)
-  use {
-    'w0rp/ale',
-    ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
-    cmd = 'ALEEnable',
-    config = 'vim.cmd[[ALEEnable]]'
-  }
+  -- 使用 null-ls 代替 ale
+  -- use {
+  --   'w0rp/ale',
+  --   ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
+  --   cmd = 'ALEEnable',
+  --   config = 'vim.cmd[[ALEEnable]]'
+  -- }
+  use {'jose-elias-alvarez/null-ls.nvim'}
 
   -- Plugins can have dependencies on other plugins
   -- use {
