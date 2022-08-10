@@ -1,4 +1,5 @@
 require("null-ls").setup({
+	debug = true,
 	sources = {
 		require("null-ls").builtins.formatting.stylua,
 		-- require("null-ls").builtins.diagnostics.eslint,
@@ -89,7 +90,7 @@ local servers = {'gopls'}
 for _, server in ipairs(servers) do
 	require'lspconfig'[server].setup {
 		on_attach = function(client, bufnr)
-			if client.name ~= 'gopls' then
+			if client.name ~= 'null-ls' then
 				formatting_callback(client, bufnr)
 			end
 			-- common_on_attach(client, bufnr)

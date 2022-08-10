@@ -57,7 +57,7 @@ return require('packer').startup(function()
   use { 
 	  'nvim-treesitter/nvim-treesitter', 
 	  run = ':TSUpdate', 
-	  commit = '8ada8faf2fd5a74cc73090ec856fa88f34cd364b',
+	  -- commit = '8ada8faf2fd5a74cc73090ec856fa88f34cd364b',
 	  -- 这个有缺点 需要 PackerSync
 	  -- setup = function()
 	  -- 	require'nvim-treesitter.configs'.setup {
