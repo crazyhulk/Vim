@@ -79,7 +79,7 @@ return require('packer').startup(function()
 
   use { 'github/copilot.vim' }
 
-  -- use { 'norcalli/nvim-colorizer.lua' }
+  use { 'norcalli/nvim-colorizer.lua' }
   use { 'tpope/vim-fugitive' }
   use {	'jreybert/vimagit' }
   use { 'luochen1990/rainbow' } -- 括号颜色配对

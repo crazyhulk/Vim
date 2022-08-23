@@ -167,3 +167,6 @@ command! -nargs=* -range GoClearTags lua require('go.struct_tag').clear_tags({<l
 " endfunction
 "
 " nnoremap <silent>q :call OmniPopup('q')<CR>
+let g:ale_linters = {
+\   'go': ['revive'],
+\}
