@@ -122,11 +122,19 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities)
 
 require'lspconfig'.gopls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-        debounce_text_changes = 150,
-    },
+	on_attach = on_attach,
+	capabilities = capabilities,
+	flags = {
+		debounce_text_changes = 150,
+	},
+	settings = {
+		["gopls"] = {
+			-- https://github.com/golang/tools/blob/master/gopls/doc/settings.md#completion
+			-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings 补全命令
+			-- https://github.com/hrsh7th/vim-vsnip#2-setting
+			usePlaceholders = true,
+		},
+	},
 }
 
 require'lspconfig'.sourcekit.setup{
