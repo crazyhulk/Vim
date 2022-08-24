@@ -98,6 +98,19 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', opts)
     buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>', opts)
     buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', opts)
+      -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+      hi LspReferenceRead cterm=bold ctermbg=DarkMagenta guibg=LightYellow
+      hi LspReferenceText cterm=bold ctermbg=DarkMagenta guibg=LightYellow
+      hi LspReferenceWrite cterm=bold ctermbg=DarkMagenta guibg=LightYellow
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]], false)
+  end
 end
 
 local cmp = require'cmp'
@@ -122,18 +135,26 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require'cmp_nvim_lsp'.update_capabilities(capabilities)
 
 require'lspconfig'.gopls.setup {
+	cmd = {'gopls'},
 	on_attach = on_attach,
 	capabilities = capabilities,
 	flags = {
 		debounce_text_changes = 150,
 	},
 	settings = {
-		["gopls"] = {
+		gopls = {
 			-- https://github.com/golang/tools/blob/master/gopls/doc/settings.md#completion
 			-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings 补全命令
 			-- https://github.com/hrsh7th/vim-vsnip#2-setting
 			usePlaceholders = true,
+			experimentalPostfixCompletions = true,
+			analyses = {
+				unreachable = true, -- Disable the unreachable analyzer.
+				unusedparams = true,  -- Enable the unusedparams analyzer.
+				shadow = true,
+			},
 		},
+		staticcheck = true,
 	},
 }
 
