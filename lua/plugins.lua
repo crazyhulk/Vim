@@ -76,6 +76,8 @@ return require('packer').startup(function()
   use { 'hrsh7th/cmp-path' }
   use { 'hrsh7th/cmp-buffer' }
   use { 'hrsh7th/cmp-cmdline' }
+  use {	'hrsh7th/vim-vsnip' }
+  use {	'honza/vim-snippets' }
 
   use { 'github/copilot.vim' }
 
@@ -97,6 +99,7 @@ return require('packer').startup(function()
   use {	'plasticboy/vim-markdown' }
   use {	'marko-cerovac/material.nvim' }
   -- use {	'lvht/mru' }
+  --
   use {	'mhartington/oceanic-next' }
   use {	'nvim-lua/plenary.nvim' }
   use {	'nvim-lua/popup.nvim' }
@@ -105,6 +108,7 @@ return require('packer').startup(function()
   use {	'majutsushi/tagbar' }
   use {	'lvht/tagbar-markdown' }
   use {	'tomtom/tcomment_vim' }
+  --
   -- use {	'jacoborus/tender.vim' }
   -- use {	'vim-airline/vim-airline' }
   use {
@@ -115,8 +119,6 @@ return require('packer').startup(function()
   use {	'rakr/vim-one' }
   use {	'mhinz/vim-startify' } -- 启动页
   use {	'cespare/vim-toml' }
-  use {	'hrsh7th/vim-vsnip' }
-  use {	'honza/vim-snippets' }
   -- use {	'EdenEast/nightfox.nvim' } -- 主题，带状态栏
   use {
 	  'nvim-telescope/telescope-fzf-native.nvim',

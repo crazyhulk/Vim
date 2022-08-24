@@ -152,9 +152,11 @@ require'lspconfig'.gopls.setup {
 				unreachable = true, -- Disable the unreachable analyzer.
 				unusedparams = true,  -- Enable the unusedparams analyzer.
 				shadow = true,
+				unusedvariable = true,
 			},
-		},
 		staticcheck = true,
+		},
+		-- staticcheck = true,
 	},
 }
 
