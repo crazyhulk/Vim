@@ -144,6 +144,7 @@ require'lspconfig'.sourcekit.setup{
 }
 
 require('config.lualine')
+require('config.vimvsnip')
 
 -- 获取 git path
 gitRootPath = vim.api.nvim_eval("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]")
