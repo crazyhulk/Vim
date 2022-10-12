@@ -1148,7 +1148,8 @@ fun! s:apply_syntax_highlightings()
     exec 'hi NonText' . s:fg_nontext . s:bg_background
     exec 'hi LineNr' . s:fg_linenumber_fg . s:bg_linenumber_bg
     exec 'hi Conceal' . s:fg_linenumber_fg . s:bg_linenumber_bg
-    exec 'hi VertSplit' . s:fg_vertsplit_bg . s:bg_vertsplit_fg
+    " exec 'hi VertSplit' . s:fg_vertsplit_bg . s:bg_vertsplit_fg
+    exec 'hi VertSplit' . s:fg_vertsplit_fg . s:ft_none
     exec 'hi FoldColumn' . s:fg_folded_fg . s:bg_background . s:ft_none
   endif
 
