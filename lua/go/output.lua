@@ -71,77 +71,77 @@ function M.calc_popup_size()
     if win_height > -1 then
         if opts.height > (win_height - 2) then
             opts.height = win_height - 2
-        end
-    end
-    return opts
+		end
+	end
+	return opts
 end
 
 function M.close_popup(win_id, buf_nr)
-    if
-        vim.api.nvim_buf_is_valid(buf_nr)
-        and not vim.api.nvim_buf_get_option(buf_nr, 'buflisted')
-    then
-        vim.api.nvim_buf_delete(buf_nr, { force = true })
-    end
+	if
+		vim.api.nvim_buf_is_valid(buf_nr)
+		and not vim.api.nvim_buf_get_option(buf_nr, 'buflisted')
+	then
+		vim.api.nvim_buf_delete(buf_nr, { force = true })
+	end
 
-    if not vim.api.nvim_win_is_valid(win_id) then
-        return
-    end
+	if not vim.api.nvim_win_is_valid(win_id) then
+		return
+	end
 
-    vim.api.nvim_win_close(win_id, true)
+	vim.api.nvim_win_close(win_id, true)
 end
 
 function M.close_popups(popup_win, popup_buf, border_win, border_buf)
-    M.close_popup(popup_win, popup_buf)
-    M.close_popup(border_win, border_buf)
+	M.close_popup(popup_win, popup_buf)
+	M.close_popup(border_win, border_buf)
 end
 
 function M.popup_job_result(results, opts)
-    vim.cmd([[doautocmd User NvimGoPopupPre]])
-    local win_height = vim.fn.winheight(0)
-    local buf_nr = vim.api.nvim_create_buf(false, true)
-    vim.api.nvim_buf_set_option(buf_nr, 'bufhidden', 'wipe')
-    vim.api.nvim_buf_set_lines(buf_nr, 0, -1, true, results)
-    local actual_content_height = vim.api.nvim_buf_line_count(buf_nr)
-    local title = opts.title
-    local pos = opts.pos
-    local top = win_height - (math.min(pos.height, actual_content_height) + 1)
-    local popup_win, popup_opts = popup.create(buf_nr, {
-        title = title,
-        line = top,
-        col = 2,
-        border = { 1, 1, 1, 1 },
-        cursorline = true,
-        maxheight = pos.height,
-        minwidth = vim.o.columns - 4, -- 保持屏幕宽度
-        width = pos.width,
-	padding = {0, 0, 0, 0},
-        highlight = 'GoTestResult',
-    })
-    vim.api.nvim_win_set_option(popup_win, 'wrap', true)
-    local popup_bufnr = buf_nr
-    local border_bufnr = popup_opts.border and popup_opts.border.bufnr
-    local border_win = popup_opts.border and popup_opts.border.win_id
-    if border_win then
-        vim.api.nvim_win_set_option(
-            border_win,
-            'winhl',
-            'Normal:GoTestResultBorder'
-        )
-    end
+	vim.cmd([[doautocmd User NvimGoPopupPre]])
+	local win_height = vim.fn.winheight(0)
+	local buf_nr = vim.api.nvim_create_buf(false, true)
+	vim.api.nvim_buf_set_option(buf_nr, 'bufhidden', 'wipe')
+	vim.api.nvim_buf_set_lines(buf_nr, 0, -1, true, results)
+	local actual_content_height = vim.api.nvim_buf_line_count(buf_nr)
+	local title = opts.title
+	local pos = opts.pos
+	local top = win_height - (math.min(pos.height, actual_content_height) + 1)
+	local popup_win, popup_opts = popup.create(buf_nr, {
+		title = title,
+		line = top,
+		col = 2,
+		border = { 1, 1, 1, 1 },
+		cursorline = true,
+		maxheight = pos.height,
+		minwidth = vim.o.columns - 4, -- 保持屏幕宽度
+		width = pos.width,
+		padding = {0, 0, 0, 0},
+		highlight = 'GoTestResult',
+	})
+	vim.api.nvim_win_set_option(popup_win, 'wrap', true)
+	local popup_bufnr = buf_nr
+	local border_bufnr = popup_opts.border and popup_opts.border.bufnr
+	local border_win = popup_opts.border and popup_opts.border.win_id
+	if border_win then
+		vim.api.nvim_win_set_option(
+			border_win,
+			'winhl',
+			'Normal:GoTestResultBorder'
+		)
+	end
 
-    local on_buf_leave = string.format(
-        [[  autocmd BufLeave <buffer> ++nested ++once :silent lua require('go.output').close_popups(%s,%s,%s,%s)]],
-        popup_win,
-        popup_bufnr,
-        border_win,
-        border_bufnr
-    )
+	local on_buf_leave = string.format(
+		[[  autocmd BufLeave <buffer> ++nested ++once :silent lua require('go.output').close_popups(%s,%s,%s,%s)]],
+		popup_win,
+		popup_bufnr,
+		border_win,
+		border_bufnr
+	)
 
-    vim.cmd([[augroup NvimGoInternal]])
-    vim.cmd([[  autocmd!]])
-    vim.cmd(on_buf_leave)
-    vim.cmd([[augroup END]])
+	vim.cmd([[augroup NvimGoInternal]])
+	vim.cmd([[  autocmd!]])
+	vim.cmd(on_buf_leave)
+	vim.cmd([[augroup END]])
 end
 
 return M

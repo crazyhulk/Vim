@@ -171,3 +171,6 @@ command! -nargs=* -range GoClearTags lua require('go.struct_tag').clear_tags({<l
 let g:ale_linters = {
 \   'go': ['revive'],
 \}
+
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+        let g:copilot_no_tab_map = v:true
