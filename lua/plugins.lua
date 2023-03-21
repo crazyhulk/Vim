@@ -96,7 +96,7 @@ return require('packer').startup(function()
 		"zbirenbaum/copilot-cmp",
 		-- after = { "copilot.lua" },
 		config = function ()
-			require("copilot_cmp").setup()
+		require("copilot_cmp").setup()
 		end,
 		formatters = {
 			label = require("copilot_cmp.format").format_label_text,
@@ -168,24 +168,24 @@ return require('packer').startup(function()
 				show_symbol_details = true,
 				preview_bg_highlight = 'Pmenu',
 				keymaps = { -- These keymaps can be a string or a table for multiple keys
-				close = {"<Esc>", "q"},
+					close = {"<Esc>", "q"},
 					goto_location = "<Cr>",
 					focus_location = "o",
 					hover_symbol = "<C-space>",
 					toggle_preview = "K",
 					rename_symbol = "r",
-code_actions = "a",
-},
-lsp_blacklist = {},
-symbol_blacklist = {},
-symbols = {
-	File = {icon = "", hl = "TSURI"},
-Module = {icon = "", hl = "TSNamespace"},
-Namespace = {icon = "", hl = "TSNamespace"},
-Package = {icon = "", hl = "TSNamespace"},
-Class = {icon = "𝓒", hl = "TSType"},
-Method = {icon = "ƒ", hl = "TSMethod"},
-Property = {icon = "", hl = "TSMethod"},
+					code_actions = "a",
+				},
+				lsp_blacklist = {},
+				symbol_blacklist = {},
+				symbols = {
+					File = {icon = "", hl = "TSURI"},
+					Module = {icon = "", hl = "TSNamespace"},
+					Namespace = {icon = "", hl = "TSNamespace"},
+					Package = {icon = "", hl = "TSNamespace"},
+					Class = {icon = "𝓒", hl = "TSType"},
+					Method = {icon = "ƒ", hl = "TSMethod"},
+					Property = {icon = "", hl = "TSMethod"},
 					Field = {icon = "", hl = "TSField"},
 					Constructor = {icon = "", hl = "TSConstructor"},
 					Enum = {icon = "ℰ", hl = "TSType"},
@@ -248,14 +248,14 @@ Property = {icon = "", hl = "TSMethod"},
 			},
 			current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
 			sign_priority = 6,
-update_debounce = 100,
-status_formatter = nil, -- Use default
-max_file_length = 40000,
-preview_config = {
-	-- Options passed to nvim_open_win
-border = 'single',
-style = 'minimal',
-relative = 'cursor',
+			update_debounce = 100,
+			status_formatter = nil, -- Use default
+			max_file_length = 40000,
+			preview_config = {
+				-- Options passed to nvim_open_win
+				border = 'single',
+				style = 'minimal',
+				relative = 'cursor',
 				row = 0,
 				col = 1
 			},
@@ -265,6 +265,8 @@ relative = 'cursor',
 			} 
 		end
 	}
+
+	-- use { 'wakatime/vim-wakatime' }
 
 	-- You can specify multiple plugins in a single call
 	-- use {'tjdevries/colorbuddy.vim', {'nvim-treesitter/nvim-treesitter', opt = true}}

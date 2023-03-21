@@ -148,7 +148,7 @@ function GetFunctionNameByLSP()
 		for _, ysymbol in pairs(xsymbol or {}) do
 			for _, symbol in pairs(ysymbol or {}) do
 				-- print(vim.inspect(symbol.range["end"]))
-				if symbol.kind == 12 and symbol.range.start.line < cursor_pos[1] and symbol.range["end"].line > cursor_pos[1]  then
+				if symbol.kind == 12 and symbol.range.start.line < cursor_pos[1] and symbol.range["end"].line >= cursor_pos[1]  then
 					return symbol.name
 				end
 			end
@@ -191,6 +191,7 @@ function M.test_func(opt)
 	local cmd = {
 		'go',
 		'test',
+		'-gcflags=-l',
 		'-run',
 		vim.fn.shellescape(string.format('^%s$', func_name)),
 	}
