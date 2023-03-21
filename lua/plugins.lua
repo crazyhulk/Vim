@@ -96,7 +96,7 @@ return require('packer').startup(function()
 		"zbirenbaum/copilot-cmp",
 		-- after = { "copilot.lua" },
 		config = function ()
-		require("copilot_cmp").setup()
+			require("copilot_cmp").setup()
 		end,
 		formatters = {
 			label = require("copilot_cmp.format").format_label_text,
@@ -105,9 +105,11 @@ return require('packer').startup(function()
 		},
 	}
 
+	use { 'onsails/lspkind.nvim' }
+
 	use { 'norcalli/nvim-colorizer.lua' }
 	use { 'tpope/vim-fugitive' }
-	use {	'jreybert/vimagit' }
+	use { 'jreybert/vimagit' }
 	use { 'luochen1990/rainbow' } -- 括号颜色配对
 	use { 'scrooloose/nerdtree' }
 	use { 'Xuyuanp/nerdtree-git-plugin' }
