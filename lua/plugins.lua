@@ -96,7 +96,7 @@ return require('packer').startup(function()
 		"zbirenbaum/copilot-cmp",
 		-- after = { "copilot.lua" },
 		config = function ()
-			require("copilot_cmp").setup()
+		require("copilot_cmp").setup()
 		end,
 		formatters = {
 			label = require("copilot_cmp.format").format_label_text,
@@ -190,7 +190,7 @@ return require('packer').startup(function()
 					Property = {icon = "", hl = "TSMethod"},
 					Field = {icon = "", hl = "TSField"},
 					Constructor = {icon = "", hl = "TSConstructor"},
-					Enum = {icon = "ℰ", hl = "TSType"},
+				Enum = {icon = "ℰ", hl = "TSType"},
 					Interface = {icon = "ﰮ", hl = "TSType"},
 					Function = {icon = "", hl = "TSFunction"},
 					Variable = {icon = "", hl = "TSConstant"},
@@ -200,7 +200,7 @@ return require('packer').startup(function()
 					Boolean = {icon = "⊨", hl = "TSBoolean"},
 					Array = {icon = "", hl = "TSConstant"},
 					Object = {icon = "⦿", hl = "TSType"},
-					Key = {icon = "🔐", hl = "TSType"},
+				Key = {icon = "🔐", hl = "TSType"},
 					Null = {icon = "NULL", hl = "TSType"},
 					EnumMember = {icon = "", hl = "TSField"},
 					Struct = {icon = "𝓢", hl = "TSType"},
@@ -267,6 +267,8 @@ return require('packer').startup(function()
 			} 
 		end
 	}
+	use { 'sainnhe/sonokai' }
+	use { 'shaunsingh/solarized.nvim' }
 
 	-- use { 'wakatime/vim-wakatime' }
 

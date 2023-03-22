@@ -1683,8 +1683,10 @@ fun! s:apply_syntax_highlightings()
   exec 'hi goStatement' . s:fg_pink
   exec 'hi goConditional' . s:fg_purple . s:ft_bold
   exec 'hi goConstants' . s:fg_orange
-  exec 'hi goFunction' . s:fg_orange
-  " exec 'hi goTodo' . s:fg_comment . s:ft_bold
+  " exec 'hi goFunction' . s:fg_orange
+  exec 'hi goFunction' . s:fg_purple
+  exec 'hi TSFunction' . s:fg_purple
+  exec 'hi goTodo' . s:fg_comment . s:ft_bold
   exec 'hi goDeclType' . s:fg_blue
   exec 'hi goBuiltins' . s:fg_purple
 
