@@ -29,11 +29,18 @@ set re=1
 set ttyfast
 set lazyredraw
 
+let g:sonokai_style = "maia"
 colorscheme sonokai
 " colorscheme solarized
+" let g:material_style = "lighter"
+" let g:material_style = "palenight"
+" let g:material_style = "darker"
+" let g:material_style = "oceanic"
+" let g:material_style = "deep ocean"
 " colorscheme material
 " colorscheme OceanicNext
 "colorscheme one
+
 
 nnoremap <silent> <c-u> :Mru<cr>
 "nnoremap <silent> <c-p> :call fzflv#Open()<cr>
@@ -167,9 +174,9 @@ command! -nargs=* -range GoClearTags lua require('go.struct_tag').clear_tags({<l
 " endfunction
 "
 " nnoremap <silent>q :call OmniPopup('q')<CR>
-let g:ale_linters = {
-\   'go': ['revive'],
-\}
+" let g:ale_linters = {
+" \   'go': ['revive'],
+" \}
 
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
         let g:copilot_no_tab_map = v:true

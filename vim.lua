@@ -161,6 +161,29 @@ require'lspconfig'.gopls.setup {
 	},
 }
 
+require'lspconfig'.lua_ls.setup {
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
 require'lspconfig'.sourcekit.setup{
     on_attach = on_attach,
     capabilities = capabilities,
@@ -169,9 +192,10 @@ require'lspconfig'.sourcekit.setup{
 
 require('config.lualine')
 require('config.vimvsnip')
+-- require('config.theme')
 
 -- 获取 git path
-gitRootPath = vim.api.nvim_eval("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]")
+local gitRootPath = vim.api.nvim_eval("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]")
 local config = require('go.config')
 config.options.test_env = {
 	GOARCH = 'amd64',
