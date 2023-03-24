@@ -1,76 +1,74 @@
 local M = {}
 
 local vim = vim
-local popup = require('popup')
+-- local popup = require('popup')
+local popup = require('plenary.popup')
 local config = require('go.config')
 
 function M.show_info(prefix, msg)
-    vim.api.nvim_echo({ { prefix }, { ' ' .. msg } }, true, {})
+	vim.api.nvim_echo({ { prefix }, { ' ' .. msg } }, true, {})
 end
 
 function M.show_success(prefix, msg)
-    local succ = 'Success'
-    if msg ~= nil then
-        succ = msg
-    end
-    vim.api.nvim_echo({ { prefix, 'Function' }, { ' ' .. succ } }, true, {})
+	local succ = 'Success'
+	if msg ~= nil then
+		succ = msg
+	end
+	vim.api.nvim_echo({ { prefix, 'Function' }, { ' ' .. succ } }, true, {})
 end
 
 function M.show_error(prefix, msg)
-    vim.api.nvim_echo({ { prefix, 'ErrorMsg' }, { ' ' .. msg } }, true, {})
+	vim.api.nvim_echo({ { prefix, 'ErrorMsg' }, { ' ' .. msg } }, true, {})
 end
 
 function M.show_warning(prefix, msg)
-    vim.api.nvim_echo({ { prefix, 'WarningMsg' }, { ' ' .. msg } }, true, {})
+	vim.api.nvim_echo({ { prefix, 'WarningMsg' }, { ' ' .. msg } }, true, {})
 end
 
 function M.show_job_success(prefix, results)
-    M.show_success(prefix)
-    for _, v in ipairs(results) do
-        print(v)
-    end
+	M.show_success(prefix)
+	for _, v in ipairs(results) do
+		print(v)
+	end
 end
 
 function M.show_job_error(prefix, code, results)
-    M.show_error(prefix, string.format('Error: %d', code))
-    for _, v in ipairs(results) do
-        print(v)
-    end
+	M.show_error(prefix, string.format('Error: %d', code))
+	for _, v in ipairs(results) do
+		print(v)
+	end
 end
 
 function M.calc_popup_size()
-    local win_height = vim.fn.winheight(0)
-    local win_width = vim.fn.winwidth(0)
-    -- default window size
-    local opts = {
-        height = 80,
-        width = 10,
-    }
-    -- config first, if config is none then follows colorcolumn
-    if
-        config.options.test_popup_width
-        and config.options.test_popup_width > 0
-    then
-        opts.width = tonumber(config.options.test_popup_width)
-    else
-        local cc = tonumber(vim.wo.colorcolumn) or 0
-        if cc > opts.width then
-            opts.width = cc
-        end
-    end
-    if
-        config.options.test_popup_height
-        and config.options.test_popup_height > 0
-    then
-        opts.height = tonumber(config.options.test_popup_height)
-    end
-    -- check that we do not exceed win boundaries
-    if win_width > -1 and opts.width > (win_width - 2) then
-        opts.width = win_width - 4
-    end
-    if win_height > -1 then
-        if opts.height > (win_height - 2) then
-            opts.height = win_height - 2
+	local win_height = vim.fn.winheight(0)
+	local win_width = vim.fn.winwidth(0)
+	-- default window size
+	local opts = {
+		height = 80,
+		width = 10,
+	}
+	-- config first, if config is none then follows colorcolumn
+	if config.options.test_popup_width and config.options.test_popup_width > 0
+		then
+		opts.width = tonumber(config.options.test_popup_width)
+	else
+		opts.width = tonumber(config.options.test_popup_width)
+		local cc = tonumber(vim.wo.colorcolumn) or 0
+		if cc > opts.width then
+			opts.width = cc
+		end
+	end
+	if config.options.test_popup_height and config.options.test_popup_height > 0
+		then
+		opts.height = tonumber(config.options.test_popup_height)
+	end
+	-- check that we do not exceed win boundaries
+	if win_width > -1 and opts.width > (win_width - 2) then
+		opts.width = win_width - 4
+	end
+	if win_height > -1 then
+		if opts.height > (win_height - 2) then
+			opts.height = win_height - 2
 		end
 	end
 	return opts
@@ -80,7 +78,7 @@ function M.close_popup(win_id, buf_nr)
 	if
 		vim.api.nvim_buf_is_valid(buf_nr)
 		and not vim.api.nvim_buf_get_option(buf_nr, 'buflisted')
-	then
+		then
 		vim.api.nvim_buf_delete(buf_nr, { force = true })
 	end
 
@@ -132,6 +130,7 @@ function M.popup_job_result(results, opts)
 
 	local on_buf_leave = string.format(
 		[[  autocmd BufLeave <buffer> ++nested ++once :silent lua require('go.output').close_popups(%s,%s,%s,%s)]],
+		-- [[  autocmd User NvimGoPopupPre nnoremap <buffer> q :silent lua require('go.output').close_popups(%s,%s,%s,%s)]],
 		popup_win,
 		popup_bufnr,
 		border_win,
@@ -142,6 +141,26 @@ function M.popup_job_result(results, opts)
 	vim.cmd([[  autocmd!]])
 	vim.cmd(on_buf_leave)
 	vim.cmd([[augroup END]])
+
+
+	local bindkey = string.format(
+		-- [[  autocmd User NvimGoPopupPre nnoremap <buffer> q :lua require('go.output').close_popups(%s,%s,%s,%s)]],
+		":lua require('go.output').close_popups(%s,%s,%s,%s)<CR>",
+		popup_win,
+		popup_bufnr,
+		border_win,
+		border_bufnr
+	)
+	opts = { noremap = true, silent = true }
+	local current_buf = vim.api.nvim_get_current_buf()
+	-- vim.api.nvim_buf_set_keymap(0, 'n', 'q', ':w<CR>', opts)
+	vim.api.nvim_buf_set_keymap(current_buf, 'n', 'q', bindkey, opts)
+
+
+	-- vim.cmd([[augroup neovim_popup]])
+	-- vim.cmd([[  autocmd!]])
+	-- vim.cmd(bindkey)
+	-- vim.cmd([[augroup END]])
 end
 
 return M

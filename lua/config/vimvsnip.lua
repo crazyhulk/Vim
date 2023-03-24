@@ -141,3 +141,25 @@ cmp.setup {
 	-- ... Your other configuration ...
 
 }
+
+-- function close_popup()
+-- 	print("2222222222222")	
+-- end
+--
+-- function setup_popup()
+--   -- Get the current window object
+--   local win = vim.api.nvim_get_current_win()
+-- 	-- require('output').close_popup
+--   -- Define the keymapping for 'q'
+--   local opts = { noremap = true, silent = true }
+--   -- local map = string.format("<Esc><Esc>:lua vim.api.nvim_win_close(%d, true)<CR>", win)
+--   -- local map = string.format("<Esc><Esc>:lua close_popup(%d, true) <CR>", win)
+--
+--   vim.api.nvim_buf_set_keymap(0, 'n', 'q', '<cmd>lua close_popup()<cr>', opts)
+-- end
+--
+--
+-- vim.cmd([[augroup NvimGoPopup]])
+-- vim.cmd([[  autocmd!]])
+-- vim.cmd([[  autocmd User NvimGoPopupPre lua setup_popup()]])
+-- vim.cmd([[augroup END]])
