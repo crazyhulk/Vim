@@ -236,3 +236,35 @@ vim.api.nvim_set_keymap('n', '<Leader>fg',  [[<Cmd>lua require('telescope.builti
 vim.api.nvim_set_keymap('n', '<Leader>fs',  ":SymbolsOutline <CR>", {})
 vim.api.nvim_set_keymap('n', '<Leader>ct',  ":Copilot panel<CR>", {})
 
+require("config.debug")
+
+local actions = require("telescope.actions")
+local previewers = require("telescope.previewers")
+local lsp = require("vim.lsp")
+
+require("telescope").setup({
+  defaults = {
+    file_previewer = previewers.vim_buffer_cat.new,
+    grep_previewer = previewers.vim_buffer_vimgrep.new,
+    qflist_previewer = previewers.vim_buffer_qflist.new,
+    mappings = {
+      i = {
+        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+      },
+    },
+  },
+})
+
+-- Define custom LSP symbol picker
+local function lsp_symbol_picker()
+  require("telescope.builtin").lsp_document_symbols({
+    symbols = lsp.buf_get_document_symbols(),
+    layout_strategy = "horizontal",
+    layout_config = { width = 0.75 },
+    previewer = false,
+  })
+end
+
+-- Map the symbol picker to a key binding
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua lsp_symbol_picker()<CR>", { noremap = true, silent = true })
+
