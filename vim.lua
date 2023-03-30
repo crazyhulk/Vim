@@ -41,34 +41,34 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require('telescope').setup{
-  defaults = {
-    -- Default configuration for telescope goes here:
-    -- config_key = value,
-    mappings = {
-      i = {
-        -- map actions.which_key to <C-h> (default: <C-/>)
-        -- actions.which_key shows the mappings for your picker,
-        -- e.g. git_{create, delete, ...}_branch for the git_branches picker
-        ["<C-h>"] = "which_key"
-      }
-    }
-  },
-  pickers = {
-    -- Default configuration for builtin pickers goes here:
-    -- picker_name = {
-    --   picker_config_key = value,
-    --   ...
-    -- }
-    -- Now the picker_config_key will be applied every time you call this
-    -- builtin picker
-  },
-  extensions = {
-    -- Your extension configuration goes here:
-    -- extension_name = {
-    --   extension_config_key = value,
-    -- }
-    -- please take a look at the readme of the extension you want to configure
-  },
+	defaults = {
+		-- Default configuration for telescope goes here:
+		-- config_key = value,
+		mappings = {
+			i = {
+				-- map actions.which_key to <C-h> (default: <C-/>)
+				-- actions.which_key shows the mappings for your picker,
+				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
+				["<C-h>"] = "which_key",
+			},
+		}
+	},
+	pickers = {
+		-- Default configuration for builtin pickers goes here:
+		-- picker_name = {
+		--   picker_config_key = value,
+		--   ...
+		-- }
+		-- Now the picker_config_key will be applied every time you call this
+		-- builtin picker
+	},
+	extensions = {
+		-- Your extension configuration goes here:
+		-- extension_name = {
+		--   extension_config_key = value,
+		-- }
+		-- please take a look at the readme of the extension you want to configure
+	},
 }
 
 -- To get fzf loaded and working with telescope, you need to call
@@ -85,7 +85,8 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
 	buf_set_keymap('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
 	buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-	buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+	-- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+	buf_set_keymap('n', 'gr', '<cmd>lua require"telescope.builtin".lsp_references{}<cr>', opts)
 	buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
 	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
 	buf_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
@@ -227,44 +228,15 @@ vim.api.nvim_set_keymap('n', '<Leader>ff',  ":lua require('telescope.builtin').f
 vim.api.nvim_set_keymap('n', '<Leader>fds',  ":lua require('telescope.builtin').lsp_document_symbols()<CR>", {})
 vim.api.nvim_set_keymap('n', '<Leader>fws',  ":lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>", {})
 vim.api.nvim_set_keymap('n', '<Leader>fg',  [[<Cmd>lua require('telescope.builtin').live_grep({find_command=ag})<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>fo',  [[<Cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
 -- nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 -- nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 -- nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 -- nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>	
 
+vim.api.nvim_set_keymap('n', '<Leader>vh',  [[<Cmd>lua require('telescope.builtin').command_history()<CR>]], { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<Leader>fs',  ":SymbolsOutline <CR>", {})
 vim.api.nvim_set_keymap('n', '<Leader>ct',  ":Copilot panel<CR>", {})
 
 require("config.debug")
-
-local actions = require("telescope.actions")
-local previewers = require("telescope.previewers")
-local lsp = require("vim.lsp")
-
-require("telescope").setup({
-  defaults = {
-    file_previewer = previewers.vim_buffer_cat.new,
-    grep_previewer = previewers.vim_buffer_vimgrep.new,
-    qflist_previewer = previewers.vim_buffer_qflist.new,
-    mappings = {
-      i = {
-        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-      },
-    },
-  },
-})
-
--- Define custom LSP symbol picker
-local function lsp_symbol_picker()
-  require("telescope.builtin").lsp_document_symbols({
-    symbols = lsp.buf_get_document_symbols(),
-    layout_strategy = "horizontal",
-    layout_config = { width = 0.75 },
-    previewer = false,
-  })
-end
-
--- Map the symbol picker to a key binding
-vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua lsp_symbol_picker()<CR>", { noremap = true, silent = true })
-
