@@ -335,6 +335,17 @@ return require('packer').startup(function()
 		end
 	}
 
+	use { 
+		'python-lsp/python-lsp-server',
+		config = function()
+			require'lspconfig'.pylsp.setup{}
+		end
+	}
+
+	use {
+		"ray-x/lsp_signature.nvim",
+	}
+
 	-- use { 'wakatime/vim-wakatime' }
 
 	-- You can specify multiple plugins in a single call

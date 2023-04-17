@@ -56,7 +56,8 @@
         "/Users/bilibili/.local/share/nvim/site/pack/packer/start/tabular/after",
         "/Users/bilibili/.local/share/nvim/site/pack/packer/start/vim-markdown/after",
         "${3rd}/luv/library",
-        "${3rd}/luassert/library"
+        "${3rd}/luassert/library",
+        "${3rd}/luv/library"
     ],
     "workspace.checkThirdParty": false
 }

@@ -191,6 +191,13 @@ require'lspconfig'.sourcekit.setup{
 	-- root_dir = root_pattern("Package.swift", ".git")	
 }
 
+require "lsp_signature".setup({
+	bind = true, -- This is mandatory, otherwise border config won't get registered.
+	handler_opts = {
+		border = "rounded"
+	}
+})
+
 require('config.lualine')
 require('config.vimvsnip')
 -- require('config.theme')
