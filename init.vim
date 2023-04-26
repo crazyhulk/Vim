@@ -124,7 +124,7 @@ runtime vim.lua
 " autocmd TextChanged *.go :lua require('modules').org_imports()
 " 代码补全结束后自动导包
 autocmd CompleteDone *.go :lua require('modules').org_imports()
-autocmd BufWritePre *.go :lua vim.lsp.buf.formatting()
+autocmd BufWritePre *.go :lua vim.lsp.buf.format({ async = true })
 autocmd BufWritePre *.go :lua require('modules').org_imports()
 
 " augroup NvimGoInternal
