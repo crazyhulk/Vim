@@ -61,3 +61,15 @@ require('material').setup({
 	custom_highlights = {}, -- Overwrite highlights with your own
 })
 vim.cmd 'colorscheme material'
+
+require('plenary.reload').reload_module('plenary') -- 重新加载 Plenary.vim 模块
+vim.cmd('hi DiagnosticError guifg=#ff0000') -- 配置诊断错误的颜色
+vim.cmd('hi DiagnosticWarn guifg=#ff8800') -- 配置诊断警告的颜色
+vim.cmd('hi DiagnosticInfo guifg=#00ffff') -- 配置诊断信息的颜色
+vim.cmd('hi DiagnosticHint guifg=#00ff00') -- 配置诊断提示的颜色
+
+vim.cmd('hi DiagnosticVirtualTextError guifg=#ff0000 ctermfg=red')
+vim.cmd('hi DiagnosticVirtualTextWarn guifg=#ff8800 ctermfg=red')
+vim.cmd('hi DiagnosticVirtualTextInfo guifg=#00ffff ctermfg=red')
+vim.cmd('hi DiagnosticVirtualTextHint guifg=#00ff00 ctermfg=red')
+

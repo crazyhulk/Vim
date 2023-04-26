@@ -346,6 +346,10 @@ return require('packer').startup(function()
 		"ray-x/lsp_signature.nvim",
 	}
 
+	use {
+		"jose-elias-alvarez/null-ls.nvim"
+	}
+
 	-- use { 'wakatime/vim-wakatime' }
 
 	-- You can specify multiple plugins in a single call

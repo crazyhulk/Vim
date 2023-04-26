@@ -126,6 +126,7 @@ runtime vim.lua
 autocmd CompleteDone *.go :lua require('modules').org_imports()
 autocmd BufWritePre *.go :lua vim.lsp.buf.format({ async = true })
 autocmd BufWritePre *.go :lua require('modules').org_imports()
+" autocmd BufWritePre *.go lua vim.lsp.buf.code_action({ source = { organizeImports = true } })
 
 " augroup NvimGoInternal
 "   autocmd!
@@ -180,3 +181,5 @@ command! -nargs=* -range GoClearTags lua require('go.struct_tag').clear_tags({<l
 
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
         let g:copilot_no_tab_map = v:true
+
+
