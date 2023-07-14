@@ -121,7 +121,7 @@ return require('packer').startup(function()
 		requires = { {'nvim-lua/plenary.nvim'} },
 	}
 
-	use {	'airblade/vim-gitgutter' }
+	use {	'airblade/vim-gitgutter', branch = 'main' }
 	use {	'plasticboy/vim-markdown' }
 	use {	'marko-cerovac/material.nvim' }
 	-- use {	'lvht/mru' }
