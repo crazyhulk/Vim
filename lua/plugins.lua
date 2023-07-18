@@ -75,8 +75,7 @@ return require('packer').startup(function()
 	use { 'hrsh7th/cmp-vsnip' }
 	use { 'hrsh7th/cmp-path' }
 	use { 'hrsh7th/cmp-buffer' }
-	-- use { 'hrsh7th/cmp-cmdline'}
-	use { 'hrsh7th/cmp-cmdline', commit = 'e1ba818534a357b77494597469c85030c7233c16'}
+	use { 'hrsh7th/cmp-cmdline' }
 	use {	'hrsh7th/vim-vsnip' }
 	use {	'honza/vim-snippets' }
 
@@ -96,7 +95,7 @@ return require('packer').startup(function()
 		"zbirenbaum/copilot-cmp",
 		-- after = { "copilot.lua" },
 		config = function ()
-		require("copilot_cmp").setup()
+			require("copilot_cmp").setup()
 		end,
 		formatters = {
 			label = require("copilot_cmp.format").format_label_text,

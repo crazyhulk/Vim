@@ -25,7 +25,7 @@ set background=light
 "set nu
 "set rnu
 
-set re=1
+set re=0
 set ttyfast
 set lazyredraw
 
