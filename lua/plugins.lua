@@ -342,9 +342,9 @@ return require('packer').startup(function()
 		end
 	}
 
-	use {
-		"ray-x/lsp_signature.nvim",
-	}
+	-- use {
+	-- 	"ray-x/lsp_signature.nvim",
+	-- }
 
 	use {
 		"jose-elias-alvarez/null-ls.nvim",

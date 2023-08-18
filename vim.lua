@@ -7,7 +7,6 @@ local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 
 require'colorizer'.setup()
-require'gitsigns'.setup()
 
 require'nvim-treesitter.configs'.setup {
 	defaults = {
@@ -100,6 +99,19 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>', opts)
 	buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', opts)
 	buf_set_keymap('n', '<space>t', '<cmd>lua require("go.test").test_func()<cr>', opts)
+	-- if client.server_capabilities.inlayHintProvider then
+	-- 	vim.lsp.inlay_hint(bufnr, true)
+	-- end
+	-- print(vim.inspect(client.server_capabilities.semanticTokensProvider))
+	if client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
+		vim.lsp.inlay_hint(bufnr, true)
+		local semantic = client.config.capabilities.textDocument.semanticTokens
+		client.server_capabilities.semanticTokensProvider = {
+			full = true,
+			legend = {tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes},
+			range = true,
+		}
+	end
 	-- Set autocommands conditional on server_capabilities
 	if client.server_capabilities.documentHighlightProvider then
 		vim.api.nvim_exec([[
@@ -117,26 +129,27 @@ end
 
 local cmp = require'cmp'
 cmp.setup {
-    snippet = {
-        expand = function(args) vim.fn['vsnip#anonymous'](args.body) end,
-    },
-    sources = cmp.config.sources {
-        { name = 'nvim_lsp' },
-        { name = 'vsnip' },
-        { name = 'path' },
-        { name = 'buffer', options = { get_bufnrs = vim.api.nvim_list_bufs } },
-    },
-    mapping = {
-	['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
-	['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
-	['<CR>'] = cmp.mapping.confirm({ select = true }),
-    }
+	snippet = {
+		expand = function(args) vim.fn['vsnip#anonymous'](args.body) end,
+	},
+	sources = cmp.config.sources {
+		{ name = 'nvim_lsp' },
+		{ name = 'vsnip' },
+		{ name = 'path' },
+		{ name = 'buffer', options = { get_bufnrs = vim.api.nvim_list_bufs } },
+	},
+	mapping = {
+		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
+		['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
+		['<CR>'] = cmp.mapping.confirm({ select = true }),
+	}
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require'cmp_nvim_lsp'.default_capabilities(capabilities)
 
 require'lspconfig'.gopls.setup {
+	-- cmd = {'gopls', 'serve','--debug=localhost:6060', '-rpc.trace'},
 	cmd = {'gopls'},
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -149,6 +162,7 @@ require'lspconfig'.gopls.setup {
 			-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings 补全命令
 			-- https://github.com/hrsh7th/vim-vsnip#2-setting
 			usePlaceholders = true,
+			semanticTokens = true,
 			experimentalPostfixCompletions = true,
 			analyses = {
 				unreachable = true, -- Disable the unreachable analyzer.
@@ -156,47 +170,67 @@ require'lspconfig'.gopls.setup {
 				shadow = true,
 				unusedvariable = true,
 			},
-		staticcheck = true,
+			staticcheck = true,
+			hints = {
+				assignVariableTypes = true,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = true,
+				constantValues = true,
+				functionTypeParameters = true,
+				parameterNames = true,
+				rangeVariableTypes = true,
+			},
 		},
-		-- staticcheck = true,
 	},
 }
 
+if vim.version().minor >= 10 then
+	vim.api.nvim_create_autocmd("LspAttach", {
+		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+		callback = function(args)
+			local client = vim.lsp.get_client_by_id(args.data.client_id)
+			if client.server_capabilities.inlayHintProvider then
+				vim.lsp.inlay_hint(args.buf, true)
+			end
+			-- whatever other lsp config you want
+		end
+	})
+end
 require'lspconfig'.lua_ls.setup {
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = 'LuaJIT',
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = {'vim'},
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
 }
 
 require'lspconfig'.sourcekit.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
+	on_attach = on_attach,
+	capabilities = capabilities,
 	-- root_dir = root_pattern("Package.swift", ".git")	
 }
 
-require "lsp_signature".setup({
-	bind = true, -- This is mandatory, otherwise border config won't get registered.
-	handler_opts = {
-		border = "rounded"
-	}
-})
+-- require "lsp_signature".setup({
+-- 	bind = true, -- This is mandatory, otherwise border config won't get registered.
+-- 	handler_opts = {
+-- 		border = "rounded"
+-- 	}
+-- })
 
 require('config.lualine')
 require('config.vimvsnip')
@@ -248,6 +282,7 @@ vim.api.nvim_set_keymap('n', '<Leader>ct',  ":Copilot panel<CR>", {})
 
 require("config.debug")
 require("config.lint")
+-- require("config.vimtex")
 
 -- require('plenary.reload').reload_module('plenary') -- 重新加载 Plenary.vim 模块
 -- vim.cmd('hi DiagnosticError guifg=#ff0000') -- 配置诊断错误的颜色
@@ -260,4 +295,4 @@ vim.cmd('hi DiagnosticVirtualTextWarn guifg=#ff8800 ctermfg=red')
 vim.cmd('hi DiagnosticVirtualTextInfo guifg=#00ffff ctermfg=red')
 vim.cmd('hi DiagnosticVirtualTextHint guifg=#00ff00 ctermfg=red')
 
-			require("copilot_cmp").setup()
+require("copilot_cmp").setup()

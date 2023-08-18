@@ -29,7 +29,7 @@ set re=0
 set ttyfast
 set lazyredraw
 
-let g:sonokai_style = "maia"
+" let g:sonokai_style = "maia"
 colorscheme sonokai
 " colorscheme solarized
 " let g:material_style = "lighter"
