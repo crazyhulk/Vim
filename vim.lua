@@ -86,14 +86,15 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
 	-- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
 	buf_set_keymap('n', 'gr', '<cmd>lua require"telescope.builtin".lsp_references{}<cr>', opts)
-	buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
-	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
+	buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
+	buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
 	buf_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 	buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.format { async = true }<cr>', opts)
 	buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
 	buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 	buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
-	buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', opts)
+	-- buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.set_loclist()<cr>', opts)
+	buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<cr>', opts)
 	buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
 	buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', opts)
 	buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>', opts)
@@ -162,7 +163,7 @@ require'lspconfig'.gopls.setup {
 			-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings 补全命令
 			-- https://github.com/hrsh7th/vim-vsnip#2-setting
 			usePlaceholders = true,
-			semanticTokens = true,
+			-- semanticTokens = true,
 			experimentalPostfixCompletions = true,
 			analyses = {
 				unreachable = true, -- Disable the unreachable analyzer.
@@ -281,7 +282,7 @@ vim.api.nvim_set_keymap('n', '<Leader>fs',  ":SymbolsOutline <CR>", {})
 vim.api.nvim_set_keymap('n', '<Leader>ct',  ":Copilot panel<CR>", {})
 
 require("config.debug")
-require("config.lint")
+-- require("config.lint")
 -- require("config.vimtex")
 
 -- require('plenary.reload').reload_module('plenary') -- 重新加载 Plenary.vim 模块
@@ -296,3 +297,4 @@ vim.cmd('hi DiagnosticVirtualTextInfo guifg=#00ffff ctermfg=red')
 vim.cmd('hi DiagnosticVirtualTextHint guifg=#00ff00 ctermfg=red')
 
 require("copilot_cmp").setup()
+vim.notify = require("notify")

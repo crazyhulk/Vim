@@ -347,28 +347,41 @@ return require('packer').startup(function()
 	-- }
 
 	use {
-		"jose-elias-alvarez/null-ls.nvim",
-		-- setup = function ()
-		-- 	print("3333333333")
-		-- 	-- -- 检查是否安装了 cspell
-		-- 	-- local cspell_installed = os.execute("which cspell > /dev/null 2>&1")
-		-- 	-- print("1111111111")
-		-- 	-- if cspell_installed ~= 1 then 
-		-- 	-- 	print("2222222222")
-		-- 	-- end
-		-- 	-- if cspell_installed ~= 0 then
-		-- 	-- 	-- 如果 cspell 没有安装，使用 npm 安装它
-		-- 	-- 	print("Installing cspell...")
-		-- 	-- 	os.execute("npm install -g cspell@latest")
-		-- 	-- end
-		-- end
+		'rcarriga/nvim-notify',
+		config = function ()
+			require("notify").setup {
+				stages = 'fade_in_slide_out',
+				timeout = 3000,
+				-- Function called when a new window is opened, use for changing win settings/config
+				on_open = nil,
+
+				-- Function called when a window is closed
+				on_close = nil,
+
+				-- Render function for notifications. See notify-render()
+				render = "default",
+
+
+				-- For stages that change opacity this is treated as the highlight behind the window
+				-- Set this to either a highlight group, an RGB hex value e.g. "#000000" or a function returning an RGB code for dynamic values
+				background_colour = "Normal",
+
+				-- Minimum width for notification windows
+				minimum_width = 50,
+
+				-- Icons for the different levels
+				icons = {
+					ERROR = "",
+					WARN = "",
+					INFO = "",
+					DEBUG = "",
+					TRACE = "✎",
+				},
+			}
+			vim.notify = require('notify')
+		end
 	}
 
-	-- use { 'wakatime/vim-wakatime' }
+	use { "catppuccin/nvim", as = "catppuccin" } -- theme
 
-	-- You can specify multiple plugins in a single call
-	-- use {'tjdevries/colorbuddy.vim', {'nvim-treesitter/nvim-treesitter', opt = true}}
-
-	-- You can alias plugin names
-	-- use {'dracula/vim', as = 'dracula'}
 end)

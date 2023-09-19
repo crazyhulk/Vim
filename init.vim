@@ -30,7 +30,9 @@ set ttyfast
 set lazyredraw
 
 " let g:sonokai_style = "maia"
-colorscheme sonokai
+" colorscheme PaperColor
+colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+" colorscheme sonokai
 " colorscheme solarized
 " let g:material_style = "lighter"
 " let g:material_style = "palenight"
