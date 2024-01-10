@@ -52,7 +52,19 @@ local function valid_buf()
 	return false
 end
 
-local function do_test(prefix, cmd)
+function printTable(tbl, indent)
+    indent = indent or 0
+    for k, v in pairs(tbl) do
+        if type(v) == "table" then
+            print(string.rep("  ", indent) .. k .. ":")
+            printTable(v, indent + 1)
+        else
+            print(string.rep("  ", indent) .. k .. ": " .. v)
+        end
+    end
+end
+
+local function do_test(prefix, cmd, extra)
 	if not valid_buf() then
 		return
 	end
@@ -60,6 +72,11 @@ local function do_test(prefix, cmd)
 	local pos = output.calc_popup_size()
 	local function on_event(_, data, event)
 		if config.options.test_popup and not util.empty_output(data) then
+			-- print("=======", vim.inspect(data[#data-3]))
+			if string.find(data[#data-3], 'PASS: ' .. extra.func) then
+				require("notify").notify('PASS: ' .. extra.func, "info", {title = "Test passed", message = extra.func})
+				-- return
+			end
 			return output.popup_job_result(data, {
 				title = prefix,
 				pos = pos,
@@ -195,7 +212,7 @@ function M.test_func(opt)
 		'-run',
 		vim.fn.shellescape(string.format('^%s$', func_name)),
 	}
-	do_test(prefix, build_args(cmd))
+	do_test(prefix, build_args(cmd), { func = func_name })
 end
 
 function M.test_file()
@@ -229,7 +246,7 @@ function M.test_file()
 		'test',
 		'-run',
 		vim.fn.shellescape(string.format('^%s$', table.concat(func_names, '|'))),
-}
+	}
 	do_test(prefix, build_args(cmd))
 end
 
