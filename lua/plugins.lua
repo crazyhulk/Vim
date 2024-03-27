@@ -116,7 +116,7 @@ return require('packer').startup(function()
 	use {	'jiangmiao/auto-pairs' }
 	-- use {	'junegunn/fzf.vim' }
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		'nvim-telescope/telescope.nvim', tag = '0.1.5',
 		requires = { {'nvim-lua/plenary.nvim'} },
 	}
 
@@ -273,7 +273,10 @@ return require('packer').startup(function()
 
 	use { 
 		"rcarriga/nvim-dap-ui",
-		requires = {"mfussenegger/nvim-dap"},
+		requires = {
+			"mfussenegger/nvim-dap",
+			"nvim-neotest/nvim-nio"
+		},
 		config = function()
 		end
 	}
