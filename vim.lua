@@ -5,6 +5,7 @@ local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
+vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#9DA9A0" })
 
 require'colorizer'.setup()
 
@@ -173,10 +174,10 @@ require'lspconfig'.gopls.setup {
 			},
 			staticcheck = true,
 			hints = {
-				assignVariableTypes = true,
-				compositeLiteralFields = true,
-				compositeLiteralTypes = true,
-				constantValues = true,
+				-- assignVariableTypes = true,
+				-- compositeLiteralFields = true,
+				-- compositeLiteralTypes = true,
+				-- constantValues = true,
 				functionTypeParameters = true,
 				parameterNames = true,
 				rangeVariableTypes = true,
