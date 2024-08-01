@@ -129,23 +129,37 @@ local on_attach = function(client, bufnr)
 	end
 end
 
-local cmp = require'cmp'
-cmp.setup {
-	snippet = {
-		expand = function(args) vim.fn['vsnip#anonymous'](args.body) end,
-	},
-	sources = cmp.config.sources {
-		{ name = 'nvim_lsp' },
-		{ name = 'vsnip' },
-		{ name = 'path' },
-		{ name = 'buffer', options = { get_bufnrs = vim.api.nvim_list_bufs } },
-	},
-	mapping = {
-		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
-		['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
-		['<CR>'] = cmp.mapping.confirm({ select = true }),
-	}
-}
+-- require('help')
+-- local cmp = require'cmp'
+-- cmp.setup {
+-- 	-- preselect = cmp.PreselectMode.None,  -- 不自动选择第一个补全项
+-- 	-- completion = {
+-- 	-- 	autocomplete = false,  -- 禁用自动补全
+-- 	-- },
+-- 	snippet = {
+-- 		-- REQUIRED - you must specify a snippet engine
+-- 		expand = function(args)
+-- 			vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+-- 			-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+-- 			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+-- 			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+-- 			-- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+-- 		end,
+-- 	},
+-- 	sources = cmp.config.sources ({
+-- 		    { name = 'my_autocomplete' },
+--                 --
+-- 		-- { name = 'nvim_lsp' },
+-- 		-- { name = 'vsnip' },
+-- 		-- { name = 'path' },
+-- 		{ name = 'buffer', options = { get_bufnrs = vim.api.nvim_list_bufs } },
+-- 	}),
+-- 	mapping = {
+-- 		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
+-- 		['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
+-- 		['<CR>'] = cmp.mapping.confirm({ select = true }),
+-- 	},
+-- }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require'cmp_nvim_lsp'.default_capabilities(capabilities)
@@ -164,24 +178,26 @@ require'lspconfig'.gopls.setup {
 			-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings 补全命令
 			-- https://github.com/hrsh7th/vim-vsnip#2-setting
 			usePlaceholders = true,
-			-- semanticTokens = true,
+			semanticTokens = true,
 			experimentalPostfixCompletions = true,
 			analyses = {
 				unreachable = true, -- Disable the unreachable analyzer.
 				unusedparams = true,  -- Enable the unusedparams analyzer.
 				shadow = true,
 				unusedvariable = true,
+				staticcheck = true,
+				deadcode = true,
 			},
 			staticcheck = true,
-			hints = {
+			-- hints = {
 				-- assignVariableTypes = true,
 				-- compositeLiteralFields = true,
 				-- compositeLiteralTypes = true,
 				-- constantValues = true,
-				functionTypeParameters = true,
-				parameterNames = true,
-				rangeVariableTypes = true,
-			},
+				-- functionTypeParameters = true,
+				-- parameterNames = true,
+				-- rangeVariableTypes = true,
+			-- },
 		},
 	},
 }
@@ -199,6 +215,7 @@ if vim.version().minor >= 10 then
 		end
 	})
 end
+
 require'lspconfig'.lua_ls.setup {
 	settings = {
 		Lua = {
@@ -245,7 +262,9 @@ local config = require('go.config')
 config.options.test_env = {
 	GOARCH = 'amd64',
 	CONF_PATH = gitRootPath,
-	MYSQL_ROOT_PASSWORD = 'root'
+	MYSQL_ROOT_PASSWORD = 'root',
+	ZONE = 'sh001',
+	DEPLOY_ENV = 'uat'
 }
 
 -- Attaches to every FileType mode
@@ -300,3 +319,24 @@ vim.cmd('hi DiagnosticVirtualTextHint guifg=#00ff00 ctermfg=red')
 
 require("copilot_cmp").setup()
 vim.notify = require("notify")
+
+require('lint').linters_by_ft = {
+  -- markdown = {'vale',},
+  go = {'golangcilint',},
+  golang = {'golangcilint',}
+}
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+
+    -- try_lint without arguments runs the linters defined in `linters_by_ft`
+    -- for the current filetype
+    require("lint").try_lint()
+
+    -- You can call `try_lint` with a linter name or a list of names to always
+    -- run specific linters, independent of the `linters_by_ft` configuration
+    -- require("lint").try_lint("cspell")
+    require("lint").try_lint("golangcilint")
+  end,
+})
+vim.lsp.set_log_level("debug")

@@ -71,13 +71,21 @@ return require('packer').startup(function()
 	}
 
 	use { 'hrsh7th/cmp-nvim-lsp' }
-	use { 'hrsh7th/nvim-cmp' }
+	use { 
+		'hrsh7th/nvim-cmp',
+		requires = {
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-cmdline',
+		}
+	}
 	use { 'hrsh7th/cmp-vsnip' }
 	use { 'hrsh7th/cmp-path' }
 	use { 'hrsh7th/cmp-buffer' }
 	use { 'hrsh7th/cmp-cmdline' }
-	use {	'hrsh7th/vim-vsnip' }
-	use {	'honza/vim-snippets' }
+	use { 'hrsh7th/vim-vsnip' }
+	-- use {	'honza/vim-snippets' }
 
 	-- use { 'github/copilot.vim' }
 	use {
@@ -382,6 +390,27 @@ return require('packer').startup(function()
 				},
 			}
 			vim.notify = require('notify')
+		end
+	}
+
+	use {
+		'mfussenegger/nvim-lint',
+		config = function()
+			require('lint').linters_by_ft = {
+				go = {'golangcilint',}
+			}
+			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+				callback = function()
+
+					-- try_lint without arguments runs the linters defined in `linters_by_ft`
+					-- for the current filetype
+					require("lint").try_lint()
+
+					-- You can call `try_lint` with a linter name or a list of names to always
+					-- run specific linters, independent of the `linters_by_ft` configuration
+					require("lint").try_lint("golangcilint")
+				end,
+			})
 		end
 	}
 

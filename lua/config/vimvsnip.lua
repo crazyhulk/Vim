@@ -61,6 +61,7 @@ lspkind.init({
 
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 
+require('help')
 local cmp = require('cmp')
 cmp.setup {
 
@@ -73,6 +74,7 @@ cmp.setup {
 		{ name = "path", group_index = 2 },
 		{ name = "luasnip", group_index = 2 },
 		{ name = "buffer", group_index = 2 },
+		{ name = "my_autocomplete", group_index = 2 },
 	},
 	sorting = {
 		priority_weight = 2,
@@ -92,40 +94,48 @@ cmp.setup {
 			cmp.config.compare.order,
 		},
 	},
-
 	mapping = {
-
-		-- ... Your other mappings ...
-		["<CR>"] = cmp.mapping.confirm({
-			-- this is the important line
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = false,
-		}),
-
-		["<Tab>"] = cmp.mapping(function(fallback)
-			-- if cmp.visible() then
-			-- 	cmp.select_next_item()
-			if vim.fn["vsnip#available"](1) == 1 then
-				feedkey("<Plug>(vsnip-expand-or-jump)", "")
-				-- elseif has_words_before() then
-				-- 	cmp.complete()
-			else
-				-- require("copilot").Accept()
-				fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-			end
-		end, { "i", "s" }),
-
-		["<S-Tab>"] = cmp.mapping(function()
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-				feedkey("<Plug>(vsnip-jump-prev)", "")
-			end
-		end, { "i", "s" }),
-
-		-- ... Your other mappings ...
-
+		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
+		['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
+		['<CR>'] = cmp.mapping.confirm({ select = true }),
 	},
+
+
+	-- mapping = {
+	-- 	['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
+	-- 	['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
+        --
+	-- 	-- ... Your other mappings ...
+	-- 	["<CR>"] = cmp.mapping.confirm({
+	-- 		-- this is the important line
+	-- 		behavior = cmp.ConfirmBehavior.Replace,
+	-- 		select = false,
+	-- 	}),
+        --
+	-- 	["<Tab>"] = cmp.mapping(function(fallback)
+	-- 		-- if cmp.visible() then
+	-- 		-- 	cmp.select_next_item()
+	-- 		if vim.fn["vsnip#available"](1) == 1 then
+	-- 			feedkey("<Plug>(vsnip-expand-or-jump)", "")
+	-- 			-- elseif has_words_before() then
+	-- 			-- 	cmp.complete()
+	-- 		else
+	-- 			-- require("copilot").Accept()
+	-- 			fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+	-- 		end
+	-- 	end, { "i", "s" }),
+        --
+	-- 	["<S-Tab>"] = cmp.mapping(function()
+	-- 		if cmp.visible() then
+	-- 			cmp.select_prev_item()
+	-- 		elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+	-- 			feedkey("<Plug>(vsnip-jump-prev)", "")
+	-- 		end
+	-- 	end, { "i", "s" }),
+        --
+	-- 	-- ... Your other mappings ...
+        --
+	-- },
 	formatting = {
 		format = lspkind.cmp_format({
 			mode = 'symbol', -- show only symbol annotations
