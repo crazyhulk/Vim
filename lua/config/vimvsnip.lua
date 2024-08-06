@@ -61,7 +61,6 @@ lspkind.init({
 
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 
-require('help')
 local cmp = require('cmp')
 cmp.setup {
 
@@ -74,7 +73,7 @@ cmp.setup {
 		{ name = "path", group_index = 2 },
 		{ name = "luasnip", group_index = 2 },
 		{ name = "buffer", group_index = 2 },
-		{ name = "my_autocomplete", group_index = 2 },
+		{ name = "nvim_cmp_sign", group_index = 2 },
 	},
 	sorting = {
 		priority_weight = 2,

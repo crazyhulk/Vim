@@ -85,7 +85,9 @@ return require('packer').startup(function()
 	use { 'hrsh7th/cmp-buffer' }
 	use { 'hrsh7th/cmp-cmdline' }
 	use { 'hrsh7th/vim-vsnip' }
-	-- use {	'honza/vim-snippets' }
+	-- use { 'crazyhulk/cmp-sign' }
+	-- use  '/Users/bilibili/workspace/nvim/cmp-sign'
+	use {	'honza/vim-snippets' }
 
 	-- use { 'github/copilot.vim' }
 	use {
