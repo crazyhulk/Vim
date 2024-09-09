@@ -166,6 +166,7 @@ capabilities = require'cmp_nvim_lsp'.default_capabilities(capabilities)
 
 require'lspconfig'.gopls.setup {
 	-- cmd = {'gopls', 'serve','--debug=localhost:6060', '-rpc.trace'},
+	-- cmd = {'/Users/bilibili/workspace/go/xtools/gopls/gopls', 'serve','--debug=0.0.0.0:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
 	cmd = {'gopls'},
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -178,6 +179,7 @@ require'lspconfig'.gopls.setup {
 			-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings 补全命令
 			-- https://github.com/hrsh7th/vim-vsnip#2-setting
 			usePlaceholders = true,
+			buildFlags = {"-tags=wireinject"}, -- 添加你需要的 build tags
 			semanticTokens = true,
 			experimentalPostfixCompletions = true,
 			analyses = {

@@ -209,6 +209,7 @@ function M.test_func(opt)
 		'go',
 		'test',
 		'-gcflags=-l',
+		'-ldflags=-checklinkname=0',
 		'-run',
 		vim.fn.shellescape(string.format('^%s$', func_name)),
 	}
