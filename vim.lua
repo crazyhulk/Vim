@@ -84,7 +84,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
 	buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
 	buf_set_keymap('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-	buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+	buf_set_keymap('n', 'gm', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
 	-- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
 	buf_set_keymap('n', 'gr', '<cmd>lua require"telescope.builtin".lsp_references{}<cr>', opts)
 	buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
@@ -165,9 +165,9 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require'cmp_nvim_lsp'.default_capabilities(capabilities)
 
 require'lspconfig'.gopls.setup {
-	-- cmd = {'gopls', 'serve','--debug=localhost:6060', '-rpc.trace'},
+	cmd = {'gopls', 'serve','--debug=localhost:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
 	-- cmd = {'/Users/bilibili/workspace/go/xtools/gopls/gopls', 'serve','--debug=0.0.0.0:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
-	cmd = {'gopls'},
+	-- cmd = {'gopls'},
 	on_attach = on_attach,
 	capabilities = capabilities,
 	flags = {

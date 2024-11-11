@@ -17,22 +17,6 @@ return require('packer').startup(function()
 	-- Load on an autocommand event
 	use {'andymass/vim-matchup', event = 'VimEnter'}
 
-	-- Load on a combination of conditions: specific filetypes or commands
-	-- Also run code after load (see the "config" key)
-	-- use {
-	--   'w0rp/ale',
-	--   ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
-	--   cmd = 'ALEEnable',
-	--   config = 'vim.cmd[[ALEEnable]]'
-	-- }
-
-	-- Plugins can have dependencies on other plugins
-	-- use {
-	--   'haorenW1025/completion-nvim',
-	--   opt = true,
-	--   requires = {{'hrsh7th/vim-vsnip', opt = true}, {'hrsh7th/vim-vsnip-integ', opt = true}}
-	-- }
-
 	-- Plugins can also depend on rocks from luarocks.org:
 	-- use {
 	--   'my/supercoolplugin',
@@ -119,7 +103,16 @@ return require('packer').startup(function()
 	use { 'norcalli/nvim-colorizer.lua' }
 	use { 'tpope/vim-fugitive' }
 	use { 'jreybert/vimagit' }
-	use { 'luochen1990/rainbow' } -- 括号颜色配对
+	use{
+		'altermo/ultimate-autopair.nvim',
+		event={'InsertEnter','CmdlineEnter'},
+		branch='v0.6', --recommended as each new version will have breaking changes
+		config=function ()
+			require('ultimate-autopair').setup({
+				--Config goes here
+			})
+		end,
+	}
 	use { 'scrooloose/nerdtree' }
 	use { 'Xuyuanp/nerdtree-git-plugin' }
 	-- use { 'mileszs/ack.vim' }

@@ -12,7 +12,7 @@ M.options = {
 	formatter = 'goimports',
 	-- test flags: -count=1 will disable cache
 	test_flags = { '-v' },
-	test_timeout = '30s',
+	test_timeout = '0s',
 	test_env = {},
 	-- show test result with popup window
 	test_popup = true,
