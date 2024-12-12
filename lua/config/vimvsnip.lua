@@ -1,8 +1,3 @@
-local has_words_before = function()
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
 local feedkey = function(key, mode)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
@@ -155,24 +150,3 @@ cmp.setup {
 
 }
 
--- function close_popup()
--- 	print("2222222222222")	
--- end
---
--- function setup_popup()
---   -- Get the current window object
---   local win = vim.api.nvim_get_current_win()
--- 	-- require('output').close_popup
---   -- Define the keymapping for 'q'
---   local opts = { noremap = true, silent = true }
---   -- local map = string.format("<Esc><Esc>:lua vim.api.nvim_win_close(%d, true)<CR>", win)
---   -- local map = string.format("<Esc><Esc>:lua close_popup(%d, true) <CR>", win)
---
---   vim.api.nvim_buf_set_keymap(0, 'n', 'q', '<cmd>lua close_popup()<cr>', opts)
--- end
---
---
--- vim.cmd([[augroup NvimGoPopup]])
--- vim.cmd([[  autocmd!]])
--- vim.cmd([[  autocmd User NvimGoPopupPre lua setup_popup()]])
--- vim.cmd([[augroup END]])

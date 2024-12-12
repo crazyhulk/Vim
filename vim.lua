@@ -24,7 +24,7 @@ require'nvim-treesitter.configs'.setup {
 	},
 	highlight = {
 		enable = true,
-		additional_vim_regex_highlighting = false,
+		-- additional_vim_regex_highlighting = false,
 	},
 	indent = {
 		enable = true,
@@ -105,15 +105,15 @@ local on_attach = function(client, bufnr)
 	-- 	vim.lsp.inlay_hint(bufnr, true)
 	-- end
 	-- print(vim.inspect(client.server_capabilities.semanticTokensProvider))
-	if client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
-		vim.lsp.inlay_hint(bufnr, true)
-		local semantic = client.config.capabilities.textDocument.semanticTokens
-		client.server_capabilities.semanticTokensProvider = {
-			full = true,
-			legend = {tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes},
-			range = true,
-		}
-	end
+	-- if client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
+	-- 	vim.lsp.inlay_hint(bufnr, true)
+	-- 	local semantic = client.config.capabilities.textDocument.semanticTokens
+	-- 	client.server_capabilities.semanticTokensProvider = {
+	-- 		full = true,
+	-- 		legend = {tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes},
+	-- 		range = true,
+	-- 	}
+	-- end
 	-- Set autocommands conditional on server_capabilities
 	if client.server_capabilities.documentHighlightProvider then
 		vim.api.nvim_exec([[
@@ -165,9 +165,9 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require'cmp_nvim_lsp'.default_capabilities(capabilities)
 
 require'lspconfig'.gopls.setup {
-	cmd = {'gopls', 'serve','--debug=localhost:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
+	-- cmd = {'gopls', 'serve','--debug=localhost:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
 	-- cmd = {'/Users/bilibili/workspace/go/xtools/gopls/gopls', 'serve','--debug=0.0.0.0:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
-	-- cmd = {'gopls'},
+	cmd = {'gopls'},
 	on_attach = on_attach,
 	capabilities = capabilities,
 	flags = {
@@ -180,7 +180,7 @@ require'lspconfig'.gopls.setup {
 			-- https://github.com/hrsh7th/vim-vsnip#2-setting
 			usePlaceholders = true,
 			buildFlags = {"-tags=wireinject"}, -- 添加你需要的 build tags
-			semanticTokens = true,
+			-- semanticTokens = true, // 别开 坑比 影响配色
 			experimentalPostfixCompletions = true,
 			analyses = {
 				unreachable = true, -- Disable the unreachable analyzer.
@@ -256,17 +256,21 @@ require'lspconfig'.sourcekit.setup{
 
 require('config.lualine')
 require('config.vimvsnip')
--- require('config.theme')
+require('config.theme')
 
 -- 获取 git path
 local gitRootPath = vim.api.nvim_eval("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]")
 local config = require('go.config')
 config.options.test_env = {
+	HTTP_PROXY = 'http://127.0.0.1:8888',
+	http_proxy = 'http://127.0.0.1:8888',
+	APP_ID = 'comic.comic.risk-job',
+	ENV = 'uat',
 	GOARCH = 'amd64',
 	CONF_PATH = gitRootPath,
 	MYSQL_ROOT_PASSWORD = 'root',
 	ZONE = 'sh001',
-	DEPLOY_ENV = 'uat'
+	DEPLOY_ENV = 'uat',
 }
 
 -- Attaches to every FileType mode
@@ -304,28 +308,17 @@ vim.api.nvim_set_keymap('n', '<Leader>vh',  [[<Cmd>lua require('telescope.builti
 vim.api.nvim_set_keymap('n', '<Leader>fs',  ":SymbolsOutline <CR>", {})
 vim.api.nvim_set_keymap('n', '<Leader>ct',  ":Copilot panel<CR>", {})
 
-require("config.debug")
+-- require("config.debug")
 -- require("config.lint")
 -- require("config.vimtex")
-
--- require('plenary.reload').reload_module('plenary') -- 重新加载 Plenary.vim 模块
--- vim.cmd('hi DiagnosticError guifg=#ff0000') -- 配置诊断错误的颜色
--- vim.cmd('hi DiagnosticWarn guifg=#ff8800') -- 配置诊断警告的颜色
--- vim.cmd('hi DiagnosticInfo guifg=#00ffff') -- 配置诊断信息的颜色
--- vim.cmd('hi DiagnosticHint guifg=#00ff00') -- 配置诊断提示的颜色
-
-vim.cmd('hi DiagnosticVirtualTextError guifg=#ff0000 ctermfg=red')
-vim.cmd('hi DiagnosticVirtualTextWarn guifg=#ff8800 ctermfg=red')
-vim.cmd('hi DiagnosticVirtualTextInfo guifg=#00ffff ctermfg=red')
-vim.cmd('hi DiagnosticVirtualTextHint guifg=#00ff00 ctermfg=red')
 
 require("copilot_cmp").setup()
 vim.notify = require("notify")
 
 require('lint').linters_by_ft = {
   -- markdown = {'vale',},
-  go = {'golangcilint',},
-  golang = {'golangcilint',}
+  -- go = {'golangcilint',},
+  -- golang = {'golangcilint',}
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
@@ -338,7 +331,10 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     -- You can call `try_lint` with a linter name or a list of names to always
     -- run specific linters, independent of the `linters_by_ft` configuration
     -- require("lint").try_lint("cspell")
-    require("lint").try_lint("golangcilint")
+    -- require("lint").try_lint("golangcilint")
   end,
 })
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
+
+require("plugins")
+

@@ -103,31 +103,38 @@ return require('packer').startup(function()
 	use { 'norcalli/nvim-colorizer.lua' }
 	use { 'tpope/vim-fugitive' }
 	use { 'jreybert/vimagit' }
-	use{
-		'altermo/ultimate-autopair.nvim',
-		event={'InsertEnter','CmdlineEnter'},
-		branch='v0.6', --recommended as each new version will have breaking changes
-		config=function ()
-			require('ultimate-autopair').setup({
-				--Config goes here
-			})
-		end,
-	}
+	-- use {
+	-- 	'altermo/ultimate-autopair.nvim',
+	-- 	event={'InsertEnter','CmdlineEnter'},
+	-- 	branch='v0.6', --recommended as each new version will have breaking changes
+	-- 	config=function ()
+	-- 		require('ultimate-autopair').setup({
+	-- 			--Config goes here
+	-- 		})
+	-- 	end,
+	-- }
 	use { 'scrooloose/nerdtree' }
 	use { 'Xuyuanp/nerdtree-git-plugin' }
 	-- use { 'mileszs/ack.vim' }
-	use {	'jiangmiao/auto-pairs' }
+	use {
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = function()
+			require("nvim-autopairs").setup {
+				enable_check_bracket_line = false
+			}
+		end
+	}
 	-- use {	'junegunn/fzf.vim' }
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.5',
+		'nvim-telescope/telescope.nvim', tag = '0.1.8',
 		requires = { {'nvim-lua/plenary.nvim'} },
 	}
 
 	use {	'airblade/vim-gitgutter', branch = 'main' }
 	use {	'plasticboy/vim-markdown' }
+
 	use {	'marko-cerovac/material.nvim' }
-	-- use {	'lvht/mru' }
-	--
 	use {	'mhartington/oceanic-next' }
 	use {	'nvim-lua/plenary.nvim' }
 	use {	'nvim-lua/popup.nvim' }
@@ -272,74 +279,74 @@ return require('packer').startup(function()
 	}
 	use { 'sainnhe/sonokai' }
 	use { 'shaunsingh/solarized.nvim' }
-	use { 'mfussenegger/nvim-dap' }
-
-	use { 
-		"rcarriga/nvim-dap-ui",
-		requires = {
-			"mfussenegger/nvim-dap",
-			"nvim-neotest/nvim-nio"
-		},
-		config = function()
-		end
-	}
-	use { 
-		"folke/neodev.nvim",
-		config = function()
-			require("neodev").setup({
-				library = { plugins = { "nvim-dap-ui" }, types = true },
-			})
-		end
-	}
-	use {
-		'leoluz/nvim-dap-go',
-		config = function()
-			-- local dap = require('dap-go')
-			-- dap.setup {
-			-- 	-- Additional dap configurations can be added.
-			-- 	-- dap_configurations accepts a list of tables where each entry
-			-- 	-- represents a dap configuration. For more details do:
-			-- 	-- :help dap-configuration
-			-- 	dap_configurations = {
-			-- 		{
-			-- 			-- Must be "go" or it will be ignored by the plugin
-			-- 			type = "go",
-			-- 			name = "Attach remote",
-			-- 			mode = "remote",
-			-- 			request = "attach",
-			-- 		},
-			-- 	},
-			-- 	-- delve configurations
-			-- 	delve = {
-			-- 		-- time to wait for delve to initialize the debug session.
-			-- 		-- default to 20 seconds
-			-- 		initialize_timeout_sec = 20,
-			-- 		-- a string that defines the port to start delve debugger.
-			-- 		-- default to string "${port}" which instructs nvim-dap
-			-- 		-- to start the process in a random available port
-			-- 		port = "${port}"
-			-- 	},
-			-- }
-
-			-- dap.adapters.go = {
-			-- 	type = 'executable',
-			-- 	command = 'node',
-			-- 	args = {os.getenv('HOME') .. '/.vscode/extensions/golang.go-0.23.2/dist/debugAdapter.js'},
-			-- }
-			-- dap.configurations.go = {
-			-- 	{
-			-- 		type = 'go',
-			-- 		name = 'Debug',
-			-- 		request = 'launch',
-			-- 		showLog = false,
-			-- 		program = '${file}',
-			-- 		dlvToolPath = vim.fn.exepath('dlv'), -- Adjust to where delve is installed
-			-- 		env = {GOPATH = vim.env.GOPATH},
-			-- 		args = {},
-			-- 	},
-			-- }
-		end
-	}
+	-- use { 'mfussenegger/nvim-dap' }
+        --
+	-- use { 
+	-- 	"rcarriga/nvim-dap-ui",
+	-- 	requires = {
+	-- 		"mfussenegger/nvim-dap",
+	-- 		"nvim-neotest/nvim-nio"
+	-- 	},
+	-- 	config = function()
+	-- 	end
+	-- }
+	-- use { 
+	-- 	"folke/neodev.nvim",
+	-- 	config = function()
+	-- 		require("neodev").setup({
+	-- 			library = { plugins = { "nvim-dap-ui" }, types = true },
+	-- 		})
+	-- 	end
+	-- }
+	-- use {
+	-- 	'leoluz/nvim-dap-go',
+	-- 	config = function()
+	-- 		-- local dap = require('dap-go')
+	-- 		-- dap.setup {
+	-- 		-- 	-- Additional dap configurations can be added.
+	-- 		-- 	-- dap_configurations accepts a list of tables where each entry
+	-- 		-- 	-- represents a dap configuration. For more details do:
+	-- 		-- 	-- :help dap-configuration
+	-- 		-- 	dap_configurations = {
+	-- 		-- 		{
+	-- 		-- 			-- Must be "go" or it will be ignored by the plugin
+	-- 		-- 			type = "go",
+	-- 		-- 			name = "Attach remote",
+	-- 		-- 			mode = "remote",
+	-- 		-- 			request = "attach",
+	-- 		-- 		},
+	-- 		-- 	},
+	-- 		-- 	-- delve configurations
+	-- 		-- 	delve = {
+	-- 		-- 		-- time to wait for delve to initialize the debug session.
+	-- 		-- 		-- default to 20 seconds
+	-- 		-- 		initialize_timeout_sec = 20,
+	-- 		-- 		-- a string that defines the port to start delve debugger.
+	-- 		-- 		-- default to string "${port}" which instructs nvim-dap
+	-- 		-- 		-- to start the process in a random available port
+	-- 		-- 		port = "${port}"
+	-- 		-- 	},
+	-- 		-- }
+        --
+	-- 		-- dap.adapters.go = {
+	-- 		-- 	type = 'executable',
+	-- 		-- 	command = 'node',
+	-- 		-- 	args = {os.getenv('HOME') .. '/.vscode/extensions/golang.go-0.23.2/dist/debugAdapter.js'},
+	-- 		-- }
+	-- 		-- dap.configurations.go = {
+	-- 		-- 	{
+	-- 		-- 		type = 'go',
+	-- 		-- 		name = 'Debug',
+	-- 		-- 		request = 'launch',
+	-- 		-- 		showLog = false,
+	-- 		-- 		program = '${file}',
+	-- 		-- 		dlvToolPath = vim.fn.exepath('dlv'), -- Adjust to where delve is installed
+	-- 		-- 		env = {GOPATH = vim.env.GOPATH},
+	-- 		-- 		args = {},
+	-- 		-- 	},
+	-- 		-- }
+	-- 	end
+	-- }
 
 	use { 
 		'python-lsp/python-lsp-server',
@@ -392,7 +399,7 @@ return require('packer').startup(function()
 		'mfussenegger/nvim-lint',
 		config = function()
 			require('lint').linters_by_ft = {
-				go = {'golangcilint',}
+				-- go = {'golangcilint',}
 			}
 			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 				callback = function()
@@ -403,7 +410,7 @@ return require('packer').startup(function()
 
 					-- You can call `try_lint` with a linter name or a list of names to always
 					-- run specific linters, independent of the `linters_by_ft` configuration
-					require("lint").try_lint("golangcilint")
+					-- require("lint").try_lint("golangcilint")
 				end,
 			})
 		end

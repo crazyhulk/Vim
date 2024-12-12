@@ -34,7 +34,7 @@ require('material').setup({
 		-- "nvim-tree",
 		-- "nvim-web-devicons",
 		-- "sneak",
-		"telescope",
+		-- "telescope",
 		-- "trouble",
 		-- "which-key",
 	},
@@ -60,7 +60,23 @@ require('material').setup({
 
 	custom_highlights = {}, -- Overwrite highlights with your own
 })
-vim.cmd 'colorscheme material'
+-- vim.cmd 'colorscheme material'
+vim.cmd 'colorscheme sonokai'
+-- let g:sonokai_style = "maia"
+-- colorscheme PaperColor
+-- colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+-- colorscheme gruvbox-material
+-- colorscheme sonokai
+-- colorscheme solarized
+-- let g:material_style = "lighter"
+-- let g:material_style = "palenight"
+-- let g:material_style = "darker"
+-- let g:material_style = "oceanic"
+-- let g:material_style = "deep ocean"
+-- colorscheme material
+-- colorscheme OceanicNext
+-- colorscheme one
+
 
 require('plenary.reload').reload_module('plenary') -- 重新加载 Plenary.vim 模块
 vim.cmd('hi DiagnosticError guifg=#ff0000') -- 配置诊断错误的颜色

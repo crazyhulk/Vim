@@ -20,8 +20,8 @@ set mmp=5000  "pattern uses more memory than 'maxmempattern'
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set fillchars=vert:\|
-set background=light
-" set background=dark
+" set background=light
+set background=dark
 "set nu
 "set rnu
 
@@ -29,27 +29,10 @@ set re=0
 set ttyfast
 set lazyredraw
 
-" let g:sonokai_style = "maia"
-colorscheme PaperColor
-" colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
-" colorscheme gruvbox-material
-" colorscheme sonokai
-" colorscheme solarized
-" let g:material_style = "lighter"
-" let g:material_style = "palenight"
-" let g:material_style = "darker"
-" let g:material_style = "oceanic"
-" let g:material_style = "deep ocean"
-" colorscheme material
-" colorscheme OceanicNext
-"colorscheme one
 
-
-nnoremap <silent> <c-u> :Mru<cr>
 "nnoremap <silent> <c-p> :call fzflv#Open()<cr>
 " nnoremap <silent> <c-p> :GFiles<cr>
 " nnoremap <silent> <leader>t :TagbarToggle<cr>
-nnoremap <silent> <leader>tt :GoDecls<cr>
 nnoremap <silent> <leader>te :NERDTreeToggle<cr>
 nnoremap <silent> <leader>tf :NERDTreeFind<cr>
 
