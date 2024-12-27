@@ -58,6 +58,7 @@ vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 
 local cmp = require('cmp')
 cmp.setup {
+	preselect = cmp.PreselectMode.None,  -- 不自动选择第一个补全项
 	snippet = {
 		expand = function(args) vim.fn['vsnip#anonymous'](args.body) end,
 	},

@@ -110,14 +110,10 @@ runtime vim.lua
 " autocmd TextChanged *.go :lua require('modules').org_imports()
 " 代码补全结束后自动导包
 autocmd CompleteDone *.go :lua require('modules').org_imports()
-autocmd BufWritePre *.go :lua vim.lsp.buf.format({ async = true })
-autocmd BufWritePre *.go :lua require('modules').org_imports()
+" autocmd BufWritePre *.go :lua vim.lsp.buf.format({ async = true })
+" autocmd BufWritePre *.go :lua require('modules').org_imports()
 " autocmd BufWritePre *.go lua vim.lsp.buf.code_action({ source = { organizeImports = true } })
-
-" augroup NvimGoInternal
-"   autocmd!
-"   autocmd User NvimGoPopupPre ""
-" augroup END
+autocmd BufWritePre *.go :silent! lua vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
 
 command! GoTest lua require('go.test').test()
 command! GoTestAll lua require('go.test').test_all()
@@ -128,43 +124,3 @@ command! -nargs=? -complete=command GoToTest lua require('go.test').test_open(<f
 command! -nargs=* -range GoAddTags lua require('go.struct_tag').add_tags({<line1>, <line2>, <count>, <f-args>})
 command! -nargs=* -range GoRemoveTags lua require('go.struct_tag').remove_tags({<line1>, <line2>, <count>, <f-args>})
 command! -nargs=* -range GoClearTags lua require('go.struct_tag').clear_tags({<line1>, <line2>, <count>, <f-args>})
-
- let g:copilot_filetypes = {
-                              \ '*': v:false,
-                              \ 'python': v:true,
-                              \ 'go': v:true,
-                              \ 'golang': v:true,
-                              \ }
-
-" command! -nargs=* -range GoAddTags call lv#gomodifytags(<line1>, <line2>, <count>, '-add-tags', <f-args>)
-" command! -nargs=* -range GoAddJsonTags call lv#gomodifytags(<line1>, <line2>, <count>, '-add-tags', 'json', <f-args>)
-" command! -nargs=* -range GoAddOptionTags call lv#gomodifytags(<line1>, <line2>, <count>, '-add-tags', 'json', '-add-options json=omitempty', <f-args>)
-" command! -nargs=* -range GoClearTags call lv#gomodifytags(<line1>, <line2>, <count>, '-clear-tags', <f-args>)
-" command! -nargs=* -range GoRemoveTags call lv#gomodifytags(<line1>, <line2>, <count>, '-remove-tags', <f-args>)
-" command! -nargs=* -range GoRemoveJsonTags call lv#gomodifytags(<line1>, <line2>, <count>, '-remove-tags', 'json', <f-args>)
-"
-"
-"
-"
-"
-" function! OmniPopup(action)
-"     " print("========2", vim.inspect(action))
-"     if pumvisible()
-"         echo a:action
-"         if a:action == 'q'
-"             return ":q"
-"         elseif a:action == 'k'
-"             return "\<C-P>"
-"         endif
-"     endif
-"     return a:action
-" endfunction
-"
-" nnoremap <silent>q :call OmniPopup('q')<CR>
-" let g:ale_linters = {
-" \   'go': ['revive'],
-" \}
-
-imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-        let g:copilot_no_tab_map = v:true
-

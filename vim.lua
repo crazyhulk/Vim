@@ -1,6 +1,7 @@
 -- require('modules')
 -- vim.o.background = "light"
 --
+require("config.lazy")
 local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
@@ -101,65 +102,20 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>', opts)
 	buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', opts)
 	buf_set_keymap('n', '<space>t', '<cmd>lua require("go.test").test_func()<cr>', opts)
-	-- if client.server_capabilities.inlayHintProvider then
-	-- 	vim.lsp.inlay_hint(bufnr, true)
-	-- end
-	-- print(vim.inspect(client.server_capabilities.semanticTokensProvider))
-	-- if client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
-	-- 	vim.lsp.inlay_hint(bufnr, true)
-	-- 	local semantic = client.config.capabilities.textDocument.semanticTokens
-	-- 	client.server_capabilities.semanticTokensProvider = {
-	-- 		full = true,
-	-- 		legend = {tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes},
-	-- 		range = true,
-	-- 	}
-	-- end
-	-- Set autocommands conditional on server_capabilities
-	if client.server_capabilities.documentHighlightProvider then
-		vim.api.nvim_exec([[
-      hi LspReferenceRead cterm=bold ctermbg=DarkMagenta guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=DarkMagenta guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=DarkMagenta guibg=LightYellow
-      augroup lsp_document_highlight
-      autocmd! * <buffer>
-      autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-      autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-      ]], false)
-	end
+	-- -- Set autocommands conditional on server_capabilities
+	 if client.server_capabilities.documentHighlightProvider then
+	 	vim.api.nvim_exec([[
+       hi LspReferenceRead cterm=bold ctermbg=DarkMagenta guibg=LightYellow
+       hi LspReferenceText cterm=bold ctermbg=DarkMagenta guibg=LightYellow
+       hi LspReferenceWrite cterm=bold ctermbg=DarkMagenta guibg=LightYellow
+       augroup lsp_document_highlight
+       autocmd! * <buffer>
+       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+       augroup END
+       ]], false)
+	 end
 end
-
--- require('help')
--- local cmp = require'cmp'
--- cmp.setup {
--- 	-- preselect = cmp.PreselectMode.None,  -- 不自动选择第一个补全项
--- 	-- completion = {
--- 	-- 	autocomplete = false,  -- 禁用自动补全
--- 	-- },
--- 	snippet = {
--- 		-- REQUIRED - you must specify a snippet engine
--- 		expand = function(args)
--- 			vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
--- 			-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
--- 			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
--- 			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
--- 			-- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
--- 		end,
--- 	},
--- 	sources = cmp.config.sources ({
--- 		    { name = 'my_autocomplete' },
---                 --
--- 		-- { name = 'nvim_lsp' },
--- 		-- { name = 'vsnip' },
--- 		-- { name = 'path' },
--- 		{ name = 'buffer', options = { get_bufnrs = vim.api.nvim_list_bufs } },
--- 	}),
--- 	mapping = {
--- 		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
--- 		['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
--- 		['<CR>'] = cmp.mapping.confirm({ select = true }),
--- 	},
--- }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require'cmp_nvim_lsp'.default_capabilities(capabilities)
@@ -204,20 +160,6 @@ require'lspconfig'.gopls.setup {
 	},
 }
 
-if vim.version().minor >= 10 then
-	vim.api.nvim_create_autocmd("LspAttach", {
-		group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-		callback = function(args)
-			local client = vim.lsp.get_client_by_id(args.data.client_id)
-			if client.server_capabilities.inlayHintProvider then
-				-- vim.lsp.inlay_hint(args.buf, true)
-				vim.lsp.inlay_hint.enable(true)
-			end
-			-- whatever other lsp config you want
-		end
-	})
-end
-
 require'lspconfig'.lua_ls.setup {
 	settings = {
 		Lua = {
@@ -247,13 +189,6 @@ require'lspconfig'.sourcekit.setup{
 	-- root_dir = root_pattern("Package.swift", ".git")	
 }
 
--- require "lsp_signature".setup({
--- 	bind = true, -- This is mandatory, otherwise border config won't get registered.
--- 	handler_opts = {
--- 		border = "rounded"
--- 	}
--- })
-
 require('config.lualine')
 require('config.vimvsnip')
 require('config.theme')
@@ -262,8 +197,8 @@ require('config.theme')
 local gitRootPath = vim.api.nvim_eval("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]")
 local config = require('go.config')
 config.options.test_env = {
-	HTTP_PROXY = 'http://127.0.0.1:8888',
-	http_proxy = 'http://127.0.0.1:8888',
+	-- HTTP_PROXY = 'http://127.0.0.1:8888',
+	-- http_proxy = 'http://127.0.0.1:8888',
 	APP_ID = 'comic.comic.risk-job',
 	ENV = 'uat',
 	GOARCH = 'amd64',
@@ -273,40 +208,7 @@ config.options.test_env = {
 	DEPLOY_ENV = 'uat',
 }
 
--- Attaches to every FileType mode
--- require 'colorizer'.setup()
--- require('material').setup()
 
-
--- print("=========111", cmd("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]"))
--- print("=========111", vim.api.nvim_eval("system('git rev-parse --show-toplevel 2> /dev/null')[:-2]"))
-
--- Find files using Telescope command-line sugar.
--- vim.api.nvim_set_keymap('n', "<leader>ff", ":Telescope find_files<cr>", {})
--- vim.api.nvim_set_keymap('n', "<leader>fg", ":Telescope live_grep<cr>", {})
-vim.api.nvim_set_keymap('n', "<leader>fb", ":Telescope buffers<CR>", {})
-vim.api.nvim_set_keymap('n', "<leader>fh", ":Telescope help_tags<cr>", {})
--- vim.api.nvim_set_keymap('n', "<leader>ff", ":Telescope find_files", {})
--- nnoremap <leader>ff <cmd>Telescope find_files<cr>
--- nnoremap <leader>fg <cmd>Telescope live_grep<cr>
--- nnoremap <leader>fb <cmd>Telescope buffers<cr>
--- nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
--- Using Lua functions
-vim.api.nvim_set_keymap('n', '<Leader>ff',  ":lua require('telescope.builtin').find_files({find_command=ag,hidden=false, no_ignore=true})<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>fds',  ":lua require('telescope.builtin').lsp_document_symbols()<CR>", {})
-vim.api.nvim_set_keymap('n', '<Leader>fws',  ":lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>", {})
-vim.api.nvim_set_keymap('n', '<Leader>fg',  [[<Cmd>lua require('telescope.builtin').live_grep({find_command=ag})<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>fo',  [[<Cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
--- nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
--- nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
--- nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
--- nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>	
-
-vim.api.nvim_set_keymap('n', '<Leader>vh',  [[<Cmd>lua require('telescope.builtin').command_history()<CR>]], { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap('n', '<Leader>fs',  ":SymbolsOutline <CR>", {})
-vim.api.nvim_set_keymap('n', '<Leader>ct',  ":Copilot panel<CR>", {})
 
 -- require("config.debug")
 -- require("config.lint")
@@ -334,7 +236,5 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     -- require("lint").try_lint("golangcilint")
   end,
 })
--- vim.lsp.set_log_level("debug")
 
-require("plugins")
-
+require("config.keybinding")
