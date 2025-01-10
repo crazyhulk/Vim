@@ -103,15 +103,15 @@ require("lazy").setup({
 	{ 'jreybert/vimagit' },
 	{ 'scrooloose/nerdtree' },
 	{ 'Xuyuanp/nerdtree-git-plugin' },
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = function()
-			require("nvim-autopairs").setup {
-				enable_check_bracket_line = false
-			}
-		end
-	},
+	-- {
+	-- 	"windwp/nvim-autopairs",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require("nvim-autopairs").setup {
+	-- 			enable_check_bracket_line = false
+	-- 		}
+	-- 	end
+	-- },
 	--   {	'junegunn/fzf.vim' },
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.8',

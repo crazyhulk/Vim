@@ -57,6 +57,14 @@ lspkind.init({
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 
 local cmp = require('cmp')
+cmp.event:on("menu_opened", function()
+  vim.b.copilot_suggestion_hidden = true
+end)
+
+cmp.event:on("menu_closed", function()
+  vim.b.copilot_suggestion_hidden = false
+end)
+
 cmp.setup {
 	preselect = cmp.PreselectMode.None,  -- 不自动选择第一个补全项
 	snippet = {
@@ -100,6 +108,9 @@ cmp.setup {
 
 
 	mapping = {
+		['<C-g>'] = cmp.mapping(function(fallback)
+			vim.api.nvim_feedkeys(vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)), 'n', true)
+		end),
 		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
 		['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
 
@@ -148,6 +159,8 @@ cmp.setup {
 		}),
 	},
 	-- ... Your other configuration ...
-
+	experimental = {
+		ghost_text = false -- this feature conflict with copilot.vim's preview.
+	}
 }
 

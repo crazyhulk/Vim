@@ -1,2 +1,3 @@
 /* pack/vendor/start/* */
 plugin/
+./lazy-lock.json

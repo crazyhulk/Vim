@@ -189,6 +189,7 @@ require'lspconfig'.sourcekit.setup{
 	-- root_dir = root_pattern("Package.swift", ".git")	
 }
 
+require("copilot_cmp").setup()
 require('config.lualine')
 require('config.vimvsnip')
 require('config.theme')
@@ -203,18 +204,17 @@ config.options.test_env = {
 	ENV = 'uat',
 	GOARCH = 'amd64',
 	CONF_PATH = gitRootPath,
+	-- CONF_PATH = '/Users/bilibili/workspace/go/sniper',
 	MYSQL_ROOT_PASSWORD = 'root',
 	ZONE = 'sh001',
 	DEPLOY_ENV = 'uat',
 }
 
 
-
 -- require("config.debug")
 -- require("config.lint")
 -- require("config.vimtex")
 
-require("copilot_cmp").setup()
 vim.notify = require("notify")
 
 require('lint').linters_by_ft = {
