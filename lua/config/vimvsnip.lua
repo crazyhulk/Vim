@@ -56,111 +56,111 @@ lspkind.init({
 
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 
-local cmp = require('cmp')
-cmp.event:on("menu_opened", function()
-  vim.b.copilot_suggestion_hidden = true
-end)
-
-cmp.event:on("menu_closed", function()
-  vim.b.copilot_suggestion_hidden = false
-end)
-
-cmp.setup {
-	preselect = cmp.PreselectMode.None,  -- 不自动选择第一个补全项
-	snippet = {
-		expand = function(args) vim.fn['vsnip#anonymous'](args.body) end,
-	},
-
-	-- ... Your other configuration ...
-	sources = {
-		-- Copilot Source
-		{ name = "copilot", group_index = 2 },
-		-- Other Sources
-		{ name = "nvim_lsp", group_index = 2 },
-		{ name = "path", group_index = 2 },
-		{ name = "luasnip", group_index = 2 },
-		{ name = "buffer", group_index = 2 },
-		{ name = "nvim_cmp_sign", group_index = 2 },
-	},
-	sorting = {
-		priority_weight = 2,
-		comparators = {
-			require("copilot_cmp.comparators").prioritize,
-
-			-- Below is the default comparitor list and order for nvim-cmp
-			cmp.config.compare.offset,
-			-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-			cmp.config.compare.exact,
-			cmp.config.compare.score,
-			cmp.config.compare.recently_used,
-			cmp.config.compare.locality,
-			cmp.config.compare.kind,
-			cmp.config.compare.sort_text,
-			cmp.config.compare.length,
-			cmp.config.compare.order,
-		},
-	},
-	-- mapping = {
-	-- 	['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
-	-- 	['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
-	-- 	['<CR>'] = cmp.mapping.confirm({ select = true }),
-	-- },
-
-
-	mapping = {
-		['<C-g>'] = cmp.mapping(function(fallback)
-			vim.api.nvim_feedkeys(vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)), 'n', true)
-		end),
-		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
-		['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
-
-		-- ... Your other mappings ...
-		["<CR>"] = cmp.mapping.confirm({
-			-- this is the important line
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = false,
-		}),
-
-		["<Tab>"] = cmp.mapping(function(fallback)
-			-- if cmp.visible() then
-			-- 	cmp.select_next_item()
-			if vim.fn["vsnip#available"](1) == 1 then
-				feedkey("<Plug>(vsnip-expand-or-jump)", "")
-				-- elseif has_words_before() then
-				-- 	cmp.complete()
-			else
-				-- require("copilot").Accept()
-				fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-			end
-		end, { "i", "s" }),
-
-		["<S-Tab>"] = cmp.mapping(function()
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-				feedkey("<Plug>(vsnip-jump-prev)", "")
-			end
-		end, { "i", "s" }),
-
-		-- ... Your other mappings ...
-
-	},
-	formatting = {
-		format = lspkind.cmp_format({
-			mode = 'symbol', -- show only symbol annotations
-			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-			ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-
-			-- The function below will be called before any actual modifications from lspkind
-			-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-			before = function (entry, vim_item)
-				return vim_item
-			end
-		}),
-	},
-	-- ... Your other configuration ...
-	experimental = {
-		ghost_text = false -- this feature conflict with copilot.vim's preview.
-	}
-}
-
+-- local cmp = require('cmp')
+-- cmp.event:on("menu_opened", function()
+--   vim.b.copilot_suggestion_hidden = true
+-- end)
+--
+-- cmp.event:on("menu_closed", function()
+--   vim.b.copilot_suggestion_hidden = false
+-- end)
+--
+-- cmp.setup {
+-- 	preselect = cmp.PreselectMode.None,  -- 不自动选择第一个补全项
+-- 	snippet = {
+-- 		expand = function(args) vim.fn['vsnip#anonymous'](args.body) end,
+-- 	},
+--
+-- 	-- ... Your other configuration ...
+-- 	sources = {
+-- 		-- Copilot Source
+-- 		{ name = "copilot", group_index = 2 },
+-- 		-- Other Sources
+-- 		{ name = "nvim_lsp", group_index = 2 },
+-- 		{ name = "path", group_index = 2 },
+-- 		{ name = "luasnip", group_index = 2 },
+-- 		{ name = "buffer", group_index = 2 },
+-- 		{ name = "nvim_cmp_sign", group_index = 2 },
+-- 	},
+-- 	sorting = {
+-- 		priority_weight = 2,
+-- 		comparators = {
+-- 			require("copilot_cmp.comparators").prioritize,
+--
+-- 			-- Below is the default comparitor list and order for nvim-cmp
+-- 			cmp.config.compare.offset,
+-- 			-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+-- 			cmp.config.compare.exact,
+-- 			cmp.config.compare.score,
+-- 			cmp.config.compare.recently_used,
+-- 			cmp.config.compare.locality,
+-- 			cmp.config.compare.kind,
+-- 			cmp.config.compare.sort_text,
+-- 			cmp.config.compare.length,
+-- 			cmp.config.compare.order,
+-- 		},
+-- 	},
+-- 	-- mapping = {
+-- 	-- 	['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
+-- 	-- 	['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
+-- 	-- 	['<CR>'] = cmp.mapping.confirm({ select = true }),
+-- 	-- },
+--
+--
+-- 	mapping = {
+-- 		['<C-g>'] = cmp.mapping(function(fallback)
+-- 			vim.api.nvim_feedkeys(vim.fn['copilot#Accept'](vim.api.nvim_replace_termcodes('<Tab>', true, true, true)), 'n', true)
+-- 		end),
+-- 		['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
+-- 		['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
+--
+-- 		-- ... Your other mappings ...
+-- 		["<CR>"] = cmp.mapping.confirm({
+-- 			-- this is the important line
+-- 			behavior = cmp.ConfirmBehavior.Replace,
+-- 			select = false,
+-- 		}),
+--
+-- 		["<Tab>"] = cmp.mapping(function(fallback)
+-- 			-- if cmp.visible() then
+-- 			-- 	cmp.select_next_item()
+-- 			if vim.fn["vsnip#available"](1) == 1 then
+-- 				feedkey("<Plug>(vsnip-expand-or-jump)", "")
+-- 				-- elseif has_words_before() then
+-- 				-- 	cmp.complete()
+-- 			else
+-- 				-- require("copilot").Accept()
+-- 				fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+-- 			end
+-- 		end, { "i", "s" }),
+--
+-- 		["<S-Tab>"] = cmp.mapping(function()
+-- 			if cmp.visible() then
+-- 				cmp.select_prev_item()
+-- 			elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+-- 				feedkey("<Plug>(vsnip-jump-prev)", "")
+-- 			end
+-- 		end, { "i", "s" }),
+--
+-- 		-- ... Your other mappings ...
+--
+-- 	},
+-- 	formatting = {
+-- 		format = lspkind.cmp_format({
+-- 			mode = 'symbol', -- show only symbol annotations
+-- 			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+-- 			ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+--
+-- 			-- The function below will be called before any actual modifications from lspkind
+-- 			-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+-- 			before = function (entry, vim_item)
+-- 				return vim_item
+-- 			end
+-- 		}),
+-- 	},
+-- 	-- ... Your other configuration ...
+-- 	experimental = {
+-- 		ghost_text = false -- this feature conflict with copilot.vim's preview.
+-- 	}
+-- }
+--

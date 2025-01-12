@@ -118,7 +118,7 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require'cmp_nvim_lsp'.default_capabilities(capabilities)
+-- capabilities = require'cmp_nvim_lsp'.default_capabilities(capabilities)
 
 require'lspconfig'.gopls.setup {
 	-- cmd = {'gopls', 'serve','--debug=localhost:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
@@ -189,7 +189,7 @@ require'lspconfig'.sourcekit.setup{
 	-- root_dir = root_pattern("Package.swift", ".git")	
 }
 
-require("copilot_cmp").setup()
+-- require("copilot_cmp").setup()
 require('config.lualine')
 require('config.vimvsnip')
 require('config.theme')
@@ -203,8 +203,8 @@ config.options.test_env = {
 	APP_ID = 'comic.comic.risk-job',
 	ENV = 'uat',
 	GOARCH = 'amd64',
-	CONF_PATH = gitRootPath,
-	-- CONF_PATH = '/Users/bilibili/workspace/go/sniper',
+	-- CONF_PATH = gitRootPath,
+	CONF_PATH = '/Users/bilibili/workspace/go/sniper',
 	MYSQL_ROOT_PASSWORD = 'root',
 	ZONE = 'sh001',
 	DEPLOY_ENV = 'uat',

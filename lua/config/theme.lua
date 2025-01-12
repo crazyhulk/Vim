@@ -29,7 +29,7 @@ require('material').setup({
 		-- "mini",
 		-- "neogit",
 		-- "neorg",
-		"nvim-cmp",
+		-- "nvim-cmp",
 		-- "nvim-navic",
 		-- "nvim-tree",
 		-- "nvim-web-devicons",
