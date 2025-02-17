@@ -63,12 +63,6 @@ require("lazy").setup({
 		-- { 'hrsh7th/cmp-nvim-lsp' },
 		-- {
 		-- 	'hrsh7th/nvim-cmp',
-		-- 	requires = {
-		-- 		'hrsh7th/cmp-nvim-lsp',
-		-- 		'hrsh7th/cmp-buffer',
-		-- 		'hrsh7th/cmp-path',
-		-- 		'hrsh7th/cmp-cmdline',
-		-- 	},
 		-- },
 		-- { 'hrsh7th/cmp-vsnip' },
 		-- { 'hrsh7th/cmp-path' },
@@ -452,10 +446,24 @@ require("lazy").setup({
 			"giuxtaposition/blink-cmp-copilot",
 		},
 
+		-- add blink.compat
+		{
+			'saghen/blink.compat',
+			-- use the latest release, via version = '*', if you also use the latest release for blink.cmp
+			version = '*',
+			-- lazy.nvim will automatically load the plugin when it's required by blink.cmp
+			lazy = true,
+			-- make sure to set opts so that lazy.nvim calls blink.compat's setup
+			opts = {},
+		},
+
 		{
 			'saghen/blink.cmp',
 			-- optional: provides snippets for the snippet source
-			dependencies = 'rafamadriz/friendly-snippets',
+			dependencies = {
+				{ 'rafamadriz/friendly-snippets'},
+				{ 'crazyhulk/cmp-sign' },
+			},
 
 			-- use a release tag to download pre-built binaries
 			version = '*',
@@ -522,7 +530,7 @@ require("lazy").setup({
 				-- Default list of enabled providers defined so that you can extend it
 				-- elsewhere in your config, without redefining it, due to `opts_extend`
 				sources = {
-					default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+					default = { 'nvim_cmp_sign', 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
 					providers = {
 						copilot = {
 							name = "copilot",
@@ -538,6 +546,16 @@ require("lazy").setup({
 								end
 								return items
 							end,
+						},
+						nvim_cmp_sign = {
+							name = "nvim_cmp_sign",
+							-- module = "cmp_sign",
+							module = 'blink.compat.source',
+							-- score_offset = -3,
+							-- async = true,
+							opts = {
+								cache_nvim_cmp_sign_on_start = true
+							}
 						},
 					},
 				},
@@ -620,7 +638,7 @@ require("lazy").setup({
 				--- The below dependencies are optional,
 				"echasnovski/mini.pick", -- for file_selector provider mini.pick
 				"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-				"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+				-- "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
 				"ibhagwan/fzf-lua", -- for file_selector provider fzf
 				"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
 				"zbirenbaum/copilot.lua", -- for providers='copilot'
