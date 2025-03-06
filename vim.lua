@@ -162,6 +162,19 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- capabilities = require'cmp_nvim_lsp'.default_capabilities(capabilities)
 
+require'lspconfig'.pylsp.setup{
+	on_attach = on_attach,
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {
+					ignore = {'E501'}, -- This is the Error code for line too long.
+					maxLineLength = 200 -- This sets how long the line is allowed to be. Also has effect on formatter.
+				},
+			},
+		},
+	},
+}
 require'lspconfig'.gopls.setup {
 	-- cmd = {'gopls', 'serve','--debug=localhost:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
 	-- cmd = {'/Users/bilibili/workspace/go/xtools/gopls/gopls', 'serve','--debug=0.0.0.0:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},

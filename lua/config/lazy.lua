@@ -530,7 +530,8 @@ require("lazy").setup({
 				-- Default list of enabled providers defined so that you can extend it
 				-- elsewhere in your config, without redefining it, due to `opts_extend`
 				sources = {
-					default = { 'nvim_cmp_sign', 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+					default = { --[['nvim_cmp_sign', --]] 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+					per_filetype = { go = { 'nvim_cmp_sign', 'lsp', 'path', 'snippets', 'buffer', 'copilot' } },
 					providers = {
 						copilot = {
 							name = "copilot",
@@ -582,9 +583,10 @@ require("lazy").setup({
 			"yetone/avante.nvim",
 			event = "VeryLazy",
 			lazy = false,
-			version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+			-- enabled = false,
+			version = "*", -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
 			opts = {
-				provider = "openai",
+				provider = "copilot",
 				auto_suggestions_provider = "copilot", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
 				deepseek = {
 					__inherited_from = 'openai',
@@ -606,11 +608,10 @@ require("lazy").setup({
 					endpoint = "https://api.githubcopilot.com",
 					model = "claude-3.5-sonnet",
 					-- model = "gpt-4o-2024-08-06",
-					proxy = nil, -- [protocol://]host[:port] Use this proxy
 					allow_insecure = false, -- Allow insecure server connections
 					timeout = 30000, -- Timeout in milliseconds
 					temperature = 0,
-					max_tokens = 4096,
+					max_tokens = 8192,
 				},
 			},
 			-- opts = {
