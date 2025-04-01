@@ -20,3 +20,14 @@ require("config.keybinding")
 -- require("config.debug")
 -- require("config.lint")
 -- require("config.vimtex")
+
+-- vim.lsp.inlay_hint.enable(true)
+
+-- Example: Setup for diagnostics in Neovim
+vim.diagnostic.config({
+    virtual_text = true,  -- Enable inline diagnostics in the editor
+    signs = true,         -- Show signs in the sign column
+    underline = true,     -- Underline diagnostics
+    update_in_insert = false, -- Disable diagnostics while typing
+    severity_sort = true  -- Sort diagnostics by severity
+})

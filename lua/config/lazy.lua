@@ -32,6 +32,7 @@ require("lazy").setup({
 
 			-- example using `opts` for defining servers
 			opts = {
+				inlay_hints = { enabled = true },
 				servers = {
 					lua_ls = {}
 				}
@@ -606,7 +607,7 @@ require("lazy").setup({
 				},
 				copilot = {
 					endpoint = "https://api.githubcopilot.com",
-					model = "claude-3.5-sonnet",
+					model = "claude-3.7-sonnet",
 					-- model = "gpt-4o-2024-08-06",
 					allow_insecure = false, -- Allow insecure server connections
 					timeout = 30000, -- Timeout in milliseconds
