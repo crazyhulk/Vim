@@ -63,7 +63,8 @@ require('material').setup({
 -- vim.cmd 'colorscheme material'
 vim.cmd 'colorscheme sonokai'
 -- let g:sonokai_style = "maia"
--- colorscheme PaperColor
+-- vim.cmd 'colorscheme PaperColor'
+-- vim.o.background = "light"
 -- colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 -- colorscheme gruvbox-material
 -- colorscheme sonokai

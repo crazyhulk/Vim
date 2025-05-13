@@ -208,7 +208,7 @@ function M.test_func(opt)
 	local cmd = {
 		'go',
 		'test',
-		'-gcflags=-l',
+		'-gcflags="all=-N -l"',
 		'-ldflags=-checklinkname=0',
 		'-run',
 		vim.fn.shellescape(string.format('^%s$', func_name)),
