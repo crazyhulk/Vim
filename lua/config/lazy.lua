@@ -70,7 +70,6 @@ require("lazy").setup({
 		-- { 'hrsh7th/cmp-buffer' },
 		-- { 'hrsh7th/cmp-cmdline' },
 		-- { 'hrsh7th/vim-vsnip' },
-		-- { 'crazyhulk/cmp-sign' },
 		{	'honza/vim-snippets' },
 
 		{
@@ -532,31 +531,39 @@ require("lazy").setup({
 			opts = {
 				provider = "copilot",
 				auto_suggestions_provider = "copilot", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
-				deepseek = {
-					__inherited_from = 'openai',
-					api_key_name = "OPENAI_API_KEY",
-					endpoint = "https://api.deepseek.com",
-					model = "deepseek-coder",
-				},
-				---@type AvanteSupportedProvider
-				openai = {
-					api_key_name = "OPENAI_API_KEY",
-					endpoint = "https://api.deepseek.com/v1",
-					-- model = "deepseek-chat",
-					model = "deepseek-coder",
-					timeout = 30000, -- Timeout in milliseconds
-					temperature = 0,
-					max_tokens = 4096,
-				},
-				copilot = {
-					endpoint = "https://api.githubcopilot.com",
-					model = "claude-3.7-sonnet",
-					-- model = "gpt-4o-2024-08-06",
-					allow_insecure = false, -- Allow insecure server connections
-					timeout = 30000, -- Timeout in milliseconds
-					temperature = 0,
-					max_tokens = 8192,
-				},
+
+				providers = {
+					deepseek = {
+						__inherited_from = 'openai',
+						api_key_name = "OPENAI_API_KEY",
+						endpoint = "https://api.deepseek.com",
+						model = "deepseek-coder",
+					},
+					---@type AvanteSupportedProvider
+					openai = {
+						api_key_name = "OPENAI_API_KEY",
+						endpoint = "https://api.deepseek.com/v1",
+						-- model = "deepseek-chat",
+						model = "deepseek-coder",
+						timeout = 30000, -- Timeout in milliseconds
+						extra_request_body = {
+							temperature = 0,
+							max_tokens = 4096,
+						}
+					},
+					copilot = {
+						endpoint = "https://api.githubcopilot.com",
+						-- model = "claude-3.7-sonnet",
+						model = "claude-sonnet-4",
+						-- model = "gpt-4o-2024-08-06",
+						allow_insecure = false, -- Allow insecure server connections
+						timeout = 30000, -- Timeout in milliseconds
+						extra_request_body = {
+							temperature = 0,
+							max_tokens = 8192,
+						}
+					},
+				}
 			},
 			-- opts = {
 			-- 	-- add any opts here
@@ -613,6 +620,44 @@ require("lazy").setup({
 					ft = { "markdown", "Avante" },
 				},
 			},
+		},
+		{
+			"jinzhongjia/LspUI.nvim",
+			branch = "main",
+			config = function()
+				require("LspUI").setup({
+					inlay_hint = {
+						enable = false,
+						command_enable = true,
+						filter = {
+							whitelist = {},
+							blacklist = {},
+						},
+					}
+					-- config options go here
+				})
+			end
+		},
+		{
+			"nvim-treesitter/nvim-treesitter-context",
+			branch = "master",
+			config = function()
+				require'treesitter-context'.setup{
+					enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+					multiwindow = false, -- Enable multiwindow support.
+					max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
+					min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+					line_numbers = true,
+					multiline_threshold = 20, -- Maximum number of lines to show for a single context
+					trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+					mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+					-- Separator between context and content. Should be a single character string, like '-'.
+					-- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+					separator = nil,
+					zindex = 20, -- The Z-index of the context window
+					on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+				}
+			end
 		}
 	},
 	-- Configure any other settings here. See the documentation for more details.

@@ -56,6 +56,10 @@ lspkind.init({
 
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 
+require('cmp_sign').setup({
+	monkeys = "defer mockey.Mock({{name}}).To({{sign}} { \n\treturn\n}).Build().Release()",
+})
+
 -- local cmp = require('cmp')
 -- cmp.event:on("menu_opened", function()
 --   vim.b.copilot_suggestion_hidden = true
