@@ -59,6 +59,8 @@ require("lazy").setup({
 		{
 			'nvim-treesitter/nvim-treesitter',
 			build = ':TSUpdate',
+			dependencies = { "OXY2DEV/markview.nvim" },
+			lazy = false, -- load treesitter immediately
 		},
 
 		-- { 'hrsh7th/cmp-nvim-lsp' },
@@ -300,13 +302,6 @@ require("lazy").setup({
 		-- 	end
 		-- },
 
-		{
-			'python-lsp/python-lsp-server',
-			config = function()
-				require'lspconfig'.pylsp.setup{}
-			end
-		},
-
 		--   {
 		-- 	"ray-x/lsp_signature.nvim",
 		-- },
@@ -371,20 +366,20 @@ require("lazy").setup({
 		{ "catppuccin/nvim", as = "catppuccin" }, -- theme
 		{ 'sainnhe/gruvbox-material' },
 
-		{
-			"OXY2DEV/markview.nvim",
-			lazy = false,      -- Recommended
-			-- ft = "markdown" -- If you decide to lazy-load anyway
-
-			dependencies = {
-				-- You will not need this if you installed the
-				-- parsers manually
-				-- Or if the parsers are in your $RUNTIMEPATH
-				"nvim-treesitter/nvim-treesitter",
-
-				"nvim-tree/nvim-web-devicons"
-			},
-		},
+		-- {
+		-- 	"OXY2DEV/markview.nvim",
+		-- 	lazy = false,      -- Recommended
+		-- 	-- ft = "markdown" -- If you decide to lazy-load anyway
+                --
+		-- 	dependencies = {
+		-- 		-- You will not need this if you installed the
+		-- 		-- parsers manually
+		-- 		-- Or if the parsers are in your $RUNTIMEPATH
+		-- 		-- "nvim-treesitter/nvim-treesitter",
+                --
+		-- 		"nvim-tree/nvim-web-devicons"
+		-- 	},
+		-- },
 		{
 			"giuxtaposition/blink-cmp-copilot",
 		},
@@ -527,9 +522,10 @@ require("lazy").setup({
 			event = "VeryLazy",
 			lazy = false,
 			-- enabled = false,
-			version = "*", -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+			version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
 			opts = {
 				provider = "copilot",
+				-- provider = "claude", -- The provider to use for Avante, can be 'openai', 'deepseek', 'copilot', 'claude', etc.
 				auto_suggestions_provider = "copilot", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
 
 				providers = {
@@ -553,8 +549,8 @@ require("lazy").setup({
 					},
 					copilot = {
 						endpoint = "https://api.githubcopilot.com",
-						-- model = "claude-3.7-sonnet",
-						model = "claude-sonnet-4",
+						model = "claude-3.7-sonnet",
+						-- model = "claude-sonnet-4",
 						-- model = "gpt-4o-2024-08-06",
 						allow_insecure = false, -- Allow insecure server connections
 						timeout = 30000, -- Timeout in milliseconds
@@ -562,6 +558,16 @@ require("lazy").setup({
 							temperature = 0,
 							max_tokens = 8192,
 						}
+					},
+					claude = {
+						-- endpoint = "https://api.anthropic.com",
+						endpoint = "https://api.oaipro.com/",
+						model = "claude-sonnet-4-20250514",
+						timeout = 30000, -- Timeout in milliseconds
+						extra_request_body = {
+							temperature = 0.75,
+							max_tokens = 20480,
+						},
 					},
 				}
 			},

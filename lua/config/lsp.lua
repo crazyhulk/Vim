@@ -151,19 +151,41 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- capabilities = require'cmp_nvim_lsp'.default_capabilities(capabilities)
 
 local lspconfig = require'lspconfig'
-lspconfig.pylsp.setup{
+-- lspconfig.pylsp.setup{
+-- 	on_attach = on_attach,
+-- 	settings = {
+-- 		pylsp = {
+-- 			plugins = {
+-- 				pycodestyle = {
+-- 					ignore = {'E501'}, -- This is the Error code for line too long.
+-- 					maxLineLength = 200 -- This sets how long the line is allowed to be. Also has effect on formatter.
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- }
+
+-- pyright
+lspconfig.pyright.setup {
+	cmd = {'pyright-langserver', '--stdio'},
+	filetypes = {'python'},
 	on_attach = on_attach,
+	capabilities = capabilities,
 	settings = {
-		pylsp = {
-			plugins = {
-				pycodestyle = {
-					ignore = {'E501'}, -- This is the Error code for line too long.
-					maxLineLength = 200 -- This sets how long the line is allowed to be. Also has effect on formatter.
+		pyright = {
+			disableOrganizeImports = true, -- 禁用自动导入
+			disableLanguageServices = false, -- 启用语言服务
+			python = {
+				analysis = {
+					typeCheckingMode = "basic", -- 设置类型检查模式
+					autoSearchPaths = true, -- 自动搜索路径
+					useLibraryCodeForTypes = true, -- 使用库代码进行类型推断
 				},
 			},
 		},
 	},
 }
+
 
 lspconfig.gopls.setup {
 	-- cmd = {'gopls', 'serve','--debug=localhost:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
