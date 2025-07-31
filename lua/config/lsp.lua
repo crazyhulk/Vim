@@ -167,6 +167,9 @@ local lspconfig = require'lspconfig'
 
 -- pyright
 lspconfig.pyright.setup {
+	-- root_dir = function(fname)
+	-- 	return vim.fs.dirname(vim.fs.find({ 'pyproject.toml', '.git' }, { upward = true })[1])
+	-- end,
 	cmd = {'pyright-langserver', '--stdio'},
 	filetypes = {'python'},
 	on_attach = on_attach,
@@ -192,6 +195,7 @@ lspconfig.gopls.setup {
 	-- cmd = {'/Users/bilibili/workspace/go/xtools/gopls/gopls', 'serve','--debug=0.0.0.0:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
 	cmd = {'gopls'},
 	on_attach = on_attach,
+	filetypes = {'go', 'gomod', 'gowork', 'gotmpl'},
 	capabilities = capabilities,
 	flags = {
 		debounce_text_changes = 150,
