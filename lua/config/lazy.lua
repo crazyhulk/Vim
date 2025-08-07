@@ -233,6 +233,7 @@ require("lazy").setup({
 		},
 		{ 'sainnhe/sonokai' },
 		{ 'shaunsingh/solarized.nvim' },
+		{ dir = '~/workspace/neovim/calltree/' },
 		--   { 'mfussenegger/nvim-dap' },
 		--
 		--   { 
@@ -518,6 +519,33 @@ require("lazy").setup({
 		},
 
 		{
+			"folke/snacks.nvim",
+			priority = 1000,
+			lazy = false,
+			---@type snacks.Config
+			opts = {
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				animate = {
+					      duration = { step = 10, total = 100 },
+					      easing = "in_out_cubic", -- 示例：缓入缓出效果
+				},
+				-- refer to the configuration section below
+				bigfile = { enabled = false },
+				dashboard = { enabled = true },
+				explorer = { enabled = true },
+				-- indent = { enabled = true },
+				input = { enabled = true },
+				picker = { enabled = true },
+				notifier = { enabled = true },
+				quickfile = { enabled = true },
+				scope = { enabled = true },
+				scroll = { enabled = true },
+				-- statuscolumn = { enabled = true },
+				-- words = { enabled = true },
+			}
+		},
+		{
 			"yetone/avante.nvim",
 			event = "VeryLazy",
 			lazy = false,
@@ -590,7 +618,7 @@ require("lazy").setup({
 			build = "make BUILD_FROM_SOURCE=true",
 			-- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
 			dependencies = {
-				"stevearc/dressing.nvim",
+				"folke/snacks.nvim",
 				"nvim-lua/plenary.nvim",
 				"MunifTanjim/nui.nvim",
 				--- The below dependencies are optional,
