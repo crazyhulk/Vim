@@ -81,7 +81,7 @@ require("lazy").setup({
 			opts = {
 				panel = {
 					enabled = true,
-					auto_refresh = false,
+					auto_refresh = true,
 					keymap = {
 						jump_prev = "[[",
 						jump_next = "]]",
@@ -95,7 +95,7 @@ require("lazy").setup({
 					},
 				},
 				suggestion = {
-					enabled = false,
+					enabled = true,
 					auto_trigger = true,
 					hide_during_completion = true,
 					debounce = 75,
@@ -111,7 +111,7 @@ require("lazy").setup({
 				filetypes = {
 					go = true,
 					yaml = false,
-					markdown = false,
+					markdown = true,
 					help = false,
 					gitcommit = false,
 					gitrebase = false,
@@ -124,18 +124,6 @@ require("lazy").setup({
 				server_opts_overrides = {},
 			},
 		},
-		-- {
-		-- 	"zbirenbaum/copilot-cmp",
-		-- 	-- after = { "copilot.lua" },
-		-- 	config = function ()
-		-- 		require("copilot_cmp").setup()
-		-- 	end,
-		-- 	-- formatters = {
-		-- 	-- 	label = require("copilot_cmp.format").format_label_text,
-		-- 	-- 	insert_text = require("copilot_cmp.format").format_insert_text,
-		-- 	-- 	preview = require("copilot_cmp.format").deindent,
-		-- 	-- },
-		-- },
 
 		{ 'onsails/lspkind.nvim' },
 
@@ -367,24 +355,6 @@ require("lazy").setup({
 		{ "catppuccin/nvim", as = "catppuccin" }, -- theme
 		{ 'sainnhe/gruvbox-material' },
 
-		-- {
-		-- 	"OXY2DEV/markview.nvim",
-		-- 	lazy = false,      -- Recommended
-		-- 	-- ft = "markdown" -- If you decide to lazy-load anyway
-                --
-		-- 	dependencies = {
-		-- 		-- You will not need this if you installed the
-		-- 		-- parsers manually
-		-- 		-- Or if the parsers are in your $RUNTIMEPATH
-		-- 		-- "nvim-treesitter/nvim-treesitter",
-                --
-		-- 		"nvim-tree/nvim-web-devicons"
-		-- 	},
-		-- },
-		{
-			"giuxtaposition/blink-cmp-copilot",
-		},
-
 		-- add blink.compat
 		{
 			'saghen/blink.compat',
@@ -400,6 +370,13 @@ require("lazy").setup({
 			'saghen/blink.cmp',
 			-- optional: provides snippets for the snippet source
 			dependencies = {
+				{
+					"fang2hou/blink-copilot",
+					opts = {
+						max_completions = 3,  -- Global default for max completions
+						max_attempts = 3,     -- Global default for max attempts
+					}
+				},
 				{ 'rafamadriz/friendly-snippets'},
 				{ 'crazyhulk/cmp-sign' },
 			},
@@ -474,18 +451,24 @@ require("lazy").setup({
 					providers = {
 						copilot = {
 							name = "copilot",
-							module = "blink-cmp-copilot",
+							module = "blink-copilot",
 							score_offset = 100,
 							async = true,
-							transform_items = function(_, items)
-								local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-								local kind_idx = #CompletionItemKind + 1
-								CompletionItemKind[kind_idx] = "Copilot"
-								for _, item in ipairs(items) do
-									item.kind = kind_idx
-								end
-								return items
-							end,
+							opts = {
+								-- These options are passed to the source's setup function
+								-- See `:help blink-copilot` for more information
+								max_completions = 3,  -- Max number of completions to request and show
+								max_attempts = 3,     -- Max number of attempts to get completions
+							},
+							-- transform_items = function(_, items)
+							-- 	local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+							-- 	local kind_idx = #CompletionItemKind + 1
+							-- 	CompletionItemKind[kind_idx] = "Copilot"
+							-- 	for _, item in ipairs(items) do
+							-- 		item.kind = kind_idx
+							-- 	end
+							-- 	return items
+							-- end,
 						},
 						nvim_cmp_sign = {
 							name = "nvim_cmp_sign",
