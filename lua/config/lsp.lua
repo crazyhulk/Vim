@@ -149,9 +149,9 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = require'cmp_nvim_lsp'.default_capabilities(capabilities)
 
-local lspconfig = require'lspconfig'
+
+local config = vim.lsp.config
 -- lspconfig.pylsp.setup{
 -- 	on_attach = on_attach,
 -- 	settings = {
@@ -167,10 +167,7 @@ local lspconfig = require'lspconfig'
 -- }
 
 -- pyright
-lspconfig.pyright.setup {
-	-- root_dir = function(fname)
-	-- 	return vim.fs.dirname(vim.fs.find({ 'pyproject.toml', '.git' }, { upward = true })[1])
-	-- end,
+config.pyright = {
 	cmd = {'pyright-langserver', '--stdio'},
 	filetypes = {'python'},
 	on_attach = on_attach,
@@ -191,7 +188,7 @@ lspconfig.pyright.setup {
 }
 
 
-lspconfig.gopls.setup {
+config.gopls = {
 	-- cmd = {'gopls', 'serve','--debug=localhost:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
 	-- cmd = {'/Users/bilibili/workspace/go/xtools/gopls/gopls', 'serve','--debug=0.0.0.0:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
 	cmd = {'gopls'},
@@ -233,7 +230,7 @@ lspconfig.gopls.setup {
 	},
 }
 
-lspconfig.lua_ls.setup {
+config.lua_ls = {
 	settings = {
 		Lua = {
 			runtime = {
@@ -256,9 +253,10 @@ lspconfig.lua_ls.setup {
 	},
 }
 
-lspconfig.sourcekit.setup{
+config.sourcekit = {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	-- root_dir = root_pattern("Package.swift", ".git")	
 }
 
+vim.lsp.enable({ 'pyright', 'gopls', 'lua_ls', "sourcekit" })

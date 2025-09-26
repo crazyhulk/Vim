@@ -38,22 +38,15 @@ require("lazy").setup({
 				}
 			},
 			config = function(_, opts)
-				local lspconfig = require('lspconfig')
+				local lspconfig = vim.lsp.config
 				for server, config in pairs(opts.servers) do
 					-- passing config.capabilities to blink.cmp merges with the capabilities in your
 					-- `opts[server].capabilities, if you've defined it
 					config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-					lspconfig[server].setup(config)
+					lspconfig[server] = config
 				end
 			end
 
-			-- example calling setup directly for each LSP
-			-- config = function()
-			-- 	local capabilities = require('blink.cmp').get_lsp_capabilities()
-			-- 	local lspconfig = require('lspconfig')
-			--
-			-- 	lspconfig['lua-ls'].setup({ capabilities = capabilities })
-			-- end
 		},
 
 		{
@@ -63,15 +56,6 @@ require("lazy").setup({
 			lazy = false, -- load treesitter immediately
 		},
 
-		-- { 'hrsh7th/cmp-nvim-lsp' },
-		-- {
-		-- 	'hrsh7th/nvim-cmp',
-		-- },
-		-- { 'hrsh7th/cmp-vsnip' },
-		-- { 'hrsh7th/cmp-path' },
-		-- { 'hrsh7th/cmp-buffer' },
-		-- { 'hrsh7th/cmp-cmdline' },
-		-- { 'hrsh7th/vim-vsnip' },
 		{	'honza/vim-snippets' },
 
 		{
@@ -140,7 +124,6 @@ require("lazy").setup({
 				enable_check_bracket_line = false,
 			},
 		},
-		--   {	'junegunn/fzf.vim' },
 		{
 			'nvim-telescope/telescope.nvim', tag = '0.1.8',
 			dependencies =  {'nvim-lua/plenary.nvim'},
