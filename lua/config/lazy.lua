@@ -129,7 +129,7 @@ require("lazy").setup({
 			dependencies =  {'nvim-lua/plenary.nvim'},
 		},
 
-		{ 'airblade/vim-gitgutter', branch = 'main' },
+		-- { 'airblade/vim-gitgutter', branch = 'main' },
 		{ 'plasticboy/vim-markdown' },
 
 		{ 'marko-cerovac/material.nvim' },
@@ -362,6 +362,7 @@ require("lazy").setup({
 				},
 				{ 'rafamadriz/friendly-snippets'},
 				{ 'crazyhulk/cmp-sign' },
+				-- { dir = '/Users/bilibili/workspace/nvim/cmp-sign' },
 			},
 
 			-- use a release tag to download pre-built binaries
