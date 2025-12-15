@@ -231,6 +231,7 @@ config.gopls = {
 }
 
 config.lua_ls = {
+	on_attach = on_attach,
 	settings = {
 		Lua = {
 			runtime = {

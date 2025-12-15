@@ -129,8 +129,6 @@ require("lazy").setup({
 			dependencies =  {'nvim-lua/plenary.nvim'},
 		},
 
-		-- { 'airblade/vim-gitgutter', branch = 'main' },
-		{ 'plasticboy/vim-markdown' },
 
 		{ 'marko-cerovac/material.nvim' },
 		{ 'mhartington/oceanic-next' },
@@ -139,11 +137,7 @@ require("lazy").setup({
 		{ 'ironhouzi/vim-stim' },
 		{ 'godlygeek/tabular' },
 		{ 'majutsushi/tagbar' },
-		{ 'lvht/tagbar-markdown' },
 		{ 'tomtom/tcomment_vim' },
-		--
-		--   {	'jacoborus/tender.vim' },
-		--   {	'vim-airline/vim-airline' },
 		{
 			'nvim-lualine/lualine.nvim',
 			dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -658,6 +652,26 @@ require("lazy").setup({
 					zindex = 20, -- The Z-index of the context window
 					on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
 				}
+			end
+		},
+		{
+			"harrisoncramer/gitlab.nvim",
+			dependencies = {
+				"MunifTanjim/nui.nvim",
+				"nvim-lua/plenary.nvim",
+				"sindrets/diffview.nvim",
+				"stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
+				"nvim-tree/nvim-web-devicons", -- Recommended but not required. Icons in discussion tree.
+			},
+			build = function () require("gitlab.server").build(true) end, -- Builds the Go binary
+			config = function()
+				require("gitlab").setup()
+			end,
+		},
+		{
+			dir = "/Users/bilibili/workspace/nvim/develop/git.nvim/",
+			config = function()
+				require("git").setup()
 			end
 		}
 	},
