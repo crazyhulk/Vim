@@ -192,6 +192,9 @@ config.gopls = {
 	-- cmd = {'gopls', 'serve','--debug=localhost:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
 	-- cmd = {'/Users/bilibili/workspace/go/xtools/gopls/gopls', 'serve','--debug=0.0.0.0:6060', '-rpc.trace', '-logfile=/tmp/1.txt'},
 	cmd = {'gopls'},
+	cmd_env = {
+		GOEXPERIMENT = "jsonv2",
+	},
 	on_attach = on_attach,
 	filetypes = {'go', 'gomod', 'gowork', 'gotmpl'},
 	capabilities = capabilities,

@@ -6,6 +6,9 @@ local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#9DA9A0" })
 
+-- 关闭鼠标
+vim.opt.mouse = ""
+
 require'colorizer'.setup()
 vim.notify = require("notify")
 
