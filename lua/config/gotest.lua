@@ -13,5 +13,6 @@ config.options.test_env = {
 	MYSQL_ROOT_PASSWORD = 'root',
 	ZONE = 'sh001',
 	DEPLOY_ENV = 'uat',
+	GOEXPERIMENT = 'jsonv2'
 }
 
