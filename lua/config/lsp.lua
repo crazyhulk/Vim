@@ -172,16 +172,25 @@ config.pyright = {
 	filetypes = {'python'},
 	on_attach = on_attach,
 	capabilities = capabilities,
+	root_markers = {'.git', 'pyrightconfig.json', 'pyproject.toml', 'setup.py', 'requirements.txt'},
+	on_new_config = function(new_config, root_dir)
+		-- 自动将 git root 添加到 extraPaths
+		new_config.settings = new_config.settings or {}
+		new_config.settings.python = new_config.settings.python or {}
+		new_config.settings.python.analysis = new_config.settings.python.analysis or {}
+		new_config.settings.python.analysis.extraPaths = new_config.settings.python.analysis.extraPaths or {}
+		table.insert(new_config.settings.python.analysis.extraPaths, root_dir)
+	end,
 	settings = {
 		pyright = {
 			disableOrganizeImports = true, -- 禁用自动导入
 			disableLanguageServices = false, -- 启用语言服务
-			python = {
-				analysis = {
-					typeCheckingMode = "basic", -- 设置类型检查模式
-					autoSearchPaths = true, -- 自动搜索路径
-					useLibraryCodeForTypes = true, -- 使用库代码进行类型推断
-				},
+		},
+		python = {
+			analysis = {
+				typeCheckingMode = "basic", -- 设置类型检查模式
+				autoSearchPaths = true, -- 自动搜索路径
+				useLibraryCodeForTypes = true, -- 使用库代码进行类型推断
 			},
 		},
 	},
