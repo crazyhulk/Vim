@@ -198,7 +198,7 @@ require("lazy").setup({
 		},
 		{ 'sainnhe/sonokai' },
 		{ 'shaunsingh/solarized.nvim' },
-		{ dir = '~/workspace/neovim/calltree/' },
+		-- { dir = '~/workspace/neovim/calltree/' },
 		--   { 'mfussenegger/nvim-dap' },
 		--
 		--   { 
@@ -668,12 +668,12 @@ require("lazy").setup({
 				require("gitlab").setup()
 			end,
 		},
-		{
-			dir = "/Users/bilibili/workspace/nvim/develop/git.nvim/",
-			config = function()
-				require("git").setup()
-			end
-		}
+		--{
+		--	dir = "/Users/bilibili/workspace/nvim/develop/git.nvim/",
+		--	config = function()
+		--		require("git").setup()
+		--	end
+		--}
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
