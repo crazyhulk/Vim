@@ -269,7 +269,15 @@ config.lua_ls = {
 config.sourcekit = {
 	on_attach = on_attach,
 	capabilities = capabilities,
-	-- root_dir = root_pattern("Package.swift", ".git")	
+	-- root_dir = root_pattern("Package.swift", ".git")
 }
 
-vim.lsp.enable({ 'pyright', 'gopls', 'lua_ls', "sourcekit" })
+config.ts_ls = {
+	cmd = {'typescript-language-server', '--stdio'},
+	filetypes = {'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx'},
+	on_attach = on_attach,
+	capabilities = capabilities,
+	root_markers = {'tsconfig.json', 'jsconfig.json', 'package.json', '.git'},
+}
+
+vim.lsp.enable({ 'pyright', 'gopls', 'lua_ls', "sourcekit", "ts_ls" })
