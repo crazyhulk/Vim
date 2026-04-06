@@ -52,8 +52,40 @@ require("lazy").setup({
 		{
 			'nvim-treesitter/nvim-treesitter',
 			build = ':TSUpdate',
+			branch = 'main',
 			dependencies = { "OXY2DEV/markview.nvim" },
-			lazy = false, -- load treesitter immediately
+			lazy = false,
+			config = function()
+				require('nvim-treesitter').setup {
+					ensure_install = { 'go', 'lua', 'python', 'javascript', 'typescript', 'markdown', 'json', 'yaml', 'toml', 'bash' },
+				}
+			end,
+		},
+
+		{
+			'nvim-treesitter/nvim-treesitter-textobjects',
+			branch = 'main',
+			dependencies = { 'nvim-treesitter/nvim-treesitter' },
+			config = function()
+				require('nvim-treesitter-textobjects').setup {
+					select = {
+						lookahead = true,
+						keymaps = {
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["ac"] = "@class.outer",
+							["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+							["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+						},
+						selection_modes = {
+							['@parameter.outer'] = 'v',
+							['@function.outer'] = 'V',
+							['@class.outer'] = '<c-v>',
+						},
+						include_surrounding_whitespace = true,
+					},
+				}
+			end,
 		},
 
 		{	'honza/vim-snippets' },
@@ -111,7 +143,7 @@ require("lazy").setup({
 
 		{ 'onsails/lspkind.nvim' },
 
-		{ 'norcalli/nvim-colorizer.lua' },
+		{ 'catgoose/nvim-colorizer.lua' },
 		{ 'tpope/vim-fugitive' },
 		{ 'jreybert/vimagit' },
 		{ 'scrooloose/nerdtree' },
