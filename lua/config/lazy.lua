@@ -177,6 +177,19 @@ require("lazy").setup({
 		{	'easymotion/vim-easymotion' },
 		{	'rakr/vim-one' },
 		{	'mhinz/vim-startify' }, -- 启动页
+		{
+			"keaising/im-select.nvim",
+			config = function()
+				require("im_select").setup({
+					default_im_select = vim.fn.has("macunix") == 1 and "com.apple.keylayout.ABC" or "英语模式",
+					default_command = vim.fn.has("macunix") == 1 and "im-select" or "im-select-mspy.exe",
+					-- 这些事件触发时切换到英文
+					set_default_events = { "VimEnter", "FocusGained", "InsertLeave", "CmdlineLeave" },
+					-- 进入 Insert 时恢复之前的输入法
+					set_previous_events = { "InsertEnter" },
+				})
+			end,
+		},
 		{	'cespare/vim-toml' },
 		--   {	'EdenEast/nightfox.nvim' }, -- 主题，带状态栏
 		{
