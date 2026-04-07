@@ -57,8 +57,14 @@ require("lazy").setup({
 			lazy = false,
 			config = function()
 				require('nvim-treesitter').setup {
-					ensure_install = { 'go', 'lua', 'python', 'javascript', 'typescript', 'markdown', 'json', 'yaml', 'toml', 'bash' },
+					ensure_installed = { 'go', 'lua', 'python', 'javascript', 'typescript', 'markdown', 'json', 'yaml', 'toml', 'bash' },
 				}
+				-- nvim 0.12+ 需要显式启用 treesitter 高亮
+				vim.api.nvim_create_autocmd("FileType", {
+					callback = function(args)
+						pcall(vim.treesitter.start, args.buf)
+					end,
+				})
 			end,
 		},
 
@@ -157,7 +163,7 @@ require("lazy").setup({
 			},
 		},
 		{
-			'nvim-telescope/telescope.nvim', tag = '0.1.8',
+			'nvim-telescope/telescope.nvim', branch = 'master',
 			dependencies =  {'nvim-lua/plenary.nvim'},
 		},
 
