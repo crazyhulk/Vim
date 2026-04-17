@@ -112,6 +112,9 @@ command! GoTestAll lua require('go.test').test_all()
 command! GoTestFunc lua require('go.test').test_func()
 command! GoTestFile lua require('go.test').test_file()
 command! -nargs=? -complete=command GoToTest lua require('go.test').test_open(<f-args>)
+
+command! PyTestFunc lua require('python.test').test_func()
+command! PyTestFile lua require('python.test').test_file()
 " struct tag
 command! -nargs=* -range GoAddTags lua require('go.struct_tag').add_tags({<line1>, <line2>, <count>, <f-args>})
 command! -nargs=* -range GoRemoveTags lua require('go.struct_tag').remove_tags({<line1>, <line2>, <count>, <f-args>})

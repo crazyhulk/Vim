@@ -61,7 +61,12 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', opts)
 	buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>', opts)
 	buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', opts)
-	buf_set_keymap('n', '<space>t', '<cmd>lua require("go.test").test_func()<cr>', opts)
+	local ft = vim.bo[bufnr].filetype
+	if ft == 'python' then
+		buf_set_keymap('n', '<space>t', '<cmd>PyTestFunc<cr>', opts)
+	else
+		buf_set_keymap('n', '<space>t', '<cmd>GoTestFunc<cr>', opts)
+	end
 	-- -- Set autocommands conditional on server_capabilities
 	 if client.server_capabilities.documentHighlightProvider then
 	 	vim.api.nvim_exec([[
